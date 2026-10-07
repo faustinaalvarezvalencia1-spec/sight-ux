@@ -1,0 +1,61 @@
+<section id="acceso" class="login">
+  <div class="login__panel">
+    {% render 'grain', id: 'grainLogin', opacity: 0.35, blend: 'overlay' %}
+    <p class="eyebrow eyebrow--light">{{ section.settings.eyebrow }}</p>
+    <div class="login__copy">
+      <h2 class="login__title"><span class="it">{{ section.settings.title_1 }}</span> {{ section.settings.title_2 }}</h2>
+      <p>{{ section.settings.text }}</p>
+    </div>
+    {% render 'logo', light: true, height: 32 %}
+  </div>
+
+  <div class="login__form-wrap">
+    {%- if template.name == 'customers/register' -%}
+      {%- form 'create_customer', class: 'login__form' -%}
+        <div class="login__head"><p class="eyebrow">Acceso</p><h1 class="h2">Crea tu cuenta</h1></div>
+        {%- if form.errors -%}<div class="contact-error" role="alert">{{ form.errors | default_errors }}</div>{%- endif -%}
+        <label class="field"><span class="field__label">Nombre</span><input type="text" name="customer[first_name]" autocomplete="given-name"></label>
+        <label class="field"><span class="field__label">Apellido</span><input type="text" name="customer[last_name]" autocomplete="family-name"></label>
+        <label class="field"><span class="field__label">Correo</span><input type="email" name="customer[email]" autocomplete="email" required spellcheck="false" autocapitalize="off"></label>
+        <label class="field"><span class="field__label">Contraseña</span><input type="password" name="customer[password]" autocomplete="new-password" required></label>
+        <button type="submit" class="btn btn--pink btn--lg">Crear cuenta →</button>
+        <p class="caption">¿Ya tienes cuenta? <a href="{{ routes.account_login_url }}">Inicia sesión</a></p>
+      {%- endform -%}
+    {%- else -%}
+      <div class="login__forms">
+        {%- form 'customer_login', class: 'login__form', id: 'login' -%}
+          <div class="login__head"><p class="eyebrow">Acceso</p><h1 class="h2">Inicia sesión</h1></div>
+          {%- if form.errors -%}<div class="contact-error" role="alert">{{ form.errors | default_errors }}</div>{%- endif -%}
+          <label class="field"><span class="field__label">Correo</span><input type="email" name="customer[email]" autocomplete="email" required placeholder="tu@marca.com" spellcheck="false" autocapitalize="off"></label>
+          <label class="field"><span class="field__label">Contraseña</span><input type="password" name="customer[password]" autocomplete="current-password" required placeholder="••••••••"></label>
+          <a class="caption" href="#recover">¿Olvidaste tu contraseña?</a>
+          <button type="submit" class="btn btn--pink btn--lg">Entrar →</button>
+          <p class="caption">¿Aún no trabajas con nosotros? <a href="/#contacto">Hablemos</a></p>
+        {%- endform -%}
+
+        {%- form 'recover_customer_password', class: 'login__form login__recover', id: 'recover' -%}
+          <div class="login__head"><p class="eyebrow">Acceso</p><h2 class="h2">Recupera tu contraseña</h2></div>
+          {%- if form.posted_successfully? -%}
+            <p role="status">Te enviamos un correo con el enlace para crear una nueva contraseña.</p>
+          {%- endif -%}
+          {%- if form.errors -%}<div class="contact-error" role="alert">{{ form.errors | default_errors }}</div>{%- endif -%}
+          <label class="field"><span class="field__label">Correo</span><input type="email" name="email" autocomplete="email" required spellcheck="false" autocapitalize="off"></label>
+          <button type="submit" class="btn btn--ink">Enviar enlace</button>
+          <a class="caption" href="#login">← Volver a iniciar sesión</a>
+        {%- endform -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Iniciar sesión",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Espacio de clientes" },
+    { "type": "text", "id": "title_1", "label": "Título · parte en cursiva", "default": "Tu marca," },
+    { "type": "text", "id": "title_2", "label": "Título · resto", "default": "vista con claridad." },
+    { "type": "textarea", "id": "text", "label": "Texto", "default": "Consulta el avance de tu diagnóstico, los hallazgos y las decisiones de cada etapa en un solo lugar." }
+  ]
+}
+{% endschema %}

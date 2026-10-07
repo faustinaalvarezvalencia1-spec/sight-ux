@@ -1,0 +1,24 @@
+<!-- @dsCard group="Components" viewport="760x420" name="Editorial" subtitle="Highlight, PhotoFrame" -->
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<style>html,body{margin:0;background:var(--surface-page);font-family:var(--font-sans);color:var(--text-body);letter-spacing:var(--tracking)}a{color:var(--text-accent)}a:hover{color:var(--pink-600)}#root{padding:24px}</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script><script src="../../_ds_bundle.js"></script></head><body><div id="root"></div>
+<script type="text/babel">const {Highlight,PhotoFrame}=window.SightDesignSystem_3d4cc7;
+function Demo(){return <div style={{display:'grid',gridTemplateColumns:'minmax(0,1.1fr) minmax(0,1fr)',gap:26,alignItems:'start'}}>
+<div style={{display:'grid',gap:18}}>
+  <p style={{margin:0,font:'var(--fw-extrabold) 30px/1.15 var(--font-sans)',letterSpacing:'var(--tracking)',color:'var(--text-strong)'}}>Convertimos incertidumbre en decisiones de diseño que impulsan el <Highlight>crecimiento</Highlight>.</p>
+  <div style={{display:'flex',gap:10,flexWrap:'wrap',font:'var(--fw-medium) 17px/1.3 var(--font-sans)',color:'var(--text-strong)'}}>
+    <Highlight tone="lime">lime</Highlight><Highlight tone="pink">pink</Highlight><Highlight tone="salmon">salmon</Highlight><Highlight tone="cool">cool</Highlight>
+  </div>
+</div>
+<div style={{display:'grid',gap:14}}>
+  <PhotoFrame ratio="16 / 9" label="sesión de trabajo — blanco y negro"/>
+  <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:14}}>
+    <PhotoFrame ratio="1 / 1" label="retrato"/>
+    <PhotoFrame ratio="1 / 1" label="detalle de papel"/>
+  </div>
+</div>
+</div>;}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script></body></html>

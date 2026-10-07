@@ -1,0 +1,79 @@
+{
+  "v": 3,
+  "assetGroups": {
+    "Manual~20de~20marca": {
+      "files": {},
+      "name": "Manual de marca",
+      "order": []
+    },
+    "Other": {
+      "files": {},
+      "name": "Other",
+      "order": []
+    },
+    "Referencias": {
+      "files": {},
+      "name": "Referencias",
+      "order": []
+    },
+    "brand-manual": {
+      "files": {},
+      "name": "brand-manual",
+      "order": []
+    },
+    "fonts": {
+      "files": {},
+      "name": "fonts",
+      "order": []
+    },
+    "notes": {
+      "files": {},
+      "name": "notes",
+      "order": []
+    }
+  },
+  "blobs": {},
+  "createdOnFiles": {
+    "at": "2026-09-21T03:34:32.753Z",
+    "v": 1
+  },
+  "docs": {
+    "readme": "project/README.md",
+    "sections": [
+      "project/ui_kits/dashboard/README.md",
+      "project/ui_kits/website/README.md"
+    ]
+  },
+  "groups": [
+    "Other",
+    "brand-manual",
+    "Manual~20de~20marca",
+    "Referencias",
+    "fonts",
+    "notes"
+  ],
+  "lastChange": {
+    "at": "2026-10-06T05:50:00Z",
+    "by": "Claude",
+    "note": "Reorganizado al formato nuevo: vistas previas de componentes, guías de marca, láminas y UI kits visibles; tokens de movimiento corregidos.",
+    "via": "Claude"
+  },
+  "layout": "files",
+  "libraries": [
+    {
+      "file": "components/lib/react.production.min.js",
+      "global": "React",
+      "name": "react",
+      "version": "18.3.1"
+    },
+    {
+      "file": "components/lib/react-dom.production.min.js",
+      "global": "ReactDOM",
+      "name": "react-dom",
+      "version": "18.3.1"
+    }
+  ],
+  "namespace": "SightDesignSystem_3d4cc7",
+  "sections": {},
+  "title": "Sight Design System"
+}

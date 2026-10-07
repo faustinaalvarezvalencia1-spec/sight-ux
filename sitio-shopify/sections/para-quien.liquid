@@ -1,0 +1,56 @@
+{%- assign checks = section.settings.checks | newline_to_br | split: '<br />' -%}
+{%- assign feelings = section.settings.feelings | split: ',' -%}
+<section id="para-quien" class="para-quien">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2 class="display">{{ section.settings.title }}</h2>
+    </div>
+    <div class="para-quien__grid">
+      <div class="para-quien__col">
+        <ul class="checklist">
+          {%- for c in checks -%}
+            {%- assign line = c | strip -%}
+            {%- if line != blank -%}
+              <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff4864" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg><span>{{ line }}</span></li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+        <div class="feelings">
+          <span class="caption">{{ section.settings.feelings_label }}</span>
+          <div class="chips">
+            {%- for f in feelings -%}<span class="chip">{{ f | strip }}</span>{%- endfor -%}
+          </div>
+        </div>
+      </div>
+      <figure class="venn">
+        <svg viewBox="0 0 496 380" role="img" aria-label="Dos círculos que se cruzan: profundidad estratégica y mirada contemporánea. En la intersección está sight.">
+          <defs>
+            <linearGradient id="vennA1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff4864"></stop><stop offset="0.6" stop-color="#ff4864"></stop><stop offset="1" stop-color="#ffb6c0"></stop></linearGradient>
+            <linearGradient id="vennA2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4efe6"></stop><stop offset="1" stop-color="#ff7c6f"></stop></linearGradient>
+          </defs>
+          <circle cx="158" cy="190" r="140" fill="url(#vennA1)"></circle>
+          <circle cx="338" cy="190" r="140" fill="url(#vennA2)" fill-opacity="0.82"></circle>
+          <text text-anchor="middle" fill="#ffffff"><tspan x="108" y="150" font-size="13" font-weight="600" letter-spacing="0.06em">PROFUNDIDAD</tspan><tspan x="108" y="168" font-size="13" font-weight="600" letter-spacing="0.06em">ESTRATÉGICA</tspan><tspan x="108" y="194" font-size="14" font-weight="500">Rigor, método y</tspan><tspan x="108" y="211" font-size="14" font-weight="500">fijación por la</tspan><tspan x="108" y="228" font-size="14" font-weight="500">causa raíz.</tspan></text>
+          <text text-anchor="middle" fill="#2f3440"><tspan x="388" y="150" font-size="13" font-weight="600" letter-spacing="0.06em">MIRADA</tspan><tspan x="388" y="168" font-size="13" font-weight="600" letter-spacing="0.06em">CONTEMPORÁNEA</tspan><tspan x="388" y="194" font-size="14" font-weight="500">Herramientas</tspan><tspan x="388" y="211" font-size="14" font-weight="500">actuales y foco</tspan><tspan x="388" y="228" font-size="14" font-weight="500">en el usuario.</tspan></text>
+          <text x="248" y="198" text-anchor="middle" font-size="24" font-weight="600" fill="#2f3440">sight</text>
+        </svg>
+      </figure>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "¿Es sight para tu marca?",
+  "class": "section-para-quien",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Para quién es sight" },
+    { "type": "html", "id": "title", "label": "Título", "default": "¿Es sight para tu <span class=\"mk-hl mk-lime\">marca</span>?" },
+    { "type": "textarea", "id": "checks", "label": "Lista (un punto por renglón)" },
+    { "type": "text", "id": "feelings_label", "label": "Título de las etiquetas", "default": "Lo que buscamos que sientas al trabajar con nosotros" },
+    { "type": "text", "id": "feelings", "label": "Etiquetas (separadas por coma)", "default": "Tranquilidad, Claridad, Confianza, Seguridad" }
+  ],
+  "presets": [ { "name": "¿Es sight para tu marca?" } ]
+}
+{% endschema %}

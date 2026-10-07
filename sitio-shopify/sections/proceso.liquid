@@ -1,0 +1,38 @@
+<section id="proceso" class="proceso">
+  {% render 'grain', id: 'grainProceso', opacity: 0.35, blend: 'overlay' %}
+  <p class="eyebrow proceso__eyebrow">{{ section.settings.eyebrow }}</p>
+  <ol class="timeline">
+    {%- for block in section.blocks -%}
+      <li class="timeline__step{% if forloop.last %} is-last{% endif %}" {{ block.shopify_attributes }}>
+        <span class="timeline__dot" aria-hidden="true"></span>
+        <div class="timeline__content">
+          <span class="timeline__num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+          <span class="timeline__word">{{ block.settings.word }}</span>
+          <span class="timeline__text">{{ block.settings.text }}</span>
+        </div>
+      </li>
+    {%- endfor -%}
+  </ol>
+</section>
+
+{% schema %}
+{
+  "name": "Proceso",
+  "class": "section-proceso",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Nuestro proceso · Un camino sin atajos" }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Paso",
+      "limit": 8,
+      "settings": [
+        { "type": "text", "id": "word", "label": "Palabra" },
+        { "type": "textarea", "id": "text", "label": "Descripción" }
+      ]
+    }
+  ],
+  "presets": [ { "name": "Proceso" } ]
+}
+{% endschema %}

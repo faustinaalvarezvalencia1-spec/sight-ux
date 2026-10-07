@@ -1,0 +1,152 @@
+<!-- @dsCard group="UI kits" height=1115 width=1280 page subtitle="Panel de producto — Fichas con degradado, gráfica interactiva y agenda" -->
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Panel de producto</title><style>html,body{margin:0;background:var(--surface-sunken);font-family:var(--font-sans);color:var(--text-body);letter-spacing:var(--tracking);-webkit-font-smoothing:antialiased}*{box-sizing:border-box}a{color:var(--text-accent)}a:hover{color:var(--pink-600)}#root{min-height:100vh}</style></head>
+<body><div id="root"></div>
+
+
+
+<script>
+(function(){
+const SERIES = [
+  { key: "max", label: "Máximo de foco", color: "var(--pink-paradise)" },
+  { key: "min", label: "Falta de foco", color: "var(--salt-air)", stroke: "var(--lime-600)" }
+];
+function smooth(pts) {
+  if (pts.length < 2) return "";
+  let d = `M ${pts[0][0]} ${pts[0][1]}`;
+  for (let i = 0; i < pts.length - 1; i++) {
+    const [x0, y0] = pts[i], [x1, y1] = pts[i + 1];
+    const cx = (x0 + x1) / 2;
+    d += ` C ${cx} ${y0}, ${cx} ${y1}, ${x1} ${y1}`;
+  }
+  return d;
+}
+function FocusChart({ data, labels, height = 260 }) {
+  const [hover, setHover] = React.useState(null);
+  const [off, setOff] = React.useState({});
+  const wrap = React.useRef(null);
+  const W = 900, H = height, padT = 26, padB = 12;
+  const n = data.max.length;
+  const x = (i) => i / (n - 1) * W;
+  const y = (v) => padT + (1 - v / 100) * (H - padT - padB);
+  const paths = SERIES.map((s) => ({ ...s, d: smooth(data[s.key].map((v, i) => [x(i), y(v)])) }));
+  const move = (e) => {
+    const r = wrap.current.getBoundingClientRect();
+    const i = Math.round((e.clientX - r.left) / r.width * (n - 1));
+    setHover(Math.max(0, Math.min(n - 1, i)));
+  };
+  return /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { ref: wrap, onMouseMove: move, onMouseLeave: () => setHover(null), style: { position: "relative", cursor: "crosshair" } }, /* @__PURE__ */ React.createElement("svg", { viewBox: `0 0 ${W} ${H}`, style: { display: "block", width: "100%", height }, role: "img", "aria-label": "Foco por semana" }, /* @__PURE__ */ React.createElement("defs", null, /* @__PURE__ */ React.createElement("linearGradient", { id: "focus-area", x1: "0", y1: "0", x2: "0", y2: "1" }, /* @__PURE__ */ React.createElement("stop", { offset: "0%", stopColor: "var(--pink-200)", stopOpacity: "0.5" }), /* @__PURE__ */ React.createElement("stop", { offset: "100%", stopColor: "var(--pink-100)", stopOpacity: "0" }))), [0, 25, 50, 75, 100].map((v) => /* @__PURE__ */ React.createElement("line", { key: v, x1: "0", x2: W, y1: y(v), y2: y(v), stroke: "var(--border-hairline)", strokeWidth: "1" })), !off.max && /* @__PURE__ */ React.createElement("path", { d: `${paths[0].d} L ${W} ${y(0)} L 0 ${y(0)} Z`, fill: "url(#focus-area)" }), paths.map((s) => off[s.key] ? null : /* @__PURE__ */ React.createElement("path", { key: s.key, d: s.d, fill: "none", stroke: s.stroke || s.color, strokeWidth: "3", strokeLinecap: "round" })), hover != null && /* @__PURE__ */ React.createElement("line", { x1: x(hover), x2: x(hover), y1: padT - 10, y2: H - padB, stroke: "var(--deep-blue-gray)", strokeWidth: "1", strokeDasharray: "4 4" }), hover != null && SERIES.map((s) => off[s.key] ? null : /* @__PURE__ */ React.createElement("circle", { key: s.key, cx: x(hover), cy: y(data[s.key][hover]), r: "6", fill: "var(--surface-card)", stroke: s.stroke || s.color, strokeWidth: "3" }))), hover != null && /* @__PURE__ */ React.createElement("div", { style: {
+    position: "absolute",
+    left: `${hover / (n - 1) * 100}%`,
+    top: 0,
+    transform: "translate(-50%,-6px)",
+    background: "var(--surface-dark)",
+    color: "var(--text-on-dark)",
+    padding: "8px 12px",
+    whiteSpace: "nowrap",
+    pointerEvents: "none"
+  } }, /* @__PURE__ */ React.createElement("div", { style: { font: "var(--fw-extrabold) 13px/1.2 var(--font-sans)", letterSpacing: "var(--tracking)" } }, labels[hover] || `Semana ${hover + 1}`), /* @__PURE__ */ React.createElement("div", { style: { marginTop: 4, font: "var(--fw-regular) 12px/1.3 var(--font-sans)", color: "var(--salt-air)" } }, SERIES.filter((s) => !off[s.key]).map((s) => `${s.label}: ${data[s.key][hover]}%`).join(" · ")))), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", justifyContent: "space-between", marginTop: 8, font: "var(--fw-medium) 13px var(--font-sans)", color: "var(--text-muted)" } }, labels.map((l, i) => /* @__PURE__ */ React.createElement("span", { key: i }, l))), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 18, marginTop: 14, flexWrap: "wrap" } }, SERIES.map((s) => /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      key: s.key,
+      onClick: () => setOff((o) => ({ ...o, [s.key]: !o[s.key] })),
+      style: {
+        display: "flex",
+        alignItems: "center",
+        gap: 8,
+        border: "none",
+        background: "none",
+        cursor: "pointer",
+        padding: 0,
+        opacity: off[s.key] ? 0.4 : 1,
+        font: "var(--fw-medium) 13px var(--font-sans)",
+        letterSpacing: "var(--tracking)",
+        color: "var(--text-body)"
+      }
+    },
+    /* @__PURE__ */ React.createElement("span", { style: { width: 12, height: 12, background: s.stroke || s.color, flex: "none" } }),
+    s.label
+  )), /* @__PURE__ */ React.createElement("span", { style: { marginLeft: "auto", font: "var(--type-caption)", color: "var(--text-muted)" } }, "Pasa el cursor para fijar la semana · clic en la leyenda para aislar una serie")));
+}
+Object.assign(window, { FocusChart });
+
+})();
+(function(){
+const { AuraField, Badge, Button, RingStat, BarChart, NestedScale, Tag, EyeMark, Highlight } = window.SightDesignSystem_3d4cc7;
+const RANGES = {
+  "Último mes": { labels: ["S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8"], max: [42, 58, 51, 73, 64, 81, 76, 88], min: [38, 31, 44, 28, 36, 24, 30, 19] },
+  "Último trimestre": { labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun"], max: [34, 46, 52, 61, 70, 84], min: [52, 44, 39, 33, 29, 22] },
+  "Año": { labels: ["Q1", "Q2", "Q3", "Q4"], max: [31, 54, 68, 86], min: [58, 41, 30, 21] }
+};
+const AREAS = [
+  { label: "Foresight", value: 71, up: true },
+  { label: "Investigación", value: 92, up: true },
+  { label: "Producto", value: 33, up: false },
+  { label: "Datos", value: 56, up: true },
+  { label: "Narrativa", value: 79, up: true }
+];
+const COBERTURA = [
+  { label: "Universo de usuarios", value: 48200, display: "48.2K", note: "Base total del producto en los tres mercados." },
+  { label: "Alcanzados por el tracker", value: 21700, display: "21.7K", note: "Con al menos una sesión medida en el trimestre." },
+  { label: "Casos con tratamiento", value: 10200, display: "10.2K", note: "Ya en la vía de intervención del lab." }
+];
+const AGENDA = [
+  { date: "Mar 11 Jul", time: "08:15", title: "Revisión de diagnóstico", where: "Sight lab · Sala 2" },
+  { date: "Mar 11 Jul", time: "09:30", title: "Onboarding — Simple Solutions", where: "Remoto" },
+  { date: "Mié 12 Jul", time: "14:30", title: "Taller de causa raíz", where: "Cliente" },
+  { date: "Vie 15 Jul", time: "16:00", title: "Cierre de tratamiento", where: "Remoto" }
+];
+function Panel({ children, style }) {
+  return /* @__PURE__ */ React.createElement("section", { style: { background: "var(--surface-card)", padding: "22px 24px", ...style } }, children);
+}
+function Eyebrow({ children }) {
+  return /* @__PURE__ */ React.createElement("div", { style: { font: "var(--type-eyebrow)", letterSpacing: "var(--tracking-caps)", textTransform: "uppercase", color: "var(--text-muted)" } }, children);
+}
+function Tile({ combo, label, value, note, onPick, active }) {
+  return /* @__PURE__ */ React.createElement("button", { onClick: onPick, style: {
+    position: "relative",
+    overflow: "hidden",
+    border: "none",
+    padding: "20px 22px",
+    textAlign: "left",
+    cursor: "pointer",
+    background: "var(--surface-card)",
+    outline: active ? "3px solid var(--deep-blue-gray)" : "none",
+    outlineOffset: -3,
+    display: "grid",
+    alignContent: "space-between",
+    minHeight: 168,
+    transition: "var(--motion-hover)"
+  } }, /* @__PURE__ */ React.createElement(AuraField, { combo, opacity: active ? 1 : 0.82 }), /* @__PURE__ */ React.createElement("div", { style: { position: "relative", font: "var(--fw-semibold) var(--fs-ui-lg)/1.2 var(--font-sans)", letterSpacing: "var(--tracking)", color: "var(--deep-blue-gray)" } }, label), /* @__PURE__ */ React.createElement("div", { style: { position: "relative" } }, /* @__PURE__ */ React.createElement("div", { style: { font: "var(--fw-extrabold) 44px/1 var(--font-sans)", letterSpacing: "var(--tracking-tight)", color: "var(--deep-blue-gray)" } }, value, "%"), /* @__PURE__ */ React.createElement("div", { style: { marginTop: 6, font: "var(--fw-medium) 13px var(--font-sans)", color: "var(--deep-blue-gray)" } }, note)));
+}
+function Dashboard() {
+  const [range, setRange] = React.useState("Último mes");
+  const [tile, setTile] = React.useState("prioritarias");
+  const d = RANGES[range];
+  const avg = Math.round(d.max.reduce((a, b) => a + b, 0) / d.max.length);
+  return /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: "minmax(0,1fr) 352px", gap: 2, background: "var(--border-hairline)", minHeight: "100%" } }, /* @__PURE__ */ React.createElement("div", { style: { background: "var(--surface-page)", display: "grid", gap: 2, alignContent: "start" } }, /* @__PURE__ */ React.createElement("header", { style: { position: "relative", overflow: "hidden", background: "var(--surface-card)", padding: "24px" } }, /* @__PURE__ */ React.createElement(AuraField, { combo: "amanecer", opacity: 0.7, fade: "left" }), /* @__PURE__ */ React.createElement("div", { style: { position: "relative", display: "flex", alignItems: "center", gap: 18, flexWrap: "wrap" } }, /* @__PURE__ */ React.createElement("div", { style: { width: 52, height: 52, borderRadius: "50%", background: "var(--deep-blue-gray)", display: "grid", placeItems: "center", flex: "none" } }, /* @__PURE__ */ React.createElement(EyeMark, { size: 22, tone: "lime" })), /* @__PURE__ */ React.createElement("div", { style: { background: "var(--surface-card)", padding: "10px 16px" } }, /* @__PURE__ */ React.createElement("div", { style: { font: "var(--fw-extrabold) 26px/1.1 var(--font-sans)", letterSpacing: "var(--tracking)", color: "var(--text-strong)" } }, "Hola, Kristin"), /* @__PURE__ */ React.createElement("div", { style: { marginTop: 4, font: "var(--fw-regular) 14px var(--font-sans)", color: "var(--text-muted)" } }, "Diagnóstico en curso · semana 8 de 12")), /* @__PURE__ */ React.createElement("div", { style: { marginLeft: "auto", display: "flex", gap: 10, alignItems: "center" } }, /* @__PURE__ */ React.createElement(Badge, { tone: "lime" }, "3 trackers activos"), /* @__PURE__ */ React.createElement(Button, { size: "sm", variant: "primary" }, "Nuevo diagnóstico")))), /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: "minmax(0,1.02fr) minmax(0,1fr) minmax(0,1fr)", gap: 2 } }, /* @__PURE__ */ React.createElement(Panel, { style: { display: "grid", gap: 14, alignContent: "start" } }, /* @__PURE__ */ React.createElement(Eyebrow, null, "Equipo"), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 14 } }, /* @__PURE__ */ React.createElement(RingStat, { value: avg, label: "", size: 92, thickness: 11, tone: "pink" }), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { style: { font: "var(--fw-semibold) 17px/1.25 var(--font-sans)", color: "var(--text-strong)" } }, "Kristin Watson"), /* @__PURE__ */ React.createElement("div", { style: { marginTop: 4, font: "var(--type-caption)", color: "var(--text-muted)" } }, "Design Manager"))), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 8, flexWrap: "wrap" } }, /* @__PURE__ */ React.createElement(Tag, null, "11 sesiones"), /* @__PURE__ */ React.createElement(Tag, null, "56 hallazgos"), /* @__PURE__ */ React.createElement(Tag, { tone: "lime" }, "12 tratamientos"))), /* @__PURE__ */ React.createElement(Tile, { combo: "tile-warm", label: "Tareas prioritarias", value: 83, note: "promedio completado", active: tile === "prioritarias", onPick: () => setTile("prioritarias") }), /* @__PURE__ */ React.createElement(Tile, { combo: "tile-cool", label: "Tareas adicionales", value: 56, note: "promedio completado", active: tile === "adicionales", onPick: () => setTile("adicionales") })), /* @__PURE__ */ React.createElement(Panel, { style: { display: "grid", gridTemplateColumns: "auto minmax(0,1fr)", gap: 34, alignItems: "center" } }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement(Eyebrow, null, "Cobertura del diagnóstico"), /* @__PURE__ */ React.createElement("div", { style: { marginTop: 14 } }, /* @__PURE__ */ React.createElement(NestedScale, { size: 244, data: COBERTURA, labels: false }))), /* @__PURE__ */ React.createElement("dl", { style: { margin: 0, display: "grid", gap: 16 } }, COBERTURA.map((c, i) => /* @__PURE__ */ React.createElement("div", { key: c.label, style: { display: "grid", gridTemplateColumns: "auto 1fr", gap: 12, alignItems: "start" } }, /* @__PURE__ */ React.createElement("span", { "aria-hidden": "true", style: { width: 14, height: 14, marginTop: 4, flex: "none", background: ["var(--pink-100)", "var(--pink-200)", "var(--pink-paradise)"][i] } }), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("dt", { style: { font: "var(--fw-extrabold) var(--fs-ui-lg)/1.15 var(--font-sans)", letterSpacing: "var(--tracking)", color: "var(--text-strong)" } }, c.display, " · ", c.label), /* @__PURE__ */ React.createElement("dd", { style: { margin: "4px 0 0", font: "var(--fw-regular) var(--fs-caption)/1.45 var(--font-sans)", color: "var(--text-body)", maxWidth: "38ch" } }, c.note)))))), /* @__PURE__ */ React.createElement(Panel, { style: { display: "grid", gap: 18 } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "flex-end", gap: 16, flexWrap: "wrap" } }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement(Eyebrow, null, "Analítica de foco"), /* @__PURE__ */ React.createElement("h2", { style: { margin: "8px 0 0", font: "var(--fw-extrabold) 28px/1.1 var(--font-sans)", letterSpacing: "var(--tracking)", color: "var(--text-strong)" } }, "El foco ", /* @__PURE__ */ React.createElement(Highlight, { tone: "lime" }, "sube ", avg, "%"))), /* @__PURE__ */ React.createElement("div", { style: { marginLeft: "auto", display: "flex", gap: 6, background: "var(--surface-sunken)", padding: 4, borderRadius: "var(--radius-pill)" } }, Object.keys(RANGES).map((k) => /* @__PURE__ */ React.createElement("button", { key: k, onClick: () => setRange(k), style: {
+    border: "none",
+    cursor: "pointer",
+    padding: "8px 16px",
+    borderRadius: "var(--radius-pill)",
+    transition: "var(--motion-hover)",
+    background: range === k ? "var(--deep-blue-gray)" : "transparent",
+    color: range === k ? "var(--text-on-dark)" : "var(--text-muted)",
+    font: "var(--fw-semibold) 13px var(--font-sans)",
+    letterSpacing: "var(--tracking-micro)"
+  } }, k)))), /* @__PURE__ */ React.createElement(FocusChart, { data: d, labels: d.labels }))), /* @__PURE__ */ React.createElement("aside", { style: { background: "var(--surface-card)", display: "grid", gap: 2, alignContent: "start" } }, /* @__PURE__ */ React.createElement("div", { style: { padding: "22px 24px" } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between" } }, /* @__PURE__ */ React.createElement("h3", { style: { margin: 0, font: "var(--fw-extrabold) 20px/1.2 var(--font-sans)", letterSpacing: "var(--tracking)", color: "var(--text-strong)" } }, "Mi agenda"), /* @__PURE__ */ React.createElement(Badge, null, "Jul")), /* @__PURE__ */ React.createElement("ul", { style: { listStyle: "none", margin: "16px 0 0", padding: 0, display: "grid" } }, AGENDA.map((m, i) => /* @__PURE__ */ React.createElement("li", { key: i, style: {
+    display: "grid",
+    gridTemplateColumns: "86px 1fr",
+    gap: 14,
+    padding: "14px 0",
+    borderTop: i ? "1px solid var(--border-hairline)" : "none"
+  } }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { style: { font: "var(--fw-semibold) 12px/1.3 var(--font-sans)", color: "var(--text-muted)" } }, m.date), /* @__PURE__ */ React.createElement("div", { style: { marginTop: 2, font: "var(--fw-extrabold) 15px/1.2 var(--font-sans)", color: "var(--text-strong)" } }, m.time)), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { style: { font: "var(--fw-semibold) 15px/1.3 var(--font-sans)", color: "var(--text-strong)" } }, m.title), /* @__PURE__ */ React.createElement("div", { style: { marginTop: 3, font: "var(--type-caption)", color: "var(--text-muted)" } }, m.where))))), /* @__PURE__ */ React.createElement("div", { style: { marginTop: 14 } }, /* @__PURE__ */ React.createElement(Button, { size: "sm", variant: "ghost" }, "Ver toda la agenda →"))), /* @__PURE__ */ React.createElement("div", { style: { padding: "22px 24px", borderTop: "1px solid var(--border-hairline)" } }, /* @__PURE__ */ React.createElement("h3", { style: { margin: "0 0 4px", font: "var(--fw-extrabold) 20px/1.2 var(--font-sans)", letterSpacing: "var(--tracking)", color: "var(--text-strong)" } }, "Áreas desarrolladas"), /* @__PURE__ */ React.createElement("div", { style: { font: "var(--type-caption)", color: "var(--text-muted)", marginBottom: 16 } }, "Cobertura del diagnóstico por área"), /* @__PURE__ */ React.createElement(BarChart, { orientation: "horizontal", unit: "%", data: AREAS.map((a) => ({ label: a.label, value: a.value, tone: a.up ? "pink" : "muted" })) })), /* @__PURE__ */ React.createElement("div", { style: { position: "relative", overflow: "hidden", padding: "22px 24px", borderTop: "1px solid var(--border-hairline)" } }, /* @__PURE__ */ React.createElement(AuraField, { combo: "marea", opacity: 0.75 }), /* @__PURE__ */ React.createElement("div", { style: { position: "relative", background: "var(--surface-card)", padding: "16px 18px" } }, /* @__PURE__ */ React.createElement(Eyebrow, null, "Siguiente paso"), /* @__PURE__ */ React.createElement("p", { style: { margin: "8px 0 14px", font: "var(--fw-medium) 16px/1.35 var(--font-sans)", color: "var(--text-strong)", maxWidth: "26ch" } }, "Cerrar la causa raíz de retención antes del viernes."), /* @__PURE__ */ React.createElement(Button, { size: "sm", variant: "lime" }, "Abrir tratamiento")))));
+}
+Object.assign(window, { Dashboard });
+
+})();
+(function(){
+ReactDOM.createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(Dashboard, null));
+
+})();
+</script></body></html>

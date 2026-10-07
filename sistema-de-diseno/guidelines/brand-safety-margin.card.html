@@ -1,0 +1,31 @@
+<!-- @dsCard group="Brand" viewport="820x480" name="Margen de seguridad" subtitle="x = ancho de la i · y = alto de la t" -->
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css">
+<style>html,body{margin:0;background:var(--surface-page);font-family:var(--font-sans);color:var(--text-body);letter-spacing:var(--tracking)}a{color:var(--text-accent)}a:hover{color:var(--pink-600)}#root{padding:40px}.guide{outline:1px dashed var(--pink-paradise);outline-offset:0}</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script><script src="../_ds_bundle.js"></script></head><body><div id="root"></div>
+<script type="text/babel">const {Wordmark}=window.SightDesignSystem_3d4cc7;
+const H=110, X=Math.round(H*0.165), Y=Math.round(H*0.50);
+function Demo(){return <div style={{display:'grid',gap:28}}>
+<div>
+  <div style={{font:'var(--type-eyebrow)',letterSpacing:'var(--tracking-caps)',textTransform:'uppercase',color:'var(--text-muted)'}}>Margen de seguridad</div>
+  <h2 style={{font:'var(--fw-extrabold) 30px/1.1 var(--font-sans)',letterSpacing:'var(--tracking)',color:'var(--text-strong)',margin:'8px 0 0'}}>Definiendo nuestro margen de seguridad</h2>
+</div>
+<div style={{display:'grid',gridTemplateColumns:'auto minmax(0,1fr)',gap:40,alignItems:'center'}}>
+  <div style={{background:'var(--coconut-milk)',padding:24,display:'inline-block'}}>
+    <div className="guide" style={{padding:`${Y}px ${X}px`,position:'relative'}}>
+      <Wordmark lockup="sight" size={H}/>
+      <span style={{position:'absolute',top:'50%',left:X/2,transform:'translate(-50%,-50%)',font:'var(--fw-medium) 13px/1 var(--font-sans)',color:'var(--pink-paradise)'}}>x</span>
+      <span style={{position:'absolute',left:'50%',top:Y/2,transform:'translate(-50%,-50%)',font:'var(--fw-medium) 13px/1 var(--font-sans)',color:'var(--pink-paradise)'}}>y</span>
+      <span style={{position:'absolute',left:'50%',bottom:Y/2,transform:'translate(-50%,50%)',font:'var(--fw-medium) 13px/1 var(--font-sans)',color:'var(--pink-paradise)'}}>y</span>
+    </div>
+  </div>
+  <div style={{display:'grid',gap:14,font:'var(--fw-light) 18px/1.45 var(--font-sans)',letterSpacing:'var(--tracking)',maxWidth:'46ch'}}>
+    <p style={{margin:0}}>Al alinear el logotipo y cualquiera de sus versiones, mantén una distancia mínima al borde de la superficie.</p>
+    <p style={{margin:0}}><b style={{color:'var(--text-strong)'}}>x</b> = ancho del asta de la <b>i</b> (≈0.09 del ancho del logotipo).<br/><b style={{color:'var(--text-strong)'}}>y</b> = alto de la <b>t</b> (≈0.50 del alto del arte).</p>
+    <p style={{margin:0,color:'var(--text-muted)',font:'var(--fw-regular) 15px/1.45 var(--font-sans)'}}>Dentro de ese margen no entra nada: ni texto, ni foto, ni forma de color, ni el borde de la pieza.</p>
+  </div>
+</div>
+</div>;}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script></body></html>

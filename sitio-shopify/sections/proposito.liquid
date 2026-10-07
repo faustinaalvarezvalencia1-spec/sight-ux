@@ -1,0 +1,29 @@
+<section id="proposito" class="proposito">
+  <div class="proposito__sun" aria-hidden="true"></div>
+  <div class="proposito__inner">
+    <figure class="proposito__quote">
+      <figcaption class="eyebrow">{{ section.settings.eyebrow }}</figcaption>
+      <blockquote>{{ section.settings.quote }}</blockquote>
+    </figure>
+    <div class="proposito__cards">
+      <div class="card card--ink"><span class="card__label">{{ section.settings.card1_title }}</span><span class="card__text">{{ section.settings.card1_text }}</span></div>
+      <div class="card card--pink"><span class="card__label">{{ section.settings.card2_title }}</span><span class="card__text">{{ section.settings.card2_text }}</span></div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Por qué existimos",
+  "class": "section-proposito",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Por qué existimos" },
+    { "type": "textarea", "id": "quote", "label": "Frase", "default": "Estamos para que ninguna marca tenga que esperar a estar en crisis para tomarse en serio su longevidad." },
+    { "type": "text", "id": "card1_title", "label": "Tarjeta 1 · título", "default": "Misión" },
+    { "type": "textarea", "id": "card1_text", "label": "Tarjeta 1 · texto", "default": "Traducir la incertidumbre de los negocios en decisiones de diseño claras, medibles y accionables, que construyan marcas longevas, relevantes y adaptables." },
+    { "type": "text", "id": "card2_title", "label": "Tarjeta 2 · título", "default": "Visión" },
+    { "type": "textarea", "id": "card2_text", "label": "Tarjeta 2 · texto", "default": "Demostrar que una nueva generación de estrategas puede construir una forma distinta de tomar decisiones de negocio de alto riesgo." }
+  ],
+  "presets": [ { "name": "Por qué existimos" } ]
+}
+{% endschema %}

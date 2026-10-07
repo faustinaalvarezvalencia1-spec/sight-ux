@@ -1,0 +1,12 @@
+<!-- @dsCard group="Datos" height=264 subtitle="Serie en el tiempo, un solo trazo" -->
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>TrendLine</title><style>html,body{margin:0;background:var(--surface-page);font-family:var(--font-sans);color:var(--text-body);letter-spacing:var(--tracking)}*{box-sizing:border-box}a{color:var(--text-accent)}#root{padding:24px}</style></head>
+<body><div id="root"></div>
+<script>
+const { Button, Tag, Badge, Divider, Wordmark, EyeMark, Marquee, Card, ColorBlock, ShapeMark, StickyNote, AuraField, SectionHeading, Callout, Quote, StatBlock, DiagnosisTrack, Highlight, PhotoFrame, BarChart, TrendLine, RingStat, NestedScale, LayerStack, SpokeDiagram, Field, Input, Select, Checkbox, Switch } = window.SightDesignSystem_3d4cc7;
+const Head = ({ children }) => /* @__PURE__ */ React.createElement("div", { style: { font: "var(--type-eyebrow)", letterSpacing: "var(--tracking-caps)", textTransform: "uppercase", color: "var(--text-muted)", marginBottom: 12 } }, children);
+function Demo() {
+  return /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 34, alignItems: "start" } }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement(Head, null, "Serie en el tiempo"), /* @__PURE__ */ React.createElement(TrendLine, { values: [12, 18, 16, 27, 35, 44, 58], labels: ["Ene", "Jul"], height: 132 })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement(Head, null, "Sin área, en tinta"), /* @__PURE__ */ React.createElement(TrendLine, { values: [40, 38, 44, 52, 49, 63], tone: "ink", area: false, labels: ["Q1", "Q4"], height: 92 })));
+}
+ReactDOM.createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(Demo, null));
+</script></body></html>

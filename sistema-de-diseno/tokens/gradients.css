@@ -1,0 +1,40 @@
+/* Sight — degradados. Sólo como FONDO y sólo a partir de colores de la paleta vibrante y
+   los neutros claros (manual p.30). Sin negro ni tinta: el degradado nunca oscurece.
+   Nunca sobre texto sin panel plano, nunca en botones, nunca sobre el logotipo. */
+:root{
+/* Auras — dos colores */
+--grad-pink-lime:radial-gradient(62% 62% at 16% 20%, var(--pink-paradise) 0%, var(--pink-paradise) 18%, transparent 72%),radial-gradient(58% 58% at 84% 28%, var(--light-lime) 0%, var(--light-lime) 20%, transparent 70%),radial-gradient(70% 70% at 62% 98%, var(--pink-200) 0%, transparent 76%);
+--grad-salmon-lime:radial-gradient(64% 64% at 20% 80%, var(--salmon) 0%, var(--salmon) 20%, transparent 74%),radial-gradient(56% 56% at 78% 22%, var(--light-lime) 0%, var(--light-lime) 22%, transparent 72%),radial-gradient(80% 80% at 52% 48%, var(--coconut-milk) 0%, transparent 78%);
+--grad-cool-pink:radial-gradient(62% 62% at 82% 24%, var(--salt-air) 0%, var(--salt-air) 22%, transparent 74%),radial-gradient(64% 64% at 18% 76%, var(--pink-paradise) 0%, var(--pink-paradise) 18%, transparent 74%);
+
+/* Auras — tres colores o más, para fondos con movimiento */
+--grad-prisma:radial-gradient(50% 50% at 12% 18%, var(--pink-paradise) 0%, var(--pink-paradise) 16%, transparent 68%),radial-gradient(46% 46% at 84% 14%, var(--light-lime) 0%, var(--light-lime) 18%, transparent 66%),radial-gradient(52% 52% at 76% 84%, var(--salt-air) 0%, var(--salt-air) 20%, transparent 70%),radial-gradient(48% 48% at 26% 88%, var(--salmon) 0%, var(--salmon) 16%, transparent 68%);
+--grad-amanecer:radial-gradient(56% 56% at 8% 86%, var(--salmon) 0%, var(--salmon) 20%, transparent 72%),radial-gradient(50% 50% at 46% 30%, var(--pink-paradise) 0%, var(--pink-paradise) 14%, transparent 66%),radial-gradient(54% 54% at 92% 20%, var(--light-lime) 0%, var(--light-lime) 20%, transparent 70%),radial-gradient(70% 70% at 60% 100%, var(--coconut-milk) 0%, transparent 78%);
+--grad-marea:radial-gradient(54% 54% at 88% 22%, var(--salt-air) 0%, var(--salt-air) 24%, transparent 72%),radial-gradient(50% 50% at 52% 66%, var(--light-lime) 0%, var(--light-lime) 18%, transparent 68%),radial-gradient(48% 48% at 14% 26%, var(--pink-200) 0%, var(--pink-200) 20%, transparent 70%),radial-gradient(56% 56% at 24% 94%, var(--salmon) 0%, transparent 72%);
+--grad-espectro:conic-gradient(from 210deg at 50% 50%, var(--pink-paradise) 0deg, var(--salmon) 78deg, var(--light-lime) 156deg, var(--salt-air) 232deg, var(--pink-200) 310deg, var(--pink-paradise) 360deg);
+
+/* Crema — el papel manda y el color apenas asoma en los bordes. Fondo por defecto
+   de láminas y páginas de documento: legible con texto encima sin panel. */
+--grad-crema-cool:radial-gradient(42% 52% at 100% 0%, var(--pink-100) 0%, transparent 58%),radial-gradient(46% 46% at 0% 100%, var(--salt-air) 0%, transparent 62%),linear-gradient(var(--coconut-milk),var(--coconut-milk));
+--grad-crema-pink:radial-gradient(48% 48% at 6% 4%, var(--pink-100) 0%, transparent 56%),radial-gradient(40% 44% at 96% 92%, var(--pink-200) 0%, transparent 58%),linear-gradient(var(--coconut-milk),var(--coconut-milk));
+--grad-crema-lime:radial-gradient(46% 50% at 98% 8%, var(--lime-100) 0%, transparent 58%),radial-gradient(44% 44% at 2% 96%, var(--lime-300) 0%, transparent 60%),linear-gradient(var(--coconut-milk),var(--coconut-milk));
+--grad-crema-prisma:radial-gradient(38% 42% at 4% 6%, var(--pink-100) 0%, transparent 56%),radial-gradient(36% 40% at 98% 10%, var(--lime-100) 0%, transparent 56%),radial-gradient(40% 44% at 92% 96%, var(--salt-air) 0%, transparent 58%),linear-gradient(var(--coconut-milk),var(--coconut-milk));
+
+/* Fichas — degradado lineal de tres paradas para tarjetas de dato */
+--grad-tile-warm:linear-gradient(140deg, var(--salt-air) 0%, var(--pink-100) 42%, var(--salmon) 100%);
+--grad-tile-cool:linear-gradient(140deg, var(--light-lime) 0%, var(--salt-air) 52%, var(--pink-200) 100%);
+--grad-tile-lime:linear-gradient(140deg, var(--coconut-milk) 0%, var(--lime-300) 48%, var(--light-lime) 100%);
+
+/* Floraciones — un solo color abriendo desde un punto */
+--grad-bloom-pink:radial-gradient(62% 62% at 50% 100%, var(--pink-paradise) 0%, var(--pink-200) 50%, transparent 84%);
+--grad-bloom-lime:radial-gradient(62% 62% at 50% 0%, var(--light-lime) 0%, var(--lime-300) 50%, transparent 84%);
+--grad-bloom-cool:radial-gradient(62% 62% at 50% 50%, var(--salt-air) 0%, var(--salt-air) 26%, transparent 80%);
+
+/* Velos — transición plana de superficie a superficie */
+--grad-veil-cool:linear-gradient(180deg, var(--salt-air) 0%, var(--surface-page) 100%);
+--grad-veil-warm:linear-gradient(180deg, var(--coconut-milk) 0%, var(--surface-page) 100%);
+--grad-veil-lime:linear-gradient(180deg, var(--lime-100) 0%, var(--surface-page) 100%);
+
+/* Desenfoque de aura por defecto */
+--grad-blur:40px;
+}

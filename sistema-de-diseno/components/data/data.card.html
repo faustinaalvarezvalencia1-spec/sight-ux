@@ -1,0 +1,45 @@
+<!-- @dsCard group="Components" viewport="980x1100" name="Gráficas" subtitle="BarChart, TrendLine, RingStat, NestedScale" -->
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<style>html,body{margin:0;background:var(--surface-page);font-family:var(--font-sans);color:var(--text-body);letter-spacing:var(--tracking)}a{color:var(--text-accent)}a:hover{color:var(--pink-600)}#root{padding:24px}</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script><script src="../../_ds_bundle.js"></script></head><body><div id="root"></div>
+<script type="text/babel">const {BarChart,TrendLine,RingStat,NestedScale}=window.SightDesignSystem_3d4cc7;
+const Head=({children})=><div style={{font:'var(--type-eyebrow)',letterSpacing:'var(--tracking-caps)',textTransform:'uppercase',color:'var(--text-muted)',marginBottom:12}}>{children}</div>;
+const MARKET=[
+  {label:'TAM',value:34.5,display:'$34.5K',note:'Mercado total de diagnóstico estratégico.'},
+  {label:'SAM',value:25.6,display:'$25.6K',note:'Segmento al que llega la oferta actual.'},
+  {label:'SOM',value:21.2,display:'$21.2K',note:'Alcanzable en la ventana de 12 meses.'}
+];
+function Demo(){return <div style={{display:'grid',gap:34}}>
+<div style={{display:'grid',gridTemplateColumns:'minmax(0,1.05fr) minmax(0,1fr) auto',gap:34,alignItems:'start'}}>
+<div><Head>Barras — una serie</Head>
+  <BarChart unit="%" height={150} data={[{label:'Antes',value:34,tone:'muted'},{label:'Mes 3',value:61},{label:'Mes 6',value:88,tone:'lime'}]}/>
+  <div style={{marginTop:22}}><Head>Barras horizontales</Head>
+  <BarChart orientation="horizontal" unit="%" data={[{label:'UX',value:42},{label:'Foresight',value:31},{label:'Producto',value:27,tone:'muted'}]}/></div>
+</div>
+<div><Head>Serie en el tiempo</Head>
+  <TrendLine values={[12,18,16,27,35,44,58]} labels={['Ene','Jul']} height={132}/>
+  <div style={{marginTop:22}}><Head>Sin área, en tinta</Head>
+  <TrendLine values={[40,38,44,52,49,63]} tone="ink" area={false} labels={['Q1','Q4']} height={92}/></div>
+</div>
+<div style={{display:'grid',gap:22,justifyItems:'center'}}><div><Head>Proporción</Head>
+  <RingStat value={68} label="completó el flujo rediseñado"/></div>
+  <RingStat value={100} display="3.4x" label="retorno medido a 6 meses" tone="lime" size={110} thickness={13}/>
+</div>
+</div>
+<div style={{borderTop:'1px solid var(--border-hairline)',paddingTop:26}}>
+  <Head>Escala anidada — nested</Head>
+  <NestedScale size={340} data={MARKET}/>
+</div>
+<div style={{display:'grid',gridTemplateColumns:'auto minmax(0,1fr)',gap:40,alignItems:'end',borderTop:'1px solid var(--border-hairline)',paddingTop:26}}>
+  <div><Head>Motivo de lámina — corner</Head>
+    <div style={{position:'relative',width:300,height:240,overflow:'hidden',background:'var(--surface-warm)'}}>
+      <NestedScale layout="corner" corner="br" size={300} tone="lime" data={MARKET} style={{position:'absolute',right:0,bottom:0}}/>
+    </div>
+  </div>
+  <div><Head>En fila — row</Head><NestedScale layout="row" tone="cool" size={140} data={MARKET}/></div>
+</div>
+</div>;}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script></body></html>

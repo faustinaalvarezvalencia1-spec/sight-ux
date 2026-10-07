@@ -1,0 +1,10 @@
+<a class="product-card glass-light" href="{{ product.url }}">
+  {%- if product.featured_media -%}
+    {{ product.featured_media | image_url: width: 800 | image_tag: class: 'product-card__img', alt: product.featured_media.alt | default: product.title, loading: 'lazy' }}
+  {%- else -%}
+    <span class="product-card__img product-card__img--empty" aria-hidden="true"></span>
+  {%- endif -%}
+  <span class="eyebrow">{{ product.type | default: 'Reporte' }}</span>
+  <span class="product-card__title">{{ product.title }}</span>
+  <span class="product-card__price">{{ product.price | money }}</span>
+</a>

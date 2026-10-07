@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>sight — Inicio</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;800&amp;family=Covered+By+Your+Grace&amp;display=swap">
+<style>
+body{margin:0;background:#fafafa;font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;color:#2f3440;-webkit-font-smoothing:antialiased}
+::selection{background:#e2fa83;color:#2f3440}
+a{color:#2f3440}a:hover{color:#ff4864}
+button{font-family:inherit;cursor:pointer;letter-spacing:inherit}
+button:focus-visible,a:focus-visible{outline:none;box-shadow:0 0 0 2px #fafafa,0 0 0 4px #ff4864}
+.navlink{text-decoration:none;font-size:12px;font-weight:500;line-height:1.35;letter-spacing:0.06em;text-transform:uppercase;color:oklch(0.42 0.15 12)}
+.textlink:hover{color:#ff4864 !important}
+.btn-pink:hover{background:oklch(0.55 0.20 12) !important;color:#ffffff !important}
+.btn-ink:hover{background:oklch(0.42 0.019 262) !important;color:#ffffff !important}
+.btn-outline:hover{background:#2f3440 !important;color:#fafafa !important}
+.btn-outline:hover svg{stroke:#fafafa}
+.btn-ghost:hover{background:oklch(0.94 0.045 12) !important}
+.btn-pink:active,.btn-ink:active,.btn-outline:active,.btn-ghost:active{transform:translateY(1px)}
+.svc-head:hover{background:rgba(255,255,255,0.06) !important}
+.glass{border-radius:28px;overflow:hidden;backdrop-filter:blur(22px) saturate(170%);-webkit-backdrop-filter:blur(22px) saturate(170%);border:1px solid rgba(255,255,255,0.22);background-image:linear-gradient(135deg,rgba(255,255,255,0.18) 0%,rgba(255,255,255,0.02) 45%,rgba(255,255,255,0.08) 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,0.35),inset 0 -1px 0 rgba(255,255,255,0.06),0 24px 48px -24px rgba(0,0,0,0.5)}
+.tab:hover{color:#ffffff}
+.marquee-track{animation:marquee 28s linear infinite !important;will-change:transform}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.postit{transform:rotate(var(--r));animation:drop 900ms cubic-bezier(0.2,0,0,1) both}
+@keyframes drop{0%{transform:translateY(-760px) rotate(0deg);opacity:0}25%{opacity:1}100%{transform:translateY(0) rotate(var(--r));opacity:1}}
+.postit{background:none !important;box-shadow:none !important;padding:0 !important}
+.pi-img{position:absolute;left:0;top:0;width:240px;height:232px;display:block}
+.pi-text{position:absolute;left:40px;right:44px;top:38px;bottom:48px;overflow:hidden;overflow-wrap:break-word;display:flex;align-items:center;justify-content:center;text-align:center;font-family:"Covered By Your Grace",cursive;font-size:25px;font-weight:400;line-height:1.15;letter-spacing:0.03em;text-transform:none;color:#2f3440;opacity:1;transform:rotate(-2deg) scaleX(1.14);filter:url(#markerInk)}
+.postit:hover .pi-img{filter:brightness(1.03)}
+.sat:hover circle{fill:#e2fa83}
+.layer:hover polygon{fill-opacity:1}
+.bar:hover .bar-fill{filter:brightness(0.94)}
+@media (prefers-reduced-motion: reduce){.postit{animation:none !important}}
+</style>
+</helmet>
+<div style="width: 1440px; height: 4900px; overflow: hidden; background: #fafafa; color: #2f3440; letter-spacing: -0.04em; position: relative;">
+
+<!-- NAV -->
+<header style="height: 88px; box-sizing: border-box; padding: 0 120px; display: flex; align-items: center; justify-content: space-between; background: #f2f1ee; position: relative; z-index: 2;">
+<a href="#inicio" aria-label="sight, inicio" style="display: flex; align-items: center;"><img src="/_blob/d17d284feef34aa0e8749e441893f3b3" alt="sight" style="height: 40px; width: auto; display: block;"></a>
+<nav aria-label="Principal" style="display: flex; align-items: center; gap: 32px;">
+<a class="navlink" href="#inicio">Inicio</a>
+<a class="navlink" href="Nosotros.dc.html">Sobre nosotros</a>
+<a class="navlink" href="#servicios">Servicios</a>
+<a class="navlink" href="Laboratorio.dc.html">Laboratorio</a>
+<a class="btn-outline login-link" href="Login.dc.html" style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; color: oklch(0.42 0.15 12); border: 1px solid oklch(0.42 0.15 12); border-radius: 999px; padding: 8px 16px;">Iniciar sesión</a>
+<a class="textlink" href="#contacto" style="font-size: 13px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none; color: oklch(0.42 0.15 12);">Hablemos →</a>
+</nav>
+</header>
+
+<!-- HERO CAROUSEL -->
+<section id="inicio" aria-roledescription="carrusel" aria-label="Presentación" style="height: 720px; position: relative; overflow: hidden;">
+
+<sc-if value="{{s0}}" hint-placeholder-val="{{ true }}">
+<div style="position: absolute; inset: 0; background: #f2f1ee; overflow: hidden;">
+<svg aria-hidden="true" width="1440" height="100%" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.22; mix-blend-mode: multiply;"><filter id="grainHero1"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"></feTurbulence><feColorMatrix type="saturate" values="0"></feColorMatrix></filter><rect width="100%" height="100%" filter="url(#grainHero1)"></rect></svg>
+<h1 style="position: absolute; left: 120px; top: 150px; margin: 0; font-size: 81px; font-weight: 400; line-height: 1.04; letter-spacing: -0.045em; color: #2f3440;"><span style="display: block; font-style: italic; font-weight: 300;">Convertimos <span style="background: linear-gradient(#2f3440,#2f3440) no-repeat 0 92% / 100% 6px; padding-bottom: 2px;">incertidumbre</span></span><span style="display: block;">en <span style="background: linear-gradient(transparent 42%, #ade6e6 42%, #ade6e6 90%, transparent 90%); padding: 0 6px;">decisiones</span> que <span style="background: linear-gradient(#ff4864,#ff4864) no-repeat 0 92% / 100% 6px; padding-bottom: 2px;">impulsan</span></span><span style="display: block;">el <span style="background: linear-gradient(transparent 42%, #e2fa83 42%, #e2fa83 90%, transparent 90%); padding: 0 6px;">crecimiento</span> de empresas.</span></h1>
+<p style="position: absolute; left: 330px; top: 460px; width: 280px; margin: 0; font-size: 16px; font-weight: 400; line-height: 1.3; letter-spacing: -0.02em; color: #2f3440;">Laboratorio de diseño estratégico para marcas que quieren crecer, adaptarse y seguir vigentes.</p>
+<a class="textlink" href="#contacto" style="position: absolute; right: 120px; bottom: 120px; font-size: 20px; font-weight: 500; letter-spacing: 0.02em; text-transform: uppercase; text-decoration: none; color: #2f3440;">Hablemos →</a>
+</div>
+</sc-if>
+
+<sc-if value="{{s1}}" hint-placeholder-val="{{ false }}">
+<div style="position: absolute; inset: 0; background: #f2f1ee; overflow: hidden;">
+<img src="/_blob/5140146d1b67f365622d199d62ab405e" alt="" aria-hidden="true" style="position: absolute; right: -200px; top: -40px; width: 1000px; height: 800px; object-fit: cover; object-position: 35% 50%; filter: blur(2px); mask-image: linear-gradient(90deg, transparent 0%, #000 45%); -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 45%);">
+<div aria-hidden="true" style="position: absolute; right: 0; top: 0; width: 960px; height: 720px; background: radial-gradient(60% 70% at 85% 15%, rgba(255,72,100,0.55) 0%, rgba(255,72,100,0) 70%), radial-gradient(55% 60% at 70% 100%, rgba(226,250,131,0.55) 0%, rgba(226,250,131,0) 70%), linear-gradient(160deg, rgba(255,124,111,0.25) 0%, rgba(207,255,253,0.2) 100%); mix-blend-mode: multiply;"></div>
+<div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(90deg, #f2f1ee 0%, #f2f1ee 32%, rgba(242,241,238,0.75) 46%, rgba(255,182,192,0.25) 62%, rgba(255,182,192,0) 78%);"></div>
+<svg aria-hidden="true" width="1440" height="100%" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.22; mix-blend-mode: multiply;"><filter id="grainHero2"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"></feTurbulence><feColorMatrix type="saturate" values="0"></feColorMatrix></filter><rect width="100%" height="100%" filter="url(#grainHero2)"></rect></svg>
+<h1 style="position: absolute; left: 120px; top: 150px; margin: 0; font-size: 81px; font-weight: 400; line-height: 1.04; letter-spacing: -0.045em; color: #2f3440;"><span style="display: block; font-style: italic; font-weight: 300;">Marcas <span style="background: linear-gradient(transparent 42%, #e2fa83 42%, #e2fa83 90%, transparent 90%); padding: 0 6px;">vitales</span>,</span><span style="display: block;"><span style="background: linear-gradient(#ff7c6f,#ff7c6f) no-repeat 0 92% / 100% 6px; padding-bottom: 2px;">relevantes</span></span><span style="display: block;">y <span style="background: linear-gradient(transparent 42%, oklch(0.86 0.10 12) 42%, oklch(0.86 0.10 12) 90%, transparent 90%); padding: 0 6px;">adaptables</span>.</span></h1>
+<p style="position: absolute; left: 330px; top: 460px; width: 280px; margin: 0; font-size: 16px; font-weight: 400; line-height: 1.3; letter-spacing: -0.02em; color: #2f3440;">Traducimos la complejidad de los negocios en decisiones claras, medibles y accionables.</p>
+<a class="textlink" href="Laboratorio.dc.html" style="position: absolute; right: 120px; bottom: 120px; font-size: 20px; font-weight: 500; letter-spacing: 0.02em; text-transform: uppercase; text-decoration: none; color: #2f3440;">Ver proyectos →</a>
+</div>
+</sc-if>
+
+<sc-if value="{{s2}}" hint-placeholder-val="{{ false }}">
+<div style="position: absolute; inset: 0; background: #f2f1ee; overflow: hidden;">
+<img src="/_blob/f0af3aa51e071454c3dc6058f0008892" alt="" aria-hidden="true" style="position: absolute; right: -40px; top: -40px; width: 1000px; height: 800px; object-fit: cover; object-position: 70% 50%; filter: blur(2px);">
+<div aria-hidden="true" style="position: absolute; right: 0; top: 0; width: 560px; height: 720px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); mask-image: linear-gradient(90deg, transparent 0%, #000 60%); -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 60%);"></div>
+<div aria-hidden="true" style="position: absolute; right: 0; top: 0; width: 960px; height: 720px; background: radial-gradient(60% 70% at 90% 90%, rgba(255,72,100,0.5) 0%, rgba(255,72,100,0) 70%), radial-gradient(55% 60% at 75% 0%, rgba(226,250,131,0.6) 0%, rgba(226,250,131,0) 70%), linear-gradient(200deg, rgba(207,255,253,0.25) 0%, rgba(255,124,111,0.25) 100%); mix-blend-mode: multiply;"></div>
+<div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(90deg, #f2f1ee 0%, #f2f1ee 32%, rgba(242,241,238,0.75) 46%, rgba(226,250,131,0.22) 62%, rgba(226,250,131,0) 78%);"></div>
+<svg aria-hidden="true" width="1440" height="100%" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.22; mix-blend-mode: multiply;"><filter id="grainHero3"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"></feTurbulence><feColorMatrix type="saturate" values="0"></feColorMatrix></filter><rect width="100%" height="100%" filter="url(#grainHero3)"></rect></svg>
+<h1 style="position: absolute; left: 120px; top: 150px; margin: 0; font-size: 81px; font-weight: 400; line-height: 1.04; letter-spacing: -0.045em; color: #2f3440;"><span style="display: block; font-style: italic; font-weight: 300;">Ordenamos las <span style="background: linear-gradient(#ff4864,#ff4864) no-repeat 0 92% / 100% 6px; padding-bottom: 2px;">ideas</span></span><span style="display: block;">hasta encontrar</span><span style="display: block;">la <span style="background: linear-gradient(transparent 42%, #e2fa83 42%, #e2fa83 90%, transparent 90%); padding: 0 6px;">dirección</span>.</span></h1>
+<p style="position: absolute; left: 330px; top: 460px; width: 280px; margin: 0; font-size: 16px; font-weight: 400; line-height: 1.3; letter-spacing: -0.02em; color: #2f3440;">Trabajamos junto a tu equipo: escuchamos, conectamos hallazgos y priorizamos lo que de verdad mueve a tu marca.</p>
+<a class="textlink" href="#ayudame" style="position: absolute; right: 120px; bottom: 120px; font-size: 20px; font-weight: 500; letter-spacing: 0.02em; text-transform: uppercase; text-decoration: none; color: #2f3440;">¿En qué te ayudamos? →</a>
+</div>
+</sc-if>
+
+<button type="button" class="btn-outline" onClick="{{prev}}" aria-label="Diapositiva anterior" style="position: absolute; left: 40px; top: 332px; width: 56px; height: 56px; border-radius: 999px; border: 1px solid #2f3440; background: #fafafa; display: flex; align-items: center; justify-content: center; padding: 0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2f3440" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg></button>
+<button type="button" class="btn-outline" onClick="{{next}}" aria-label="Diapositiva siguiente" style="position: absolute; right: 40px; top: 332px; width: 56px; height: 56px; border-radius: 999px; border: 1px solid #2f3440; background: #fafafa; display: flex; align-items: center; justify-content: center; padding: 0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2f3440" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"></path></svg></button>
+<div style="position: absolute; left: 0; right: 0; bottom: 32px; display: flex; justify-content: center; align-items: center; gap: 4px;">
+<button type="button" onClick="{{go0}}" aria-label="Diapositiva 1" style="width: 44px; height: 44px; border: 0; background: transparent; display: flex; align-items: center; justify-content: center; padding: 0;"><span style="display: block; height: 12px; width: {{d0w}}px; border-radius: 999px; background: {{d0bg}}; border: 1px solid #2f3440; box-sizing: border-box;"></span></button>
+<button type="button" onClick="{{go1}}" aria-label="Diapositiva 2" style="width: 44px; height: 44px; border: 0; background: transparent; display: flex; align-items: center; justify-content: center; padding: 0;"><span style="display: block; height: 12px; width: {{d1w}}px; border-radius: 999px; background: {{d1bg}}; border: 1px solid #2f3440; box-sizing: border-box;"></span></button>
+<button type="button" onClick="{{go2}}" aria-label="Diapositiva 3" style="width: 44px; height: 44px; border: 0; background: transparent; display: flex; align-items: center; justify-content: center; padding: 0;"><span style="display: block; height: 12px; width: {{d2w}}px; border-radius: 999px; background: {{d2bg}}; border: 1px solid #2f3440; box-sizing: border-box;"></span></button>
+</div>
+</section>
+
+<!-- MARQUEE -->
+<div aria-label="Nuestros valores: dirección, adaptabilidad, certidumbre, expansión, anticipación" style="height: 72px; background: #e2fa83; overflow: hidden; display: flex; align-items: center;">
+<div class="marquee-track" aria-hidden="true" style="display: flex; flex-shrink: 0; width: max-content; align-items: center; gap: 32px; white-space: nowrap; font-size: 26px; font-weight: 500; line-height: 1.2; padding-left: 32px; color: #2f3440;">
+<span>Dirección</span><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2f3440" stroke-width="2.4" stroke-linecap="round" style="display: block; flex-shrink: 0;"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"></path></svg><span>Adaptabilidad</span><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2f3440" stroke-width="2.4" stroke-linecap="round" style="display: block; flex-shrink: 0;"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"></path></svg><span>Certidumbre</span><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2f3440" stroke-width="2.4" stroke-linecap="round" style="display: block; flex-shrink: 0;"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"></path></svg><span>Expansión</span><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2f3440" stroke-width="2.4" stroke-linecap="round" style="display: block; flex-shrink: 0;"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"></path></svg><span>Anticipación</span><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2f3440" stroke-width="2.4" stroke-linecap="round" style="display: block; flex-shrink: 0;"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"></path></svg><span>Dirección</span><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2f3440" stroke-width="2.4" stroke-linecap="round" style="display: block; flex-shrink: 0;"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"></path></svg><span>Adaptabilidad</span><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2f3440" stroke-width="2.4" stroke-linecap="round" style="display: block; flex-shrink: 0;"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"></path></svg><span>Certidumbre</span><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2f3440" stroke-width="2.4" stroke-linecap="round" style="display: block; flex-shrink: 0;"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"></path></svg><span>Expansión</span><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2f3440" stroke-width="2.4" stroke-linecap="round" style="display: block; flex-shrink: 0;"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"></path></svg><span>Anticipación</span><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2f3440" stroke-width="2.4" stroke-linecap="round" style="display: block; flex-shrink: 0;"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"></path></svg><span>Dirección</span><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2f3440" stroke-width="2.4" stroke-linecap="round" style="display: block; flex-shrink: 0;"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"></path></svg><span>Adaptabilidad</span><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2f3440" stroke-width="2.4" stroke-linecap="round" style="display: block; flex-shrink: 0;"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"></path></svg><span>Certidumbre</span><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2f3440" stroke-width="2.4" stroke-linecap="round" style="display: block; flex-shrink: 0;"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"></path></svg><span>Expansión</span><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2f3440" stroke-width="2.4" stroke-linecap="round" style="display: block; flex-shrink: 0;"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"></path></svg><span>Anticipación</span><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2f3440" stroke-width="2.4" stroke-linecap="round" style="display: block; flex-shrink: 0;"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"></path></svg><span>Dirección</span><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2f3440" stroke-width="2.4" stroke-linecap="round" style="display: block; flex-shrink: 0;"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"></path></svg><span>Adaptabilidad</span><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2f3440" stroke-width="2.4" stroke-linecap="round" style="display: block; flex-shrink: 0;"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"></path></svg><span>Certidumbre</span><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2f3440" stroke-width="2.4" stroke-linecap="round" style="display: block; flex-shrink: 0;"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"></path></svg><span>Expansión</span><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2f3440" stroke-width="2.4" stroke-linecap="round" style="display: block; flex-shrink: 0;"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"></path></svg><span>Anticipación</span><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2f3440" stroke-width="2.4" stroke-linecap="round" style="display: block; flex-shrink: 0;"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"></path></svg>
+</div>
+</div>
+
+<!-- AYÚDAME A -->
+<section id="ayudame" style="height: 680px; position: relative; overflow: hidden; background: #fafafa;">
+<svg aria-hidden="true" width="0" height="0" style="position: absolute; width: 0; height: 0;"><filter id="markerInk" x="-5%" y="-10%" width="110%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3" result="noise"></feTurbulence><feDisplacementMap in="SourceGraphic" in2="noise" scale="0.8" xChannelSelector="R" yChannelSelector="G" result="rough"></feDisplacementMap><feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="1" seed="8" result="grain"></feTurbulence><feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -0.5 0 0 0 1.3" result="grainAlpha"></feColorMatrix><feComposite in="rough" in2="grainAlpha" operator="in"></feComposite></filter></svg>
+<div style="position: absolute; left: 0; right: 0; top: 64px; display: flex; flex-direction: column; align-items: center; gap: 12px;">
+<p style="margin: 0; font-size: 12px; font-weight: 600; line-height: 1.2; letter-spacing: 0.06em; text-transform: uppercase; color: #ff4864;">Nos conectamos con tu necesidad real</p>
+<h2 style="margin: 0; font-size: 81px; font-weight: 600; line-height: 1.2; letter-spacing: -0.05em; color: #2f3440;">Ayúdame a:</h2>
+</div>
+<sc-if value="{{drop}}" hint-placeholder-val="{{ true }}">
+<button type="button" class="postit" aria-haspopup="dialog" onClick="{{need0}}" aria-label="Ayúdame a: Entender a mi consumidor. Escríbenos" style="--r: -6deg; animation-delay: 0ms; position: absolute; left: 300px; top: 236px; width: 240px; height: 232px; display: block; text-decoration: none; cursor: pointer; border: 0;"><img class="pi-img" src="/_blob/50256e46b141021e95560c32966f27e2" alt="" aria-hidden="true"><span class="pi-text"><span>Entender a<br><span style="white-space: nowrap;">mi consumidor.</span></span></span></button>
+<button type="button" class="postit" aria-haspopup="dialog" onClick="{{need1}}" aria-label="Ayúdame a: Encontrar mi mercado. Escríbenos" style="--r: 4deg; animation-delay: 140ms; position: absolute; left: 500px; top: 222px; width: 240px; height: 232px; display: block; text-decoration: none; cursor: pointer; border: 0;"><img class="pi-img" src="/_blob/a7e9375a4c815ed0c0511234d6300673" alt="" aria-hidden="true"><span class="pi-text">Encontrar mi mercado.</span></button>
+<button type="button" class="postit" aria-haspopup="dialog" onClick="{{need2}}" aria-label="Ayúdame a: Sostener el precio. Escríbenos" style="--r: -3deg; animation-delay: 280ms; position: absolute; left: 700px; top: 244px; width: 240px; height: 232px; display: block; text-decoration: none; cursor: pointer; border: 0;"><img class="pi-img" src="/_blob/69f2e238980ca37a2a149ba8a983e2d4" alt="" aria-hidden="true"><span class="pi-text"><span>Sostener<br>el precio.</span></span></button>
+<button type="button" class="postit" aria-haspopup="dialog" onClick="{{need3}}" aria-label="Ayúdame a: Ordenar mi portafolio. Escríbenos" style="--r: 7deg; animation-delay: 420ms; position: absolute; left: 900px; top: 226px; width: 240px; height: 232px; display: block; text-decoration: none; cursor: pointer; border: 0;"><img class="pi-img" src="/_blob/6bfeb5bea87d7459b4f1ace312b012fe" alt="" aria-hidden="true"><span class="pi-text">Ordenar mi portafolio.</span></button>
+<button type="button" class="postit" aria-haspopup="dialog" onClick="{{need4}}" aria-label="Ayúdame a: Anticipar el próximo ciclo. Escríbenos" style="--r: -5deg; animation-delay: 560ms; position: absolute; left: 980px; top: 414px; width: 240px; height: 232px; display: block; text-decoration: none; cursor: pointer; border: 0;"><img class="pi-img" src="/_blob/50256e46b141021e95560c32966f27e2" alt="" aria-hidden="true"><span class="pi-text">Anticipar el próximo ciclo.</span></button>
+<button type="button" class="postit" aria-haspopup="dialog" onClick="{{need5}}" aria-label="Ayúdame a: Recuperar vigencia. Escríbenos" style="--r: 5deg; animation-delay: 700ms; position: absolute; left: 340px; top: 404px; width: 240px; height: 232px; display: block; text-decoration: none; cursor: pointer; border: 0;"><img class="pi-img" src="/_blob/69f2e238980ca37a2a149ba8a983e2d4" alt="" aria-hidden="true"><span class="pi-text">Recuperar vigencia.</span></button>
+<button type="button" class="postit" aria-haspopup="dialog" onClick="{{need6}}" aria-label="Ayúdame a: Explicar la marca en tienda. Escríbenos" style="--r: -4deg; animation-delay: 840ms; position: absolute; left: 560px; top: 420px; width: 240px; height: 232px; display: block; text-decoration: none; cursor: pointer; border: 0;"><img class="pi-img" src="/_blob/6bfeb5bea87d7459b4f1ace312b012fe" alt="" aria-hidden="true"><span class="pi-text">Explicar la marca en tienda.</span></button>
+<button type="button" class="postit" aria-haspopup="dialog" onClick="{{need7}}" aria-label="Ayúdame a: Dirigir mejor al equipo. Escríbenos" style="--r: 6deg; animation-delay: 980ms; position: absolute; left: 760px; top: 408px; width: 240px; height: 232px; display: block; text-decoration: none; cursor: pointer; border: 0;"><img class="pi-img" src="/_blob/a7e9375a4c815ed0c0511234d6300673" alt="" aria-hidden="true"><span class="pi-text">Dirigir mejor al equipo.</span></button>
+</sc-if>
+<button type="button" class="btn-ghost" onClick="{{replay}}" style="position: absolute; right: 120px; top: 92px; height: 44px; padding: 0 20px; border-radius: 999px; border: 0; background: transparent; color: #2f3440; font-size: 15px; font-weight: 500; line-height: 1.35; display: flex; align-items: center; gap: 8px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2f3440" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"></path><path d="M19 12l-7 7-7-7"></path></svg>Soltar de nuevo</button>
+<sc-if value="{{modal}}" hint-placeholder-val="{{ false }}">
+<div onKeyDown="{{modalKey}}" style="position: absolute; inset: 0; z-index: 10; background: rgba(47,52,64,0.55); display: flex; align-items: center; justify-content: center;">
+<div role="dialog" aria-modal="true" aria-labelledby="needTitle" style="position: relative; width: 520px; background: #ffffff; padding: 40px; display: flex; flex-direction: column; gap: 20px; box-shadow: 0 24px 64px -24px rgba(47,52,64,0.5);">
+<button type="button" onClick="{{closeModal}}" aria-label="Cerrar" style="position: absolute; right: 16px; top: 16px; width: 40px; height: 40px; border: 0; border-radius: 999px; background: #f2f1ee; color: #2f3440; font-size: 20px; line-height: 1;">×</button>
+<div style="display: flex; flex-direction: column; gap: 8px; padding-right: 40px;">
+<p style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #ff4864;">Ayúdame a</p>
+<h3 id="needTitle" style="margin: 0; font-size: 36px; font-weight: 800; line-height: 1.1; letter-spacing: -0.04em; color: #2f3440;">{{need}}</h3>
+</div>
+<sc-if value="{{modalForm}}" hint-placeholder-val="{{ true }}">
+<form onSubmit="{{onSendModal}}" style="display: flex; flex-direction: column; gap: 14px;">
+<label style="display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #2f3440;">Nombre</span><input type="text" name="nombre" required="required" autocomplete="name" placeholder="Tu nombre" style="width: 100%; box-sizing: border-box; font: inherit; font-size: 16px; letter-spacing: -0.02em; color: #2f3440; background: #ffffff; border: 1px solid #2f3440; border-radius: 4px; padding: 12px 14px;"></label>
+<label style="display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #2f3440;">Correo</span><input type="email" name="correo" required="required" autocomplete="email" placeholder="tu@marca.com" style="width: 100%; box-sizing: border-box; font: inherit; font-size: 16px; letter-spacing: -0.02em; color: #2f3440; background: #ffffff; border: 1px solid #2f3440; border-radius: 4px; padding: 12px 14px;"></label>
+<label style="display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #2f3440;">Cuéntanos más</span><textarea name="mensaje" rows="3" value="{{msg}}" onChange="{{onMsg}}" style="width: 100%; box-sizing: border-box; font: inherit; font-size: 16px; letter-spacing: -0.02em; color: #2f3440; background: #ffffff; border: 1px solid #2f3440; border-radius: 4px; padding: 12px 14px; resize: none; line-height: 1.35;"></textarea></label>
+<button type="submit" class="btn-pink" style="align-self: flex-start; border: 0; background: #ff4864; color: #ffffff; font-size: 18px; font-weight: 600; padding: 14px 32px; border-radius: 999px;">Enviar</button>
+</form>
+</sc-if>
+<sc-if value="{{msent}}" hint-placeholder-val="{{ false }}">
+<div role="status" style="background: #f4efe6; padding: 24px; display: flex; flex-direction: column; gap: 10px;">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #ff4864;">Mensaje enviado</span>
+<span style="font-size: 22px; font-weight: 500; line-height: 1.25; color: #2f3440;">Gracias. Te escribimos pronto para agendar tu diagnóstico.</span>
+</div>
+<button type="button" class="btn-ink" onClick="{{closeModal}}" style="align-self: flex-start; border: 0; background: #2f3440; color: #ffffff; font-size: 16px; font-weight: 600; padding: 12px 28px; border-radius: 999px;">Cerrar</button>
+</sc-if>
+</div>
+</div>
+</sc-if>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios" style="height: 900px; box-sizing: border-box; padding: 88px 120px 0; background: #2f3440; color: #f4efe6; display: flex; flex-direction: column; gap: 48px; position: relative; overflow: hidden;">
+<div aria-hidden="true" style="position: absolute; inset: -120px; z-index: 0; background: radial-gradient(28% 34% at 22% 30%, #ff4864 0%, transparent 70%),radial-gradient(30% 36% at 80% 75%, oklch(0.42 0.15 12) 0%, transparent 72%),radial-gradient(22% 26% at 88% 18%, #ff7c6f 0%, transparent 70%),radial-gradient(24% 28% at 50% 62%, #ade6e6 0%, transparent 70%),radial-gradient(18% 22% at 12% 85%, #e2fa83 0%, transparent 70%); filter: blur(60px); opacity: 0.55;"></div>
+<div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 48px; position: relative; z-index: 1;">
+<div style="display: flex; flex-direction: column; gap: 12px;">
+<h2 style="margin: 0; font-size: 81px; font-weight: 600; line-height: 1.2; letter-spacing: -0.05em; color: #f4efe6;">Tres formas de <span style="background: linear-gradient(transparent 8%, #e2fa83 8%, #e2fa83 94%, transparent 94%); color: #2f3440; padding: 0 8px;">ver más lejos</span></h2>
+</div>
+</div>
+<div style="display: flex; gap: 48px; align-items: flex-start; position: relative; z-index: 1;">
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 12px;">
+
+<div class="glass" style="background: {{svc0bg}};">
+<button type="button" class="svc-head" onClick="{{svc0}}" aria-expanded="{{svc0open}}" style="width: 100%; height: 112px; border: 0; background: transparent; display: flex; align-items: center; gap: 32px; padding: 0 32px; text-align: left; color: #f4efe6;">
+<span style="font-size: 54px; font-weight: 800; line-height: 1.1; width: 48px;">1</span>
+<span style="flex-grow: 1; font-size: 36px; font-weight: 500; line-height: 1.2;">Ver lo que aún no es evidente</span>
+<span style="font-size: 36px; font-weight: 300; width: 24px; text-align: center;">{{svc0sign}}</span>
+</button>
+<sc-if value="{{svc0open}}" hint-placeholder-val="{{ true }}">
+<ul style="margin: 0; padding: 0 32px 32px 112px; list-style: none; display: flex; flex-direction: column; gap: 20px;">
+<li style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 20px; font-weight: 600; color: #f4efe6;">Diseño de futuros</span><span style="font-size: 16px; font-weight: 400; line-height: 1.35; color: rgba(244,239,230,0.85);">Escenarios a largo plazo para que la marca lidere el ciclo en lugar de reaccionar a él.</span></li>
+<li style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 20px; font-weight: 600; color: #f4efe6;">Cambios de comportamiento</span><span style="font-size: 16px; font-weight: 400; line-height: 1.35; color: rgba(244,239,230,0.85);">Detectamos el giro del usuario antes de que se vuelva masivo y lo volvemos brújula comercial.</span></li>
+<li style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 20px; font-weight: 600; color: #f4efe6;">Análisis de tendencias</span><span style="font-size: 16px; font-weight: 400; line-height: 1.35; color: rgba(244,239,230,0.85);">Traducimos corrientes culturales y de consumo en oportunidades accionables por sector.</span></li>
+</ul>
+</sc-if>
+</div>
+
+<div class="glass" style="background: {{svc1bg}};">
+<button type="button" class="svc-head" onClick="{{svc1}}" aria-expanded="{{svc1open}}" style="width: 100%; height: 112px; border: 0; background: transparent; display: flex; align-items: center; gap: 32px; padding: 0 32px; text-align: left; color: #f4efe6;">
+<span style="font-size: 54px; font-weight: 800; line-height: 1.1; width: 48px;">2</span>
+<span style="flex-grow: 1; font-size: 36px; font-weight: 500; line-height: 1.2;">Crecer con dirección</span>
+<span style="font-size: 36px; font-weight: 300; width: 24px; text-align: center;">{{svc1sign}}</span>
+</button>
+<sc-if value="{{svc1open}}" hint-placeholder-val="{{ false }}">
+<ul style="margin: 0; padding: 0 32px 32px 112px; list-style: none; display: flex; flex-direction: column; gap: 20px;">
+<li style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 20px; font-weight: 600; color: #f4efe6;">Oportunidades de mercado</span><span style="font-size: 16px; font-weight: 400; line-height: 1.35; color: rgba(244,239,230,0.85);">Dimensionamos el potencial real del negocio y hacia dónde se puede expandir con seguridad.</span></li>
+<li style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 20px; font-weight: 600; color: #f4efe6;">Canales de crecimiento</span><span style="font-size: 16px; font-weight: 400; line-height: 1.35; color: rgba(244,239,230,0.85);">Trazamos la ruta donde el cliente ideal realmente interactúa, compra y vuelve.</span></li>
+<li style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 20px; font-weight: 600; color: #f4efe6;">Diseño de portafolio</span><span style="font-size: 16px; font-weight: 400; line-height: 1.35; color: rgba(244,239,230,0.85);">Estructuramos la oferta para que sea coherente, rentable y fácil de explicar.</span></li>
+</ul>
+</sc-if>
+</div>
+
+<div class="glass" style="background: {{svc2bg}};">
+<button type="button" class="svc-head" onClick="{{svc2}}" aria-expanded="{{svc2open}}" style="width: 100%; height: 112px; border: 0; background: transparent; display: flex; align-items: center; gap: 32px; padding: 0 32px; text-align: left; color: #f4efe6;">
+<span style="font-size: 54px; font-weight: 800; line-height: 1.1; width: 48px;">3</span>
+<span style="flex-grow: 1; font-size: 36px; font-weight: 500; line-height: 1.2;">Experiencias que conectan</span>
+<span style="font-size: 36px; font-weight: 300; width: 24px; text-align: center;">{{svc2sign}}</span>
+</button>
+<sc-if value="{{svc2open}}" hint-placeholder-val="{{ false }}">
+<ul style="margin: 0; padding: 0 32px 32px 112px; list-style: none; display: flex; flex-direction: column; gap: 20px;">
+<li style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 20px; font-weight: 600; color: #f4efe6;">Experiencia de usuario</span><span style="font-size: 16px; font-weight: 400; line-height: 1.35; color: rgba(244,239,230,0.85);">Mapeamos el recorrido para quitar fricción y que cada punto de contacto respire la marca.</span></li>
+<li style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 20px; font-weight: 600; color: #f4efe6;">Estrategia de producto digital</span><span style="font-size: 16px; font-weight: 400; line-height: 1.35; color: rgba(244,239,230,0.85);">Plataformas y ecosistemas que responden a la dinámica del negocio, no a la moda técnica.</span></li>
+</ul>
+</sc-if>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- PARA QUIÉN -->
+<section id="para-quien" style="height: 800px; box-sizing: border-box; padding: 96px 120px 0; background: #f4efe6; display: flex; flex-direction: column; gap: 48px;">
+<div style="display: flex; flex-direction: column; gap: 12px;">
+<p style="margin: 0; font-size: 12px; font-weight: 600; line-height: 1.2; letter-spacing: 0.06em; text-transform: uppercase; color: #ff4864;">Para quién es sight</p>
+<h2 style="margin: 0; font-size: 81px; font-weight: 600; line-height: 1.2; letter-spacing: -0.05em; color: #2f3440;">¿Es sight para tu <span style="background: linear-gradient(transparent 40%, #e2fa83 40%, #e2fa83 92%, transparent 92%); padding: 0 6px;">marca</span>?</h2>
+</div>
+<div style="display: flex; gap: 80px; align-items: flex-start;">
+<div style="width: 560px; flex-shrink: 0; display: flex; flex-direction: column; gap: 32px;">
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; border-top: 1px solid #2f3440;">
+<li style="display: flex; gap: 16px; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid oklch(0.90 0.006 262);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff4864" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 4px;"><path d="M20 6L9 17l-5-5"></path></svg><span style="font-size: 24px; font-weight: 300; line-height: 1.3; color: oklch(0.42 0.019 262);">Tu marca está lista para crecer y quieres expandirla con dirección.</span></li>
+<li style="display: flex; gap: 16px; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid oklch(0.90 0.006 262);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff4864" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 4px;"><path d="M20 6L9 17l-5-5"></path></svg><span style="font-size: 24px; font-weight: 300; line-height: 1.3; color: oklch(0.42 0.019 262);">Quieres anticiparte a la crisis con decisiones basadas en evidencia, no en intuición.</span></li>
+<li style="display: flex; gap: 16px; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid oklch(0.90 0.006 262);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff4864" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 4px;"><path d="M20 6L9 17l-5-5"></path></svg><span style="font-size: 24px; font-weight: 300; line-height: 1.3; color: oklch(0.42 0.019 262);">No temes al cambio y estás dispuesto a transformar tu marca.</span></li>
+<li style="display: flex; gap: 16px; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid oklch(0.90 0.006 262);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff4864" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 4px;"><path d="M20 6L9 17l-5-5"></path></svg><span style="font-size: 24px; font-weight: 300; line-height: 1.3; color: oklch(0.42 0.019 262);">Quieres que tu marca siga vigente y adaptable a largo plazo.</span></li>
+</ul>
+<div style="display: flex; flex-direction: column; gap: 12px;">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: oklch(0.55 0.016 262);">Lo que buscamos que sientas al trabajar con nosotros</span>
+<div style="display: flex; gap: 8px; flex-wrap: wrap;">
+<span style="font-size: 13px; font-weight: 500; padding: 6px 14px; border-radius: 999px; background: #2f3440; color: #f4efe6;">Tranquilidad</span>
+<span style="font-size: 13px; font-weight: 500; padding: 6px 14px; border-radius: 999px; background: #2f3440; color: #f4efe6;">Claridad</span>
+<span style="font-size: 13px; font-weight: 500; padding: 6px 14px; border-radius: 999px; background: #2f3440; color: #f4efe6;">Confianza</span>
+<span style="font-size: 13px; font-weight: 500; padding: 6px 14px; border-radius: 999px; background: #2f3440; color: #f4efe6;">Seguridad</span>
+</div>
+</div>
+</div>
+<figure style="margin: 0; flex-grow: 1; display: flex; flex-direction: column; gap: 16px;">
+<svg width="560" height="400" viewBox="0 0 496 380" role="img" aria-label="Dos círculos que se cruzan: profundidad estratégica y mirada contemporánea. En la intersección está sight." style="font-family: inherit; letter-spacing: -0.02em;">
+<defs>
+<linearGradient id="vennA1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color: #ff4864;"></stop><stop offset="0.6" style="stop-color: #ff4864;"></stop><stop offset="1" style="stop-color: oklch(0.86 0.10 12);"></stop></linearGradient>
+<linearGradient id="vennA2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color: #f4efe6;"></stop><stop offset="1" style="stop-color: #ff7c6f;"></stop></linearGradient>
+</defs>
+<circle cx="158" cy="190" r="140" fill="url(#vennA1)"></circle>
+<circle cx="338" cy="190" r="140" fill="url(#vennA2)" fill-opacity="0.82"></circle>
+<text text-anchor="middle" fill="#ffffff"><tspan x="108" y="150" font-size="13" font-weight="600" letter-spacing="0.06em">PROFUNDIDAD</tspan><tspan x="108" y="168" font-size="13" font-weight="600" letter-spacing="0.06em">ESTRATÉGICA</tspan><tspan x="108" y="194" font-size="14" font-weight="500">Rigor, método y</tspan><tspan x="108" y="211" font-size="14" font-weight="500">fijación por la</tspan><tspan x="108" y="228" font-size="14" font-weight="500">causa raíz.</tspan></text>
+<text text-anchor="middle" fill="#2f3440"><tspan x="388" y="150" font-size="13" font-weight="600" letter-spacing="0.06em">MIRADA</tspan><tspan x="388" y="168" font-size="13" font-weight="600" letter-spacing="0.06em">CONTEMPORÁNEA</tspan><tspan x="388" y="194" font-size="14" font-weight="500">Herramientas</tspan><tspan x="388" y="211" font-size="14" font-weight="500">actuales y foco</tspan><tspan x="388" y="228" font-size="14" font-weight="500">en el usuario.</tspan></text>
+<text x="248" y="198" text-anchor="middle" font-size="24" font-weight="600" fill="#2f3440">sight</text>
+</svg>
+</figure>
+</div>
+</section>
+
+<!-- PROCESO -->
+<section id="proceso" style="height: 960px; position: relative; overflow: hidden; background: radial-gradient(40% 50% at 32% 55%, #ff4864 0%, transparent 70%),radial-gradient(35% 45% at 88% 8%, #ff7c6f 0%, transparent 70%),radial-gradient(30% 40% at 0% 100%, oklch(0.86 0.10 12) 0%, transparent 70%),radial-gradient(28% 36% at 100% 100%, #f4efe6 0%, transparent 70%),oklch(0.55 0.20 12);">
+<svg aria-hidden="true" width="1440" height="100%" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.35; mix-blend-mode: overlay;"><filter id="grainProceso"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"></feTurbulence><feColorMatrix type="saturate" values="0"></feColorMatrix></filter><rect width="100%" height="100%" filter="url(#grainProceso)"></rect></svg>
+<p style="position: absolute; left: 0; right: 0; top: 96px; margin: 0; text-align: center; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #f4efe6;">Nuestro proceso · Un camino sin atajos</p>
+<ol style="position: absolute; left: 0; right: 0; top: 180px; height: 640px; margin: 0; padding: 0; list-style: none;">
+<li aria-hidden="true" style="position: absolute; left: 719px; top: 56px; height: 510px; width: 2px; background: rgba(244,239,230,0.85);"></li>
+<li style="position: absolute; top: 0px; right: 760px; text-align: right; align-items: flex-end; width: 520px; display: flex; flex-direction: column; gap: 8px;"><span style="height: 16px; font-size: 13px; line-height: 16px; font-weight: 500; letter-spacing: 0.06em; color: #f4efe6;">01</span><span style="height: 64px; font-size: 64px; line-height: 64px; font-weight: 300; letter-spacing: -0.045em; color: #f4efe6;">Observar</span><span style="width: 320px; font-size: 16px; font-weight: 400; line-height: 1.3; letter-spacing: -0.02em; color: #f4efe6;">Miramos el detalle y escuchamos lo que dicen —y lo que no— los datos.</span></li>
+<li aria-hidden="true" style="position: absolute; top: 47px; left: 711px; width: 18px; height: 18px; border-radius: 50%; background: #f4efe6; box-shadow: 0 0 0 6px rgba(244,239,230,0.25);"></li>
+<li style="position: absolute; top: 170px; left: 760px; text-align: left; align-items: flex-start; width: 520px; display: flex; flex-direction: column; gap: 8px;"><span style="height: 16px; font-size: 13px; line-height: 16px; font-weight: 500; letter-spacing: 0.06em; color: #f4efe6;">02</span><span style="height: 64px; font-size: 64px; line-height: 64px; font-weight: 300; letter-spacing: -0.045em; color: #f4efe6;">Interpretar</span><span style="width: 320px; font-size: 16px; font-weight: 400; line-height: 1.3; letter-spacing: -0.02em; color: #f4efe6;">Encontramos la verdad detrás del dato: la causa raíz.</span></li>
+<li aria-hidden="true" style="position: absolute; top: 217px; left: 711px; width: 18px; height: 18px; border-radius: 50%; background: #f4efe6; box-shadow: 0 0 0 6px rgba(244,239,230,0.25);"></li>
+<li style="position: absolute; top: 340px; right: 760px; text-align: right; align-items: flex-end; width: 520px; display: flex; flex-direction: column; gap: 8px;"><span style="height: 16px; font-size: 13px; line-height: 16px; font-weight: 500; letter-spacing: 0.06em; color: #f4efe6;">03</span><span style="height: 64px; font-size: 64px; line-height: 64px; font-weight: 300; letter-spacing: -0.045em; color: #f4efe6;">Proyectar</span><span style="width: 320px; font-size: 16px; font-weight: 400; line-height: 1.3; letter-spacing: -0.02em; color: #f4efe6;">Diseñamos rutas con criterio y visión de largo plazo.</span></li>
+<li aria-hidden="true" style="position: absolute; top: 387px; left: 711px; width: 18px; height: 18px; border-radius: 50%; background: #f4efe6; box-shadow: 0 0 0 6px rgba(244,239,230,0.25);"></li>
+<li style="position: absolute; top: 510px; left: 760px; text-align: left; align-items: flex-start; width: 520px; display: flex; flex-direction: column; gap: 8px;"><span style="height: 16px; font-size: 13px; line-height: 16px; font-weight: 500; letter-spacing: 0.06em; color: #f4efe6;">04</span><span style="height: 64px; font-size: 64px; line-height: 64px; font-weight: 300; letter-spacing: -0.045em; color: #f4efe6;">Accionar</span><span style="width: 320px; font-size: 16px; font-weight: 400; line-height: 1.3; letter-spacing: -0.02em; color: #f4efe6;">Acompañamos la implementación hasta que el resultado se mide.</span></li>
+<li aria-hidden="true" style="position: absolute; top: 557px; left: 711px; width: 18px; height: 18px; border-radius: 50%; border: 2px solid #f4efe6; background: transparent; box-sizing: border-box;"></li>
+</ol>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" style="height: 680px; box-sizing: border-box; padding: 96px 120px 48px; background: radial-gradient(46% 60% at 0% 0%, #ffb6c0 0%, rgba(255,182,192,0) 70%), radial-gradient(40% 55% at 100% 100%, #cffffd 0%, rgba(207,255,253,0) 72%), radial-gradient(36% 50% at 62% 8%, #f5fdd6 0%, rgba(245,253,214,0) 70%), #f4efe6; color: #2f3440; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;">
+<svg aria-hidden="true" width="1440" height="100%" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.22; mix-blend-mode: multiply;"><filter id="grainContacto"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"></feTurbulence><feColorMatrix type="saturate" values="0"></feColorMatrix></filter><rect width="100%" height="100%" filter="url(#grainContacto)"></rect></svg>
+<div style="position: relative; display: flex; align-items: flex-start; justify-content: space-between; gap: 80px;">
+<div style="display: flex; flex-direction: column; gap: 24px; padding-top: 8px;">
+<p style="margin: 0; font-size: 12px; font-weight: 600; line-height: 1.2; letter-spacing: 0.06em; text-transform: uppercase; color: #ff4864;">Contacto</p>
+<h2 style="margin: 0; max-width: 660px; font-size: 81px; font-weight: 600; line-height: 1.2; letter-spacing: -0.05em; color: #2f3440;">Hablemos de lo que tu marca todavía no ve.</h2>
+<span style="font-size: 16px; font-weight: 400; line-height: 1.35; color: oklch(0.42 0.019 262);">¿Prefieres escribirnos directo? @somos.sight</span>
+</div>
+<div style="width: 440px; flex-shrink: 0;">
+<sc-if value="{{notSent}}" hint-placeholder-val="{{ true }}">
+<form onSubmit="{{onSend}}" style="display: flex; flex-direction: column; gap: 16px;">
+<label style="display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #2f3440;">Nombre</span><input type="text" name="nombre" required="required" placeholder="Tu nombre" style="width: 100%; box-sizing: border-box; font: inherit; font-size: 16px; letter-spacing: -0.02em; color: #2f3440; background: #ffffff; border: 1px solid #2f3440; border-radius: 4px; padding: 12px 14px;"></label>
+<label style="display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #2f3440;">Correo</span><input type="email" name="correo" required="required" placeholder="tu@marca.com" style="width: 100%; box-sizing: border-box; font: inherit; font-size: 16px; letter-spacing: -0.02em; color: #2f3440; background: #ffffff; border: 1px solid #2f3440; border-radius: 4px; padding: 12px 14px;"></label>
+<label style="display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #2f3440;">¿En qué te ayudamos?</span><textarea name="mensaje" rows="4" value="{{msg}}" onChange="{{onMsg}}" placeholder="Cuéntanos qué necesita tu marca" style="width: 100%; box-sizing: border-box; font: inherit; font-size: 16px; letter-spacing: -0.02em; color: #2f3440; background: #ffffff; border: 1px solid #2f3440; border-radius: 4px; padding: 12px 14px; resize: none; line-height: 1.35;"></textarea></label>
+<button type="submit" class="btn-ink" style="align-self: flex-start; border: 0; background: #2f3440; color: #ffffff; font-size: 18px; font-weight: 600; padding: 14px 32px; border-radius: 999px;">Enviar mensaje</button>
+</form>
+</sc-if>
+<sc-if value="{{sent}}" hint-placeholder-val="{{ false }}">
+<div role="status" style="background: #ffffff; color: #2f3440; padding: 32px; display: flex; flex-direction: column; gap: 12px;"><span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #ff4864;">Mensaje enviado</span><span style="font-size: 24px; font-weight: 500; line-height: 1.25;">Gracias. Te escribimos pronto para agendar tu diagnóstico.</span></div>
+</sc-if>
+</div>
+</div>
+<div style="position: relative; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #2f3440; padding-top: 24px;">
+<img src="/_blob/d17d284feef34aa0e8749e441893f3b3" alt="sight" style="height: 32px; width: auto; display: block;">
+<div style="display: flex; gap: 32px;">
+<a class="navlink" href="#inicio">Inicio</a>
+<a class="navlink" href="Nosotros.dc.html">Sobre nosotros</a>
+<a class="navlink" href="#servicios">Servicios</a>
+<a class="navlink" href="Laboratorio.dc.html">Laboratorio</a>
+</div>
+<span style="font-size: 13px; font-weight: 400; color: oklch(0.42 0.019 262);">© 2026 sight · laboratorio de diseño estratégico</span>
+</div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"autoplay":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":4900}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { slide: 0, svc: 0, lab: 0, img: 0, drop: false, msg: '', sent: false, modal: false, need: '', msent: false };
+  }
+  componentDidMount() {
+    var self = this;
+    this.timer = setInterval(function () {
+      if ((self.props.autoplay ?? true) && !self.paused) {
+        self.setState({ slide: (self.state.slide + 1) % 3 });
+      }
+    }, 7000);
+    try {
+      var el = document.getElementById('ayudame');
+      if (el && window.IntersectionObserver) {
+        this.io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting && !self.state.drop) self.setState({ drop: true });
+          });
+        }, { threshold: 0.35 });
+        this.io.observe(el);
+      } else {
+        this.setState({ drop: true });
+      }
+    } catch (err) {
+      this.setState({ drop: true });
+    }
+  }
+  componentWillUnmount() {
+    clearInterval(this.timer);
+    clearTimeout(this.dropT);
+    if (this.io) this.io.disconnect();
+  }
+  go(n) {
+    this.paused = true;
+    this.setState({ slide: (n + 3) % 3 });
+  }
+  renderVals() {
+    var s = this.state;
+    var self = this;
+    var labs = ['BUKZ', 'TX4', 'El Perpetuo Socorro', 'WeedGreen'];
+    var svcImgs = ['Diagnóstico de marca', 'Estrategia e identidad', 'Experiencia de usuario'];
+    var toggleSvc = function (i) { return function () { self.setState({ svc: s.svc === i ? -1 : i }); }; };
+    var pickLab = function (i) { return function () { self.setState({ lab: i, img: 0 }); }; };
+    var pickImg = function (i) { return function () { self.setState({ img: i }); }; };
+    var tabBg = function (i) { return s.lab === i ? '#f4efe6' : 'oklch(0.42 0.019 262)'; };
+    var tabFg = function (i) { return s.lab === i ? '#2f3440' : '#f4efe6'; };
+    var needs = ["Entender a mi consumidor.", "Encontrar mi mercado.", "Sostener el precio.", "Ordenar mi portafolio.", "Anticipar el próximo ciclo.", "Recuperar vigencia.", "Explicar la marca en tienda.", "Dirigir mejor al equipo."];
+    var pickNeed = function (i) { return function (e) { if (e && e.preventDefault) e.preventDefault(); self.setState({ msg: 'Ayúdame a: ' + needs[i] + ' ', sent: false, modal: true, msent: false, need: needs[i].replace(/\.$/, '') }); }; };
+    return {
+      need0: pickNeed(0), need1: pickNeed(1), need2: pickNeed(2), need3: pickNeed(3), need4: pickNeed(4), need5: pickNeed(5), need6: pickNeed(6), need7: pickNeed(7),
+      msg: s.msg, onMsg: function (e) { self.setState({ msg: e.target.value }); },
+      onSend: function (e) { if (e && e.preventDefault) e.preventDefault(); self.setState({ sent: true }); },
+      modal: s.modal, need: s.need, msent: s.msent, modalForm: !s.msent,
+      closeModal: function () { self.setState({ modal: false }); },
+      modalKey: function (e) { if (e && e.key === 'Escape') self.setState({ modal: false }); },
+      onSendModal: function (e) { if (e && e.preventDefault) e.preventDefault(); self.setState({ msent: true }); },
+      sent: s.sent, notSent: !s.sent,
+      s0: s.slide === 0, s1: s.slide === 1, s2: s.slide === 2,
+      prev: function () { self.go(s.slide - 1); },
+      next: function () { self.go(s.slide + 1); },
+      go0: function () { self.go(0); }, go1: function () { self.go(1); }, go2: function () { self.go(2); },
+      d0w: s.slide === 0 ? 32 : 12, d1w: s.slide === 1 ? 32 : 12, d2w: s.slide === 2 ? 32 : 12,
+      d0bg: s.slide === 0 ? '#2f3440' : '#fafafa', d1bg: s.slide === 1 ? '#2f3440' : '#fafafa', d2bg: s.slide === 2 ? '#2f3440' : '#fafafa',
+      drop: s.drop,
+      replay: function () {
+        self.setState({ drop: false });
+        clearTimeout(self.dropT);
+        self.dropT = setTimeout(function () { self.setState({ drop: true }); }, 40);
+      },
+      svc0: toggleSvc(0), svc1: toggleSvc(1), svc2: toggleSvc(2),
+      svc0open: s.svc === 0, svc1open: s.svc === 1, svc2open: s.svc === 2,
+      svc0bg: s.svc === 0 ? 'rgba(226,250,131,0.16)' : 'rgba(255,255,255,0.06)', svc1bg: s.svc === 1 ? 'rgba(226,250,131,0.16)' : 'rgba(255,255,255,0.06)', svc2bg: s.svc === 2 ? 'rgba(226,250,131,0.16)' : 'rgba(255,255,255,0.06)',
+      svc0sign: s.svc === 0 ? '–' : '+', svc1sign: s.svc === 1 ? '–' : '+', svc2sign: s.svc === 2 ? '–' : '+',
+      svcNone: s.svc === -1,
+      svcImg: s.svc >= 0 ? svcImgs[s.svc] : 'Lo que ofrecemos',
+      lab0: pickLab(0), lab1: pickLab(1), lab2: pickLab(2), lab3: pickLab(3),
+      lab0on: s.lab === 0, lab1on: s.lab === 1, lab2on: s.lab === 2, lab3on: s.lab === 3,
+      lab0bg: tabBg(0), lab1bg: tabBg(1), lab2bg: tabBg(2), lab3bg: tabBg(3),
+      lab0fg: tabFg(0), lab1fg: tabFg(1), lab2fg: tabFg(2), lab3fg: tabFg(3),
+      labName: labs[s.lab],
+      img0: pickImg(0), img1: pickImg(1), img2: pickImg(2),
+      imgNum: s.img + 1,
+      i0bg: s.img === 0 ? '#2f3440' : 'transparent', i1bg: s.img === 1 ? '#2f3440' : 'transparent', i2bg: s.img === 2 ? '#2f3440' : 'transparent'
+    };
+  }
+}
+</script>
+</body>
+</html>

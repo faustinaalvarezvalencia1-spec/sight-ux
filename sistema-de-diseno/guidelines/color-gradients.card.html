@@ -1,0 +1,39 @@
+<!-- @dsCard group="Colors" viewport="980x1040" name="Degradados" subtitle="Auras de 2–4 colores, fichas, floraciones y velos — sin negro" -->
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css">
+<style>html,body{margin:0;background:var(--surface-page);font-family:var(--font-sans);color:var(--text-body);letter-spacing:var(--tracking)}a{color:var(--text-accent)}a:hover{color:var(--pink-600)}#root{padding:28px}</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script><script src="../_ds_bundle.js"></script></head><body><div id="root"></div>
+<script type="text/babel">const {AuraField,Highlight}=window.SightDesignSystem_3d4cc7;
+const Cap=({children})=><div style={{marginTop:8,font:'var(--type-caption)',color:'var(--text-muted)'}}>{children}</div>;
+const Swatch=({combo,note,h=132,op})=><div>
+  <div style={{position:'relative',overflow:'hidden',height:h,background:'var(--surface-page)'}}>
+    <AuraField combo={combo} opacity={op}/>
+  </div>
+  <Cap><code style={{font:'var(--fw-regular) 11px/1.4 ui-monospace,Menlo,monospace',letterSpacing:0,color:'var(--text-strong)'}}>{combo}</code>{note?' — '+note:''}</Cap>
+</div>;
+function Demo(){return <div style={{display:'grid',gap:26}}>
+<div style={{position:'relative',overflow:'hidden',padding:'34px 30px',background:'var(--surface-page)'}}>
+  <AuraField combo="prisma" opacity={0.85} fade="left" style={{maskImage:"linear-gradient(to left, #000 55%, transparent 88%)",WebkitMaskImage:"linear-gradient(to left, #000 55%, transparent 88%)"}}/>
+  <div style={{position:'relative',maxWidth:'46ch',background:'var(--surface-page)',padding:'20px 24px'}}>
+    <div style={{font:'var(--type-eyebrow)',letterSpacing:'var(--tracking-caps)',textTransform:'uppercase',color:'var(--text-muted)'}}>Degradados</div>
+    <h2 style={{font:'var(--fw-extrabold) 34px/1.05 var(--font-sans)',letterSpacing:'var(--tracking)',color:'var(--text-strong)',margin:'10px 0 8px'}}>Atmósfera, <Highlight tone="lime">nunca figura</Highlight></h2>
+    <p style={{margin:0,font:'var(--fw-regular) 15px/1.5 var(--font-sans)',color:'var(--text-body)'}}>Sólo como fondo, desenfocado y detrás del contenido. Mezclas de dos a cuatro colores de la paleta vibrante — sin negro ni tinta, el degradado nunca oscurece. El texto encima va sobre panel plano.</p>
+  </div>
+</div>
+<div style={{display:'grid',gridTemplateColumns:'repeat(5,minmax(0,1fr))',gap:16}}>
+  <Swatch combo="pink-lime"/><Swatch combo="salmon-lime"/><Swatch combo="cool-pink"/><Swatch combo="prisma"/><Swatch combo="amanecer"/>
+</div>
+<div style={{display:'grid',gridTemplateColumns:'repeat(5,minmax(0,1fr))',gap:16}}>
+  <Swatch combo="marea" h={118}/><Swatch combo="espectro" h={118}/><Swatch combo="tile-warm" h={118} op={1}/><Swatch combo="tile-cool" h={118} op={1}/><Swatch combo="tile-lime" h={118} op={1}/>
+</div>
+<div style={{display:'grid',gridTemplateColumns:'repeat(4,minmax(0,1fr))',gap:16}}>
+  <Swatch combo="crema-cool" h={118} note="crema manda, color asoma"/><Swatch combo="crema-pink" h={118}/><Swatch combo="crema-lime" h={118}/><Swatch combo="crema-prisma" h={118}/>
+</div>
+<div style={{display:'grid',gridTemplateColumns:'repeat(6,minmax(0,1fr))',gap:16}}>
+  <Swatch combo="bloom-pink" h={96} op={0.9}/><Swatch combo="bloom-lime" h={96} op={0.9}/><Swatch combo="bloom-cool" h={96} op={1}/>
+  <Swatch combo="veil-cool" h={96} op={1}/><Swatch combo="veil-warm" h={96} op={1}/><Swatch combo="veil-lime" h={96} op={1}/>
+</div>
+</div>;}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script></body></html>

@@ -1,0 +1,414 @@
+<!-- @dsCard group="UI kits" height=3976 width=1280 page subtitle="Sitio sight.lab — Inicio, Sobre nosotros, Proyectos y contacto en sobrecapa" -->
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Sitio sight.lab</title><style>html,body{margin:0;background:var(--surface-page);font-family:var(--font-sans);color:var(--text-body);letter-spacing:var(--tracking);-webkit-font-smoothing:antialiased}*{box-sizing:border-box}a{color:var(--text-accent)}a:hover{color:var(--pink-600)}</style></head>
+<body><div id="root"></div>
+
+
+
+
+
+
+<script>
+(function(){
+const { Button, Wordmark, Divider, EyeMark } = window.SightDesignSystem_3d4cc7;
+function Reveal({ children, delay = 0, y = 28, as = "div", style }) {
+  const ref = React.useRef(null);
+  const [seen, setSeen] = React.useState(false);
+  React.useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setSeen(true);
+      return;
+    }
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) {
+        setSeen(true);
+        io.disconnect();
+      }
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  return React.createElement(as, { ref, style: {
+    opacity: seen ? 1 : 0,
+    transform: seen ? "none" : `translateY(${y}px)`,
+    transition: "opacity 760ms cubic-bezier(.2,.8,.2,1), transform 760ms cubic-bezier(.2,.8,.2,1)",
+    transitionDelay: `${delay}ms`,
+    ...style
+  } }, children);
+}
+function Nav({ page, go, onContact }) {
+  const [dense, setDense] = React.useState(false);
+  React.useEffect(() => {
+    const s = () => setDense(window.scrollY > 24);
+    s();
+    window.addEventListener("scroll", s, { passive: true });
+    return () => window.removeEventListener("scroll", s);
+  }, []);
+  const items = [["home", "Inicio"], ["about", "Sobre nosotros"], ["services", "Servicios"], ["work", "Proyectos"]];
+  const pick = (k) => {
+    if (k === "services") {
+      if (page !== "home") go("home");
+      requestAnimationFrame(() => {
+        const el = document.getElementById("servicios");
+        if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: "smooth" });
+      });
+      return;
+    }
+    go(k);
+  };
+  return /* @__PURE__ */ React.createElement("header", { style: {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 40,
+    background: dense ? "color-mix(in srgb, var(--surface-page) 88%, transparent)" : "transparent",
+    backdropFilter: dense ? "blur(14px)" : "none",
+    borderBottom: dense ? "1px solid var(--border-hairline)" : "1px solid transparent",
+    transition: "background 360ms ease, border-color 360ms ease, padding 360ms ease",
+    padding: dense ? "12px 0" : "22px 0"
+  } }, /* @__PURE__ */ React.createElement("div", { style: { maxWidth: "var(--page-max)", margin: "0 auto", padding: "0 32px", display: "flex", alignItems: "center", gap: 32 } }, /* @__PURE__ */ React.createElement("a", { href: "#", onClick: (e) => {
+    e.preventDefault();
+    go("home");
+  }, style: { textDecoration: "none", display: "flex", alignItems: "center", gap: 10 } }, /* @__PURE__ */ React.createElement(EyeMark, { size: 20 }), /* @__PURE__ */ React.createElement(Wordmark, { lockup: "sight lab", size: 22 })), /* @__PURE__ */ React.createElement("nav", { style: { marginLeft: "auto", display: "flex", gap: 30 } }, items.map(([k, l]) => /* @__PURE__ */ React.createElement(
+    "a",
+    {
+      key: k,
+      href: "#",
+      onClick: (e) => {
+        e.preventDefault();
+        pick(k);
+      },
+      style: {
+        textDecoration: "none",
+        position: "relative",
+        paddingBottom: 4,
+        font: "var(--fw-medium) var(--fs-ui)/1 var(--font-sans)",
+        letterSpacing: "var(--tracking-micro)",
+        color: page === k ? "var(--text-accent)" : "var(--text-strong)",
+        transition: "color 220ms ease"
+      }
+    },
+    l,
+    /* @__PURE__ */ React.createElement("span", { "aria-hidden": "true", style: {
+      position: "absolute",
+      left: 0,
+      right: 0,
+      bottom: 0,
+      height: 2,
+      background: "var(--pink-paradise)",
+      transformOrigin: "left center",
+      transform: `scaleX(${page === k ? 1 : 0})`,
+      transition: "transform 320ms cubic-bezier(.2,.8,.2,1)"
+    } })
+  ))), /* @__PURE__ */ React.createElement(Button, { size: "sm", onClick: onContact }, "Contáctanos")));
+}
+function Footer({ onContact }) {
+  return /* @__PURE__ */ React.createElement("footer", { style: { background: "var(--surface-dark)", color: "var(--text-on-dark)", padding: "72px 32px 40px" } }, /* @__PURE__ */ React.createElement("div", { style: { maxWidth: "var(--page-max)", margin: "0 auto" } }, /* @__PURE__ */ React.createElement(Wordmark, { lockup: "sight lab", size: 34, color: "var(--coconut-milk)" }), /* @__PURE__ */ React.createElement("div", { style: { height: 28 } }), /* @__PURE__ */ React.createElement(Divider, { tone: "lime" }), /* @__PURE__ */ React.createElement("div", { style: {
+    marginTop: 24,
+    display: "flex",
+    justifyContent: "space-between",
+    flexWrap: "wrap",
+    gap: 24,
+    font: "var(--fw-light) var(--fs-ui)/1.5 var(--font-sans)"
+  } }, /* @__PURE__ */ React.createElement("span", { style: { maxWidth: "40ch" } }, "Laboratorio de diseño estratégico. Diagnosticamos, fortalecemos y proyectamos la salud de una marca."), /* @__PURE__ */ React.createElement("a", { href: "#", onClick: (e) => {
+    e.preventDefault();
+    onContact && onContact();
+  }, style: { color: "var(--light-lime)" } }, "hola@sight.lab"), /* @__PURE__ */ React.createElement("span", null, "Ciudad de México")), /* @__PURE__ */ React.createElement("div", { style: { marginTop: 32, font: "var(--type-caption)", color: "var(--ink-300)" } }, "© 2026 sight lab · Laboratorio de diseño estratégico")));
+}
+const Section = ({ children, surface = "var(--surface-page)", color = "var(--text-body)", pad = 112, id, style }) => /* @__PURE__ */ React.createElement("section", { id, style: { background: surface, color, padding: `${pad}px 32px`, ...style } }, /* @__PURE__ */ React.createElement("div", { style: { maxWidth: "var(--page-max)", margin: "0 auto" } }, children));
+Object.assign(window, { Reveal, Nav, Footer, Section });
+
+})();
+(function(){
+const { Button, Tag, Marquee, SectionHeading, AuraField, Highlight, EyeMark, Divider } = window.SightDesignSystem_3d4cc7;
+const NEEDS = ["Entender a mi consumidor.", "Encontrar mi mercado.", "Sostener el precio.", "Ordenar mi portafolio.", "Anticipar el próximo ciclo.", "Recuperar vigencia.", "Explicar la marca al retail.", "Cerrar los vacíos del sistema.", "Dirigir mejor al equipo."];
+const SERVICES = [
+  { group: "Foresight\n& tendencias", items: [
+    { title: "Diseño de futuros", note: "Escenarios a largo plazo para que la marca lidere el ciclo en lugar de reaccionar a él." },
+    { title: "Cambios de comportamiento", note: "Detectamos el giro del usuario antes de que se vuelva masivo y lo volvemos brújula comercial." },
+    { title: "Análisis de tendencias", note: "Traducimos corrientes culturales y de consumo en oportunidades accionables por sector." }
+  ] },
+  { group: "Mercado\n& crecimiento", items: [
+    { title: "Oportunidades de mercado", note: "Dimensionamos el potencial real del negocio y hacia dónde se puede expandir con seguridad." },
+    { title: "Canales de crecimiento", note: "Trazamos la ruta donde el cliente ideal realmente interactúa, compra y vuelve." },
+    { title: "Diseño de portafolio", note: "Estructuramos la oferta para que sea coherente, rentable y fácil de explicar." }
+  ] },
+  { group: "Experiencia\n& producto", items: [
+    { title: "Experiencia de usuario", note: "Mapeamos el recorrido para quitar fricción y que cada punto de contacto respire la marca." },
+    { title: "Estrategia de producto digital", note: "Plataformas y ecosistemas que responden a la dinámica del negocio, no a la moda técnica." }
+  ] }
+];
+const PROCESS = [
+  ["01", "Observar", "Miramos con atención el detalle. Escuchamos lo que dicen —y lo que no— los datos."],
+  ["02", "Interpretar", "Encontramos la verdad detrás del dato. Información convertida en causa raíz."],
+  ["03", "Proyectar", "Diseñamos el plan: rutas con criterio y visión de largo plazo."],
+  ["04", "Accionar", "Acompañamos la implementación hasta que el resultado se mide."]
+];
+const ALLIES = ["bukzel", "perpetuo socorro", "empathy", "weedgreen", "tx4", "norte"];
+function Hero({ go, onContact }) {
+  return /* @__PURE__ */ React.createElement("section", { style: { position: "relative", overflow: "hidden", background: "var(--surface-page)", padding: "184px 32px 0" } }, /* @__PURE__ */ React.createElement(AuraField, { combo: "amanecer", opacity: 0.6, fade: "bottom" }), /* @__PURE__ */ React.createElement("div", { style: { position: "relative", maxWidth: "var(--page-max)", margin: "0 auto" } }, /* @__PURE__ */ React.createElement(Reveal, null, /* @__PURE__ */ React.createElement("div", { style: { font: "var(--type-eyebrow)", letterSpacing: "var(--tracking-caps)", textTransform: "uppercase", color: "var(--text-accent)", marginBottom: 24 } }, "Laboratorio de diseño estratégico")), /* @__PURE__ */ React.createElement(Reveal, { delay: 90 }, /* @__PURE__ */ React.createElement("h1", { style: { margin: 0, font: "var(--fw-semibold) var(--fs-display)/1.06 var(--font-sans)", letterSpacing: "-0.045em", color: "var(--text-strong)", maxWidth: "20ch", textWrap: "pretty" } }, "Convertimos incertidumbre en ", /* @__PURE__ */ React.createElement(Highlight, { tone: "lime" }, "decisiones"), " que mueven el negocio.")), /* @__PURE__ */ React.createElement(Reveal, { delay: 180 }, /* @__PURE__ */ React.createElement("p", { style: { margin: "36px 0 0", font: "var(--fw-light) var(--fs-body)/1.4 var(--font-sans)", color: "var(--text-body)", maxWidth: "50ch" } }, "Traducimos la complejidad de un negocio en decisiones claras, para construir marcas longevas, relevantes y capaces de adaptarse.")), /* @__PURE__ */ React.createElement(Reveal, { delay: 260 }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 16, marginTop: 44, flexWrap: "wrap" } }, /* @__PURE__ */ React.createElement(Button, { size: "lg", onClick: onContact }, "Hablemos"), /* @__PURE__ */ React.createElement(Button, { size: "lg", variant: "outline", onClick: () => {
+    const el = document.getElementById("servicios");
+    if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: "smooth" });
+  } }, "Ver servicios"))), /* @__PURE__ */ React.createElement("div", { style: { height: 112 } })), /* @__PURE__ */ React.createElement(Marquee, { tone: "lime", speed: 38, items: ["expansión", "ideación", "evolución", "anticipación", "innovación", "certidumbre", "dirección", "adaptabilidad"] }));
+}
+function Needs({ onContact }) {
+  const [hot, setHot] = React.useState(null);
+  return /* @__PURE__ */ React.createElement(Section, { pad: 112 }, /* @__PURE__ */ React.createElement(Reveal, null, /* @__PURE__ */ React.createElement(SectionHeading, { level: "title", eyebrow: "Nos conectamos con tu necesidad real" }, "Ayúdame a…")), /* @__PURE__ */ React.createElement("div", { style: { height: 48 } }), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", flexWrap: "wrap", gap: 14 } }, NEEDS.map((t, i) => /* @__PURE__ */ React.createElement(Reveal, { key: t, delay: i * 45 }, /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: () => onContact(t),
+      onMouseEnter: () => setHot(i),
+      onMouseLeave: () => setHot(null),
+      style: {
+        border: "1px solid var(--border-hairline)",
+        background: hot === i ? "var(--pink-paradise)" : "var(--surface-card)",
+        color: hot === i ? "var(--text-on-accent)" : "var(--text-strong)",
+        cursor: "pointer",
+        padding: "16px 22px",
+        font: "var(--fw-medium) var(--fs-ui-lg)/1.2 var(--font-sans)",
+        letterSpacing: "var(--tracking)",
+        transform: hot === i ? "translateY(-2px)" : "none",
+        transition: "var(--motion-hover)"
+      }
+    },
+    t
+  )))));
+}
+function Services() {
+  const [open, setOpen] = React.useState(0);
+  return /* @__PURE__ */ React.createElement(Section, { id: "servicios", surface: "var(--surface-warm)", color: "var(--text-strong)" }, /* @__PURE__ */ React.createElement(Reveal, null, /* @__PURE__ */ React.createElement(SectionHeading, { level: "title", eyebrow: "Qué hacemos" }, "Nuestros servicios")), /* @__PURE__ */ React.createElement("div", { style: { height: 48 } }), /* @__PURE__ */ React.createElement("div", null, SERVICES.map((s, i) => /* @__PURE__ */ React.createElement(Reveal, { key: s.group, delay: i * 80 }, /* @__PURE__ */ React.createElement(Group, { data: s, open: open === i, onToggle: () => setOpen(open === i ? -1 : i) })))));
+}
+function Group({ data, open, onToggle }) {
+  const body = React.useRef(null);
+  const [h, setH] = React.useState(0);
+  React.useEffect(() => {
+    const measure = () => setH(body.current ? body.current.scrollHeight : 0);
+    measure();
+    const ro = typeof ResizeObserver !== "undefined" ? new ResizeObserver(measure) : null;
+    if (ro && body.current) ro.observe(body.current);
+    return () => {
+      if (ro) ro.disconnect();
+    };
+  }, []);
+  return /* @__PURE__ */ React.createElement("div", { style: { borderTop: "1px solid var(--border-strong)" } }, /* @__PURE__ */ React.createElement("button", { onClick: onToggle, style: {
+    width: "100%",
+    border: "none",
+    background: "none",
+    cursor: "pointer",
+    textAlign: "left",
+    padding: "30px 0",
+    display: "flex",
+    alignItems: "center",
+    gap: 24
+  } }, /* @__PURE__ */ React.createElement("span", { style: {
+    flex: 1,
+    whiteSpace: "pre-line",
+    font: "var(--fw-semibold) var(--fs-subtitle)/1.1 var(--font-sans)",
+    letterSpacing: "var(--tracking)",
+    color: open ? "var(--text-accent)" : "var(--text-strong)",
+    transition: "color 260ms ease"
+  } }, data.group.replace("\n", " ")), /* @__PURE__ */ React.createElement("span", { "aria-hidden": "true", style: {
+    position: "relative",
+    width: 26,
+    height: 26,
+    flex: "none",
+    transform: `rotate(${open ? 135 : 0}deg)`,
+    transition: "transform 420ms cubic-bezier(.2,.8,.2,1)"
+  } }, /* @__PURE__ */ React.createElement("span", { style: { position: "absolute", left: 0, right: 0, top: "50%", height: 2, marginTop: -1, background: "var(--text-strong)" } }), /* @__PURE__ */ React.createElement("span", { style: { position: "absolute", top: 0, bottom: 0, left: "50%", width: 2, marginLeft: -1, background: "var(--text-strong)" } }))), /* @__PURE__ */ React.createElement("div", { style: {
+    overflow: "hidden",
+    height: open ? h : 0,
+    opacity: open ? 1 : 0,
+    transition: "height 520ms cubic-bezier(.2,.8,.2,1), opacity 380ms ease"
+  } }, /* @__PURE__ */ React.createElement("div", { ref: body, style: { display: "grid", gridTemplateColumns: "repeat(3,minmax(0,1fr))", gap: 32, paddingBottom: 40 } }, data.items.map((it) => /* @__PURE__ */ React.createElement("div", { key: it.title }, /* @__PURE__ */ React.createElement("h4", { style: { margin: 0, font: "var(--fw-semibold) var(--fs-ui-lg)/1.25 var(--font-sans)", letterSpacing: "var(--tracking)", color: "var(--text-strong)" } }, it.title), /* @__PURE__ */ React.createElement("p", { style: { margin: "12px 0 0", font: "var(--fw-regular) var(--fs-body-sm)/1.55 var(--font-sans)", color: "var(--text-body)", maxWidth: "34ch" } }, it.note))))));
+}
+function Allies() {
+  return /* @__PURE__ */ React.createElement(Section, { pad: 88 }, /* @__PURE__ */ React.createElement(Reveal, null, /* @__PURE__ */ React.createElement("div", { style: { font: "var(--type-eyebrow)", letterSpacing: "var(--tracking-caps)", textTransform: "uppercase", color: "var(--text-muted)" } }, "Alianzas que respaldan la visión")), /* @__PURE__ */ React.createElement("div", { style: { height: 32 } }), /* @__PURE__ */ React.createElement(Reveal, { delay: 90 }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", flexWrap: "wrap", gap: "22px 56px", alignItems: "center" } }, ALLIES.map((a) => /* @__PURE__ */ React.createElement("span", { key: a, style: {
+    font: "var(--fw-semibold) 22px/1 var(--font-sans)",
+    letterSpacing: "var(--tracking)",
+    color: "var(--ink-300)",
+    textTransform: "lowercase"
+  } }, a)))));
+}
+function Process() {
+  return /* @__PURE__ */ React.createElement(Section, { surface: "var(--surface-sunken)", color: "var(--text-strong)" }, /* @__PURE__ */ React.createElement(Reveal, null, /* @__PURE__ */ React.createElement(SectionHeading, { level: "title", eyebrow: "Nuestro proceso" }, "Un camino sin atajos")), /* @__PURE__ */ React.createElement("div", { style: { height: 56 } }), /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: "repeat(4,minmax(0,1fr))", gap: 32 } }, PROCESS.map(([n, t, note], i) => /* @__PURE__ */ React.createElement(Reveal, { key: n, delay: i * 110 }, /* @__PURE__ */ React.createElement("div", { style: { borderTop: "2px solid var(--pink-paradise)", paddingTop: 20 } }, /* @__PURE__ */ React.createElement("div", { style: { font: "var(--fw-extrabold) 44px/1 var(--font-sans)", letterSpacing: "var(--tracking-tight)", color: "var(--pink-paradise)" } }, n), /* @__PURE__ */ React.createElement("h3", { style: { margin: "18px 0 0", font: "var(--fw-semibold) var(--fs-ui-lg)/1.2 var(--font-sans)", letterSpacing: "var(--tracking)", color: "var(--text-strong)" } }, t), /* @__PURE__ */ React.createElement("p", { style: { margin: "10px 0 0", font: "var(--fw-regular) var(--fs-body-sm)/1.55 var(--font-sans)", color: "var(--text-body)", maxWidth: "30ch" } }, note))))));
+}
+function Closing({ onContact }) {
+  return /* @__PURE__ */ React.createElement("section", { style: { position: "relative", overflow: "hidden", background: "var(--surface-page)", padding: "128px 32px" } }, /* @__PURE__ */ React.createElement(AuraField, { combo: "prisma", opacity: 0.7, fade: "top" }), /* @__PURE__ */ React.createElement("div", { style: { position: "relative", maxWidth: "var(--page-max)", margin: "0 auto" } }, /* @__PURE__ */ React.createElement(Reveal, null, /* @__PURE__ */ React.createElement("div", { style: { background: "var(--surface-page)", display: "inline-block", padding: "32px 36px", maxWidth: "44ch" } }, /* @__PURE__ */ React.createElement("div", { style: { font: "var(--type-eyebrow)", letterSpacing: "var(--tracking-caps)", textTransform: "uppercase", color: "var(--text-muted)" } }, "¿Listos para el siguiente paso?"), /* @__PURE__ */ React.createElement("h2", { style: { margin: "16px 0 0", font: "var(--fw-semibold) var(--fs-title)/1.08 var(--font-sans)", letterSpacing: "-0.04em", color: "var(--text-strong)" } }, "Para. Hablemos."), /* @__PURE__ */ React.createElement("p", { style: { margin: "20px 0 0", font: "var(--fw-light) var(--fs-body)/1.4 var(--font-sans)", color: "var(--text-body)" } }, "Sin presentaciones eternas ni propuestas de cuarenta páginas. Una conversación honesta para ver si encajamos."), /* @__PURE__ */ React.createElement("div", { style: { marginTop: 32 } }, /* @__PURE__ */ React.createElement(Button, { size: "lg", onClick: () => onContact() }, "Contáctanos"))))));
+}
+function Home({ go, onContact }) {
+  return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Hero, { go, onContact: () => onContact() }), /* @__PURE__ */ React.createElement(Needs, { onContact }), /* @__PURE__ */ React.createElement(Services, null), /* @__PURE__ */ React.createElement(Allies, null), /* @__PURE__ */ React.createElement(Process, null), /* @__PURE__ */ React.createElement(Closing, { onContact }));
+}
+Object.assign(window, { Home });
+
+})();
+(function(){
+const { SectionHeading, AuraField, PhotoFrame, Highlight, Tag } = window.SightDesignSystem_3d4cc7;
+const TEAM = [
+  ["F", "Faustina", "Observación consciente", "Ve lo que otros pasan por alto."],
+  ["N", "Natalina", "Ecuanimidad libre", "Mantiene el equilibrio en la tormenta."],
+  ["A", "Alexandra", "Amor inteligente", "Conecta el dato con lo humano."],
+  ["V", "Valentina", "Liderazgo curioso", "Siempre preguntando por qué."],
+  ["I", "Isabella", "Creatividad empática", "Diseña pensando en el otro."]
+];
+function About() {
+  return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("section", { style: { position: "relative", overflow: "hidden", background: "var(--surface-page)", padding: "184px 32px 96px" } }, /* @__PURE__ */ React.createElement(AuraField, { combo: "crema-cool", fade: "bottom" }), /* @__PURE__ */ React.createElement("div", { style: { position: "relative", maxWidth: "var(--page-max)", margin: "0 auto" } }, /* @__PURE__ */ React.createElement(Reveal, null, /* @__PURE__ */ React.createElement("div", { style: { font: "var(--type-eyebrow)", letterSpacing: "var(--tracking-caps)", textTransform: "uppercase", color: "var(--text-accent)", marginBottom: 24 } }, "Quiénes somos")), /* @__PURE__ */ React.createElement(Reveal, { delay: 90 }, /* @__PURE__ */ React.createElement("h1", { style: { margin: 0, font: "var(--fw-semibold) var(--fs-display)/1.06 var(--font-sans)", letterSpacing: "-0.045em", color: "var(--text-strong)", maxWidth: "18ch" } }, "Diseño que mueve negocios.")), /* @__PURE__ */ React.createElement(Reveal, { delay: 180 }, /* @__PURE__ */ React.createElement("p", { style: { margin: "36px 0 0", font: "var(--fw-light) var(--fs-body)/1.4 var(--font-sans)", color: "var(--text-body)", maxWidth: "54ch" } }, "Trabajamos desde el diseño estratégico y la experiencia de usuario para volver la incertidumbre de un negocio en ventaja medible. ", /* @__PURE__ */ React.createElement(Highlight, { tone: "lime" }, "No hacemos decoración: hacemos decisiones."))))), /* @__PURE__ */ React.createElement(Section, { pad: 96 }, /* @__PURE__ */ React.createElement(Reveal, null, /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: "minmax(0,1.1fr) minmax(0,1fr)", gap: 56, alignItems: "center" } }, /* @__PURE__ */ React.createElement(PhotoFrame, { src: "../../assets/photo-sample.png", alt: "Equipo de sight lab en sesión de trabajo", ratio: "4 / 3" }), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement(SectionHeading, { level: "subtitle", eyebrow: "Cómo trabajamos" }, "Sesión, no entrega"), /* @__PURE__ */ React.createElement("p", { style: { margin: "24px 0 0", font: "var(--fw-regular) var(--fs-body-sm)/1.6 var(--font-sans)", color: "var(--text-body)", maxWidth: "40ch" } }, "El diagnóstico se construye contigo: mesa, datos a la vista y decisiones firmadas al cierre de cada sesión."), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 10, flexWrap: "wrap", marginTop: 24 } }, ["Diagnóstico", "Causa raíz", "Tratamiento", "Resultado"].map((t) => /* @__PURE__ */ React.createElement(Tag, { key: t, tone: "quiet" }, t))))))), /* @__PURE__ */ React.createElement(Section, { surface: "var(--surface-warm)", color: "var(--text-strong)", pad: 104 }, /* @__PURE__ */ React.createElement(Reveal, null, /* @__PURE__ */ React.createElement(SectionHeading, { level: "title", eyebrow: "Las personas detrás" }, "Corazón, cerebro y curiosidad.")), /* @__PURE__ */ React.createElement("div", { style: { height: 52 } }), /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: "repeat(5,minmax(0,1fr))", gap: 20 } }, TEAM.map(([ini, name, trait, note], i) => /* @__PURE__ */ React.createElement(Reveal, { key: name, delay: i * 90 }, /* @__PURE__ */ React.createElement(Person, { ini, name, trait, note }))))));
+}
+function Person({ ini, name, trait, note }) {
+  const [hot, setHot] = React.useState(false);
+  return /* @__PURE__ */ React.createElement(
+    "div",
+    {
+      onMouseEnter: () => setHot(true),
+      onMouseLeave: () => setHot(false),
+      style: {
+        background: "var(--surface-card)",
+        padding: "24px 22px",
+        transform: hot ? "translateY(-4px)" : "none",
+        transition: "var(--motion-hover)"
+      }
+    },
+    /* @__PURE__ */ React.createElement("div", { style: {
+      width: 56,
+      height: 56,
+      borderRadius: "50%",
+      background: hot ? "var(--pink-paradise)" : "var(--pink-100)",
+      color: hot ? "var(--text-on-accent)" : "var(--deep-blue-gray)",
+      display: "grid",
+      placeItems: "center",
+      font: "var(--fw-extrabold) 22px/1 var(--font-sans)",
+      transition: "var(--motion-hover)"
+    } }, ini),
+    /* @__PURE__ */ React.createElement("h3", { style: { margin: "18px 0 0", font: "var(--fw-semibold) var(--fs-ui-lg)/1.2 var(--font-sans)", letterSpacing: "var(--tracking)", color: "var(--text-strong)" } }, name),
+    /* @__PURE__ */ React.createElement("div", { style: { marginTop: 6, font: "var(--type-caption)", color: "var(--text-accent)" } }, trait),
+    /* @__PURE__ */ React.createElement("p", { style: { margin: "12px 0 0", font: "var(--fw-regular) var(--fs-caption)/1.5 var(--font-sans)", color: "var(--text-body)" } }, note)
+  );
+}
+Object.assign(window, { About });
+
+})();
+(function(){
+const { Button, AuraField, NestedScale, Highlight } = window.SightDesignSystem_3d4cc7;
+const MARKET = [
+  { label: "Mercado total", value: 34.5, display: "$34.5M", note: "Marcas que necesitan un diagnóstico antes de invertir." },
+  { label: "Mercado atendible", value: 25.6, display: "$25.6M", note: "Las que ya tienen equipo y datos para sostener el tratamiento." },
+  { label: "Alcanzable a 12 meses", value: 21.2, display: "$21.2M", note: "Lo que el lab puede tomar con la capacidad actual." }
+];
+function Work({ onContact }) {
+  return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("section", { style: { position: "relative", overflow: "hidden", background: "var(--surface-page)", padding: "184px 32px 96px" } }, /* @__PURE__ */ React.createElement(AuraField, { combo: "crema-lime", fade: "bottom" }), /* @__PURE__ */ React.createElement("div", { style: { position: "relative", maxWidth: "var(--page-max)", margin: "0 auto" } }, /* @__PURE__ */ React.createElement(Reveal, null, /* @__PURE__ */ React.createElement("div", { style: { font: "var(--type-eyebrow)", letterSpacing: "var(--tracking-caps)", textTransform: "uppercase", color: "var(--text-accent)", marginBottom: 24 } }, "Portafolio")), /* @__PURE__ */ React.createElement(Reveal, { delay: 90 }, /* @__PURE__ */ React.createElement("h1", { style: { margin: 0, font: "var(--fw-semibold) var(--fs-display)/1.06 var(--font-sans)", letterSpacing: "-0.045em", color: "var(--text-strong)", maxWidth: "16ch" } }, "Próxima mente.")), /* @__PURE__ */ React.createElement(Reveal, { delay: 180 }, /* @__PURE__ */ React.createElement("p", { style: { margin: "36px 0 0", font: "var(--fw-light) var(--fs-body)/1.4 var(--font-sans)", color: "var(--text-body)", maxWidth: "50ch" } }, "Estamos preparando los casos que muestran cómo se convierte la complejidad en resultado concreto. Mientras tanto, esto es lo que medimos antes de empezar.")))), /* @__PURE__ */ React.createElement(Section, { pad: 104 }, /* @__PURE__ */ React.createElement(Reveal, null, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { style: { font: "var(--type-eyebrow)", letterSpacing: "var(--tracking-caps)", textTransform: "uppercase", color: "var(--text-muted)", marginBottom: 12 } }, "Tamaño de la oportunidad"), /* @__PURE__ */ React.createElement("h2", { style: { margin: "0 0 44px", font: "var(--fw-semibold) var(--fs-subtitle)/1.1 var(--font-sans)", letterSpacing: "-0.04em", color: "var(--text-strong)" } }, "Tres círculos, ", /* @__PURE__ */ React.createElement(Highlight, { tone: "lime" }, "una decisión")), /* @__PURE__ */ React.createElement(NestedScale, { size: 340, data: MARKET })))), /* @__PURE__ */ React.createElement(Section, { surface: "var(--surface-sunken)", color: "var(--text-strong)", pad: 96 }, /* @__PURE__ */ React.createElement(Reveal, null, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", gap: 32, flexWrap: "wrap" } }, /* @__PURE__ */ React.createElement("h2", { style: { margin: 0, font: "var(--fw-semibold) var(--fs-subtitle)/1.1 var(--font-sans)", letterSpacing: "-0.04em", color: "var(--text-strong)", maxWidth: "24ch" } }, "¿Quieres ser el primer caso publicado?"), /* @__PURE__ */ React.createElement(Button, { size: "lg", onClick: () => onContact() }, "Contáctanos")))));
+}
+Object.assign(window, { Work });
+
+})();
+(function(){
+const { Button, Checkbox } = window.SightDesignSystem_3d4cc7;
+const HOW = ["una recomendación", "redes", "un evento", "búsqueda", "otro"];
+function Blank({ value, onChange, placeholder, width = 14, options }) {
+  const common = {
+    border: "none",
+    borderBottom: "2px solid var(--pink-paradise)",
+    background: "transparent",
+    font: "inherit",
+    color: "var(--text-strong)",
+    letterSpacing: "inherit",
+    padding: "0 4px 2px",
+    width: `${width}ch`,
+    outline: "none"
+  };
+  if (options) return /* @__PURE__ */ React.createElement("select", { value, onChange: (e) => onChange(e.target.value), style: { ...common, cursor: "pointer" } }, /* @__PURE__ */ React.createElement("option", { value: "" }, placeholder), options.map((o) => /* @__PURE__ */ React.createElement("option", { key: o, value: o }, o)));
+  return /* @__PURE__ */ React.createElement("input", { value, onChange: (e) => onChange(e.target.value), placeholder, style: common });
+}
+function ContactModal({ open, subject, onClose }) {
+  const [f, setF] = React.useState({ name: "", company: "", city: "", how: "", email: "", phone: "", about: "" });
+  const [ok, setOk] = React.useState(false);
+  const [agree, setAgree] = React.useState(false);
+  const set = (k, v) => setF((s) => ({ ...s, [k]: v }));
+  React.useEffect(() => {
+    if (open) {
+      setOk(false);
+      setF((s) => ({ ...s, about: subject || s.about }));
+    }
+  }, [open, subject]);
+  React.useEffect(() => {
+    const k = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    if (open) window.addEventListener("keydown", k);
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      window.removeEventListener("keydown", k);
+      document.body.style.overflow = "";
+    };
+  }, [open, onClose]);
+  const ready = f.name && f.email && agree;
+  return /* @__PURE__ */ React.createElement("div", { "aria-hidden": !open, style: { position: "fixed", inset: 0, zIndex: 60, pointerEvents: open ? "auto" : "none" } }, /* @__PURE__ */ React.createElement("div", { onClick: onClose, style: {
+    position: "absolute",
+    inset: 0,
+    background: "color-mix(in srgb, var(--deep-blue-gray) 62%, transparent)",
+    opacity: open ? 1 : 0,
+    transition: "opacity 420ms ease"
+  } }), /* @__PURE__ */ React.createElement("div", { role: "dialog", "aria-modal": "true", style: { position: "absolute", inset: 0, overflowY: "auto", display: "grid", placeItems: "start center", padding: "56px 24px" } }, /* @__PURE__ */ React.createElement("div", { onClick: (e) => e.stopPropagation(), style: {
+    width: "min(860px,100%)",
+    background: "var(--surface-page)",
+    padding: "56px 60px",
+    transform: open ? "none" : "translateY(34px)",
+    opacity: open ? 1 : 0,
+    transition: "transform 520ms cubic-bezier(.2,.8,.2,1), opacity 420ms ease"
+  } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", justifyContent: "flex-end" } }, /* @__PURE__ */ React.createElement("button", { onClick: onClose, "aria-label": "Cerrar", style: {
+    border: "none",
+    background: "none",
+    cursor: "pointer",
+    font: "var(--fw-regular) 24px/1 var(--font-sans)",
+    color: "var(--text-muted)"
+  } }, "✕")), ok ? /* @__PURE__ */ React.createElement("div", { style: { padding: "40px 0 24px" } }, /* @__PURE__ */ React.createElement("div", { style: { font: "var(--type-eyebrow)", letterSpacing: "var(--tracking-caps)", textTransform: "uppercase", color: "var(--text-accent)" } }, "Recibido"), /* @__PURE__ */ React.createElement("h2", { style: { margin: "16px 0 0", font: "var(--fw-semibold) var(--fs-subtitle)/1.1 var(--font-sans)", letterSpacing: "-0.04em", color: "var(--text-strong)" } }, "Gracias, ", f.name.split(" ")[0], "."), /* @__PURE__ */ React.createElement("p", { style: { margin: "18px 0 32px", font: "var(--fw-light) var(--fs-body)/1.4 var(--font-sans)", color: "var(--text-body)", maxWidth: "44ch" } }, "Respondemos en menos de un día hábil con dos horarios para la primera conversación."), /* @__PURE__ */ React.createElement(Button, { onClick: onClose }, "Volver al sitio")) : /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("div", { style: { font: "var(--type-eyebrow)", letterSpacing: "var(--tracking-caps)", textTransform: "uppercase", color: "var(--text-muted)" } }, "Hablemos"), /* @__PURE__ */ React.createElement("h2", { style: { margin: "14px 0 40px", font: "var(--fw-semibold) var(--fs-subtitle)/1.08 var(--font-sans)", letterSpacing: "-0.04em", color: "var(--text-strong)" } }, "Quiero sus servicios"), /* @__PURE__ */ React.createElement("p", { style: { margin: 0, font: "var(--fw-light) var(--fs-body)/2.1 var(--font-sans)", color: "var(--text-body)" } }, "Mi nombre es ", /* @__PURE__ */ React.createElement(Blank, { value: f.name, onChange: (v) => set("name", v), placeholder: "nombre", width: 16 }), " de la empresa ", /* @__PURE__ */ React.createElement(Blank, { value: f.company, onChange: (v) => set("company", v), placeholder: "empresa", width: 16 }), ", ubicada en ", /* @__PURE__ */ React.createElement(Blank, { value: f.city, onChange: (v) => set("city", v), placeholder: "ciudad", width: 13 }), " y conocí sight por ", /* @__PURE__ */ React.createElement(Blank, { value: f.how, onChange: (v) => set("how", v), placeholder: "cómo nos conociste", width: 19, options: HOW }), ". Mi email es ", /* @__PURE__ */ React.createElement(Blank, { value: f.email, onChange: (v) => set("email", v), placeholder: "email", width: 20 }), " y mi celular ", /* @__PURE__ */ React.createElement(Blank, { value: f.phone, onChange: (v) => set("phone", v), placeholder: "celular", width: 14 }), "."), /* @__PURE__ */ React.createElement("div", { style: { marginTop: 36 } }, /* @__PURE__ */ React.createElement("label", { style: { display: "block", font: "var(--type-eyebrow)", letterSpacing: "var(--tracking-caps)", textTransform: "uppercase", color: "var(--text-muted)", marginBottom: 12 } }, "Quiero conversar sobre…"), /* @__PURE__ */ React.createElement(
+    "textarea",
+    {
+      value: f.about,
+      onChange: (e) => set("about", e.target.value),
+      rows: 3,
+      style: {
+        width: "100%",
+        border: "1px solid var(--border-hairline)",
+        background: "var(--surface-card)",
+        padding: "14px 16px",
+        font: "var(--fw-regular) var(--fs-ui)/1.5 var(--font-sans)",
+        letterSpacing: "var(--tracking)",
+        color: "var(--text-strong)",
+        resize: "vertical",
+        outline: "none"
+      }
+    }
+  )), /* @__PURE__ */ React.createElement("div", { style: { marginTop: 24 } }, /* @__PURE__ */ React.createElement(Checkbox, { checked: agree, onChange: setAgree, label: "Acepto el aviso de privacidad." })), /* @__PURE__ */ React.createElement("div", { style: { marginTop: 32, display: "flex", gap: 14, alignItems: "center" } }, /* @__PURE__ */ React.createElement(Button, { size: "lg", disabled: !ready, onClick: () => setOk(true) }, "Enviar mensaje"), /* @__PURE__ */ React.createElement("span", { style: { font: "var(--type-caption)", color: "var(--text-muted)" } }, "Nombre, email y aviso de privacidad para habilitar el envío."))))));
+}
+Object.assign(window, { ContactModal });
+
+})();
+(function(){
+function App() {
+  const [page, setPage] = React.useState("home");
+  const [shown, setShown] = React.useState("home");
+  const [on, setOn] = React.useState(true);
+  const [modal, setModal] = React.useState(null);
+  const go = (k) => {
+    if (k === page) return;
+    setOn(false);
+    setPage(k);
+    setTimeout(() => {
+      setShown(k);
+      window.scrollTo(0, 0);
+      setOn(true);
+    }, 260);
+  };
+  const openContact = (subject) => setModal({ subject: typeof subject === "string" ? subject : "" });
+  return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Nav, { page, go, onContact: () => openContact() }), /* @__PURE__ */ React.createElement("main", { style: {
+    opacity: on ? 1 : 0,
+    transform: on ? "none" : "translateY(16px)",
+    transition: "opacity 300ms ease, transform 300ms cubic-bezier(.2,.8,.2,1)"
+  } }, shown === "about" ? /* @__PURE__ */ React.createElement(About, null) : shown === "work" ? /* @__PURE__ */ React.createElement(Work, { onContact: openContact }) : /* @__PURE__ */ React.createElement(Home, { go, onContact: openContact })), /* @__PURE__ */ React.createElement(Footer, { onContact: () => openContact() }), /* @__PURE__ */ React.createElement(ContactModal, { open: !!modal, subject: modal ? modal.subject : "", onClose: () => setModal(null) }));
+}
+ReactDOM.createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(App, null));
+
+})();
+</script></body></html>

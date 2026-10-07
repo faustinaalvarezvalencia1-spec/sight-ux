@@ -1,0 +1,45 @@
+/* Escala 1.5 (quinta perfecta) desde cuerpo 24px. Tracking negativo constante: -0.04em (-40 en Figma). */
+:root{
+--font-sans:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+--font-display:var(--font-sans);
+--font-body:var(--font-sans);
+
+--fw-extralight:200;/* @kind font */
+--fw-light:300;/* @kind font */
+--fw-regular:400;/* @kind font */
+--fw-medium:500;/* @kind font */
+--fw-semibold:600;/* @kind font */
+--fw-extrabold:800;/* @kind font */
+
+/* Escala de marca (valores del manual, p.18) */
+--fs-display:81px;
+--fs-title:54px;
+--fs-subtitle:36px;
+--fs-body:24px;
+--fs-caption:16px;
+--fs-micro:12px;
+/* Pasos intermedios para UI densa */
+--fs-ui-lg:20px;--fs-ui:15px;--fs-ui-sm:13px;
+
+--lh-display:1.2;/* @kind font */
+--lh-title:1.1;/* @kind font */
+--lh-subtitle:1.2;/* @kind font */
+--lh-body:1.2;/* @kind font */
+--lh-prose:1.45;/* @kind font */
+--lh-ui:1.35;/* @kind font */
+
+--tracking:-0.04em;/* @kind font */
+--tracking-tight:-0.05em;/* @kind font */
+--tracking-micro:-0.02em;/* @kind font */
+--tracking-caps:0.06em;/* @kind font */
+
+/* Roles compuestos */
+--type-display:var(--fw-semibold) var(--fs-display)/var(--lh-display) var(--font-display);
+--type-title:var(--fw-extrabold) var(--fs-title)/var(--lh-title) var(--font-display);
+--type-subtitle:var(--fw-medium) var(--fs-subtitle)/var(--lh-subtitle) var(--font-display);
+--type-body:var(--fw-light) var(--fs-body)/var(--lh-body) var(--font-body);
+--type-caption:var(--fw-regular) var(--fs-caption)/var(--lh-ui) var(--font-body);
+--type-eyebrow:var(--fw-semibold) var(--fs-micro)/1.2 var(--font-body);
+}
+:root{letter-spacing:var(--tracking)}
+::selection{background:var(--selection-bg);color:var(--selection-fg)}

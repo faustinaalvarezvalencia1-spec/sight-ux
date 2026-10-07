@@ -1,0 +1,83 @@
+{%- liquid
+  assign menu = linklists[section.settings.menu]
+  if customer
+    assign account_label = 'Mi espacio'
+    assign account_url = routes.account_url
+  else
+    assign account_label = 'Iniciar sesión'
+    assign account_url = routes.account_login_url
+  endif
+-%}
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="{{ routes.root_url }}" class="site-header__logo" aria-label="{{ shop.name }}, inicio">{% render 'logo' %}</a>
+
+    <nav class="site-nav" aria-label="Principal">
+      <ul class="site-nav__list">
+        {%- if menu.links.size > 0 -%}
+          {%- for link in menu.links -%}
+            <li><a class="navlink{% if link.current %} is-current{% endif %}" href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}</a></li>
+          {%- endfor -%}
+        {%- else -%}
+          <li><a class="navlink{% if template.name == 'index' %} is-current{% endif %}" href="{{ routes.root_url }}">Inicio</a></li>
+          <li><a class="navlink{% if page.handle == 'nosotros' %} is-current{% endif %}" href="/pages/nosotros">Sobre nosotros</a></li>
+          <li><a class="navlink" href="{{ routes.root_url }}#servicios">Servicios</a></li>
+          <li><a class="navlink{% if page.handle == 'laboratorio' %} is-current{% endif %}" href="/pages/laboratorio">Laboratorio</a></li>
+          <li><a class="navlink{% if template.name == 'collection' or template.name == 'product' %} is-current{% endif %}" href="{{ routes.all_products_collection_url }}">Tienda</a></li>
+        {%- endif -%}
+      </ul>
+      {%- if shop.customer_accounts_enabled -%}
+        <a class="btn btn--outline btn--sm{% if template.name == 'customers/login' %} is-current{% endif %}" href="{{ account_url }}">{{ account_label }}</a>
+      {%- endif -%}
+      <a class="textlink site-nav__cta" href="{{ section.settings.cta_link | default: '/#contacto' }}">{{ section.settings.cta_label }} →</a>
+    </nav>
+
+    <details class="mobile-nav">
+      <summary aria-label="Abrir menú"><span></span><span></span><span></span></summary>
+      <div class="mobile-nav__panel">
+        <ul>
+          {%- if menu.links.size > 0 -%}
+            {%- for link in menu.links -%}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {%- endfor -%}
+          {%- else -%}
+            <li><a href="{{ routes.root_url }}">Inicio</a></li>
+            <li><a href="/pages/nosotros">Sobre nosotros</a></li>
+            <li><a href="{{ routes.root_url }}#servicios">Servicios</a></li>
+            <li><a href="/pages/laboratorio">Laboratorio</a></li>
+            <li><a href="{{ routes.all_products_collection_url }}">Tienda</a></li>
+          {%- endif -%}
+          {%- if shop.customer_accounts_enabled -%}<li><a href="{{ account_url }}">{{ account_label }}</a></li>{%- endif -%}
+          <li><a href="{{ section.settings.cta_link | default: '/#contacto' }}">{{ section.settings.cta_label }} →</a></li>
+        </ul>
+      </div>
+    </details>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Encabezado",
+  "class": "section-header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menú",
+      "info": "Si el menú está vacío se muestran: Inicio, Sobre nosotros, Servicios y Laboratorio."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Texto del enlace final",
+      "default": "Hablemos"
+    },
+    {
+      "type": "text",
+      "id": "cta_link",
+      "label": "Destino del enlace final",
+      "default": "/#contacto"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,22 @@
+{%- assign words = section.settings.words | split: ',' -%}
+<div class="marquee">
+  <p class="visually-hidden">{{ section.settings.label }}: {{ section.settings.words }}</p>
+  <div class="marquee__track" aria-hidden="true">
+    {%- for n in (1..4) -%}
+      {%- for w in words -%}
+        <span>{{ w | strip }}</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"></path></svg>
+      {%- endfor -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Cinta de valores",
+  "settings": [
+    { "type": "text", "id": "words", "label": "Palabras (separadas por coma)", "default": "Dirección, Adaptabilidad, Certidumbre, Expansión, Anticipación" },
+    { "type": "text", "id": "label", "label": "Descripción para lectores de pantalla", "default": "Nuestros valores" }
+  ],
+  "presets": [ { "name": "Cinta de valores" } ]
+}
+{% endschema %}

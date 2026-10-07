@@ -1,0 +1,11 @@
+<!-- @dsCard group="Composición" height=226 subtitle="Post-it" -->
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>StickyNote</title><style>html,body{margin:0;background:var(--surface-page);font-family:var(--font-sans);color:var(--text-body);letter-spacing:var(--tracking)}*{box-sizing:border-box}a{color:var(--text-accent)}#root{padding:24px}</style></head>
+<body><div id="root"></div>
+<script>
+const { Button, Tag, Badge, Divider, Wordmark, EyeMark, Marquee, Card, ColorBlock, ShapeMark, StickyNote, AuraField, SectionHeading, Callout, Quote, StatBlock, DiagnosisTrack, Highlight, PhotoFrame, BarChart, TrendLine, RingStat, NestedScale, LayerStack, SpokeDiagram, Field, Input, Select, Checkbox, Switch } = window.SightDesignSystem_3d4cc7;
+function Demo() {
+  return /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 22, flexWrap: "wrap", padding: "12px 0" } }, /* @__PURE__ */ React.createElement(StickyNote, { tone: "pink", size: 150, rotate: -4, style: { fontSize: 14 } }, "Big ideas start here"), /* @__PURE__ */ React.createElement(StickyNote, { tone: "lime", size: 150, rotate: 3, style: { fontSize: 14 } }, "Síntoma → causa raíz"), /* @__PURE__ */ React.createElement(StickyNote, { tone: "cool", size: 150, rotate: -2, style: { fontSize: 14 } }, "Ventana de medición: 6 meses"));
+}
+ReactDOM.createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(Demo, null));
+</script></body></html>

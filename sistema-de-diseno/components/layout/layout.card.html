@@ -1,0 +1,22 @@
+<!-- @dsCard group="Components" viewport="700x340" name="Layout" subtitle="Card en sus superficies, ColorBlock" -->
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<style>html,body{margin:0;background:var(--surface-page);font-family:var(--font-sans);color:var(--text-body);letter-spacing:var(--tracking)}a{color:var(--text-accent)}a:hover{color:var(--pink-600)}#root{padding:24px;}</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script><script src="../../_ds_bundle.js"></script></head><body><div id="root"></div>
+<script type="text/babel">const {Card,ColorBlock}=window.SightDesignSystem_3d4cc7;
+function Demo(){return <div style={{display:'grid',gap:16}}>
+<div style={{display:'grid',gridTemplateColumns:'repeat(4,minmax(0,1fr))',gap:12}}>
+{['plain','sunken','warm','cool'].map(s=><Card key={s} surface={s} pad="sm"><div style={{font:'var(--fw-semibold) 15px/1.2 var(--font-sans)'}}>{s}</div><div style={{font:'var(--fw-light) 13px/1.4 var(--font-sans)',marginTop:6}}>Esquina recta, sin sombra en reposo.</div></Card>)}
+</div>
+<div style={{display:'grid',gridTemplateColumns:'repeat(3,minmax(0,1fr))',gap:12}}>
+{['lime','dark','accent'].map(s=><Card key={s} surface={s} pad="sm"><div style={{font:'var(--fw-semibold) 15px/1.2 var(--font-sans)'}}>{s}</div><div style={{font:'var(--fw-light) 13px/1.4 var(--font-sans)',marginTop:6}}>Máximo dos superficies de color por vista.</div></Card>)}
+</div>
+<Card surface="plain" pad="sm" rule><div style={{font:'var(--fw-light) 14px/1.4 var(--font-sans)'}}>rule — barra de acento de 3px a la izquierda</div></Card>
+<div style={{display:'grid',gridTemplateColumns:'repeat(3,minmax(0,1fr))',gap:2}}>
+<ColorBlock name="Pink paradize" hex="#ff4864" pantone="17-1755 TCX" height={120}/>
+<ColorBlock name="Light lime" hex="#e2fa83" pantone="373 C" textColor="var(--deep-blue-gray)" height={120}/>
+<ColorBlock name="Deep Blue-Gray" hex="#2f3440" pantone="432 C" height={120}/>
+</div></div>;}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script></body></html>

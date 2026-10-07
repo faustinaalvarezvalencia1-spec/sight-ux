@@ -1,0 +1,23 @@
+<section class="collection">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Colección</p>
+      <h1 class="display">{{ collection.title }}</h1>
+      {%- if collection.description != blank -%}<div class="rte lead">{{ collection.description }}</div>{%- endif -%}
+    </div>
+    {%- paginate collection.products by 12 -%}
+      <ul class="product-grid">
+        {%- for product in collection.products -%}
+          <li>{% render 'product-card', product: product %}</li>
+        {%- else -%}
+          <li class="empty">Todavía no hay productos en esta colección.</li>
+        {%- endfor -%}
+      </ul>
+      {%- if paginate.pages > 1 -%}<nav class="pagination" aria-label="Paginación">{{ paginate | default_pagination }}</nav>{%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Colección", "settings": [] }
+{% endschema %}

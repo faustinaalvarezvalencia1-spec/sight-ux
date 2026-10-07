@@ -1,0 +1,15 @@
+<!-- @dsCard group="Láminas" height=724 width=1280 page subtitle="Cierre — Llamada a la acción y datos de contacto" -->
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Cierre</title><style>html,body{margin:0;width:1280px;height:720px;overflow:hidden;font-family:var(--font-sans);letter-spacing:var(--tracking)}a{color:var(--pink-paradise)}a:hover{color:var(--pink-600)}.slide{width:1280px;height:720px;padding:80px;box-sizing:border-box;display:flex;flex-direction:column}</style></head>
+<body><div id="root"></div>
+
+<script>
+(function(){
+const { Button, Wordmark, Divider } = window.SightDesignSystem_3d4cc7;
+function Slide() {
+  return /* @__PURE__ */ React.createElement("div", { className: "slide", style: { background: "var(--paper)", color: "var(--text-strong)", justifyContent: "space-between" } }, /* @__PURE__ */ React.createElement(Wordmark, { lockup: "sight lab", size: 34 }), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("h2", { style: { margin: "0 0 24px", font: "var(--fw-extrabold) 54px/1.1 var(--font-sans)", letterSpacing: "var(--tracking)", maxWidth: "20ch" } }, "El diagnóstico dura cuatro semanas. La decisión, el resto de la década."), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 16 } }, /* @__PURE__ */ React.createElement(Button, { variant: "primary", size: "lg" }, "Agendar diagnóstico"), /* @__PURE__ */ React.createElement(Button, { variant: "outline", size: "lg" }, "Descargar el método"))), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement(Divider, { tone: "accent", style: { marginBottom: 24 } }), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", justifyContent: "space-between", font: "var(--fw-light) 20px/1.3 var(--font-sans)" } }, /* @__PURE__ */ React.createElement("span", null, "hola@sight.lab"), /* @__PURE__ */ React.createElement("span", null, "Ciudad de México"), /* @__PURE__ */ React.createElement("span", null, "sight.lab"))));
+}
+ReactDOM.createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(Slide, null));
+
+})();
+</script></body></html>

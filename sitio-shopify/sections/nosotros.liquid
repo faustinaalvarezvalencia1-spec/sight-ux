@@ -1,0 +1,64 @@
+<section id="nosotros" class="nosotros">
+  {%- if section.settings.image != blank -%}
+    {{ section.settings.image | image_url: width: 1400 | image_tag: class: 'nosotros__photo', alt: section.settings.image_alt }}
+  {%- else -%}
+    <img class="nosotros__photo" src="{{ 'equipo-sight.jpg' | asset_url }}" alt="{{ section.settings.image_alt }}" width="668" height="776">
+  {%- endif -%}
+  <div class="nosotros__photo-fade" aria-hidden="true"></div>
+  <div class="nosotros__sun" aria-hidden="true"></div>
+  <div class="wrap nosotros__inner">
+    <div class="nosotros__copy">
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      <h1 class="display">{{ section.settings.title }}</h1>
+      <div class="lead rte">{{ section.settings.text }}</div>
+      <p class="nosotros__quote">{{ section.settings.quote }}</p>
+    </div>
+    <div class="team">
+      <div class="team__line" aria-hidden="true"></div>
+      {%- for block in section.blocks -%}
+        {%- assign bs = block.settings -%}
+        <div class="team__member" {{ block.shopify_attributes }}>
+          {%- if bs.photo != blank -%}
+            {{ bs.photo | image_url: width: 300, height: 300, crop: 'center' | image_tag: class: 'team__avatar', alt: bs.name }}
+          {%- else -%}
+            <div class="team__avatar" aria-hidden="true">{{ bs.name | slice: 0 }}</div>
+          {%- endif -%}
+          <div class="team__text">
+            <span class="team__name">{{ bs.name }}</span>
+            <span class="team__role">{{ bs.role }}</span>
+            <span class="team__desc">{{ bs.text }}</span>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Somos sight",
+  "class": "section-nosotros",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Foto del equipo", "info": "Si la dejas vacía se usa la foto incluida en el tema." },
+    { "type": "text", "id": "image_alt", "label": "Descripción de la foto", "default": "El equipo de sight" },
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Sobre nosotros" },
+    { "type": "html", "id": "title", "label": "Título", "default": "Somos <span class=\"mk-hl mk-lime\">sight</span>" },
+    { "type": "richtext", "id": "text", "label": "Texto" },
+    { "type": "text", "id": "quote", "label": "Frase final", "default": "Cuando diferentes miradas se conectan, aparecen mejores posibilidades." }
+  ],
+  "blocks": [
+    {
+      "type": "member",
+      "name": "Persona",
+      "limit": 6,
+      "settings": [
+        { "type": "image_picker", "id": "photo", "label": "Foto (opcional)" },
+        { "type": "text", "id": "name", "label": "Nombre" },
+        { "type": "text", "id": "role", "label": "Rol" },
+        { "type": "textarea", "id": "text", "label": "Descripción" }
+      ]
+    }
+  ],
+  "presets": [ { "name": "Somos sight" } ]
+}
+{% endschema %}

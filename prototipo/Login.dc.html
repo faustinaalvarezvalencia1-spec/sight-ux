@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>sight — Iniciar sesión</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,800;1,300&amp;display=swap">
+<style>
+body{margin:0;background:#fafafa;font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;color:#2f3440;-webkit-font-smoothing:antialiased}
+::selection{background:#e2fa83;color:#2f3440}
+a{color:#2f3440}a:hover{color:#ff4864}
+button{font-family:inherit;cursor:pointer;letter-spacing:inherit}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:none;box-shadow:0 0 0 2px #f2f1ee,0 0 0 4px #ff4864}
+.navlink{text-decoration:none;font-size:12px;font-weight:500;line-height:1.35;letter-spacing:0.06em;text-transform:uppercase;color:oklch(0.42 0.15 12)}
+.textlink:hover{color:#ff4864 !important}
+.btn-pink:hover{background:oklch(0.55 0.20 12) !important;color:#ffffff !important}
+.btn-ink:hover{background:oklch(0.42 0.019 262) !important;color:#ffffff !important}
+.btn-pink:active,.btn-ink:active{transform:translateY(1px)}
+.field{width:100%;box-sizing:border-box;font:inherit;font-size:16px;letter-spacing:-0.02em;color:#2f3440;background:#ffffff;border-radius:4px;padding:14px 16px;transition:border-color 120ms cubic-bezier(0.2,0,0,1)}
+.field::placeholder{color:oklch(0.72 0.012 262)}
+.field:hover{border-color:#2f3440 !important}
+.eye-btn:hover{background:oklch(0.955 0.004 262) !important}
+.linkbtn{border:0;background:none;padding:0;font-size:14px;color:#2f3440;text-decoration:underline;text-underline-offset:3px}
+.linkbtn:hover{color:#ff4864}
+</style>
+</helmet>
+<div style="width: 1440px; height: 900px; overflow: hidden; background: #fafafa; color: #2f3440; letter-spacing: -0.04em; position: relative;">
+
+<!-- NAV -->
+<header style="height: 88px; box-sizing: border-box; padding: 0 120px; display: flex; align-items: center; justify-content: space-between; background: #f2f1ee; position: relative; z-index: 2;">
+<a href="Main.dc.html" aria-label="sight, inicio" style="display: flex; align-items: center;"><img src="/_blob/d17d284feef34aa0e8749e441893f3b3" alt="sight" style="height: 40px; width: auto; display: block;"></a>
+<nav aria-label="Principal" style="display: flex; align-items: center; gap: 32px;">
+<a class="navlink" href="Main.dc.html">Inicio</a>
+<a class="navlink" href="Nosotros.dc.html">Sobre nosotros</a>
+<a class="navlink" href="Main.dc.html#servicios">Servicios</a>
+<a class="navlink" href="Laboratorio.dc.html">Laboratorio</a>
+<span aria-current="page" style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #ffffff; background: oklch(0.42 0.15 12); border: 1px solid oklch(0.42 0.15 12); border-radius: 999px; padding: 8px 16px;">Iniciar sesión</span>
+<a class="textlink" href="Main.dc.html#contacto" style="font-size: 13px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none; color: oklch(0.42 0.15 12);">Hablemos →</a>
+</nav>
+</header>
+
+<!-- ACCESO -->
+<main id="acceso" style="height: 812px; display: flex;">
+
+<!-- Portada: Pink paradize plano, forma sangrada y ojo -->
+<div style="width: 640px; flex-shrink: 0; position: relative; overflow: hidden; background: #ff4864; box-sizing: border-box; padding: 96px 80px 80px; display: flex; flex-direction: column; justify-content: space-between; color: #ffffff;">
+<div aria-hidden="true" style="position: absolute; right: -200px; top: -200px; width: 400px; height: 400px; border-radius: 50%; background: #e2fa83;"></div>
+<div aria-hidden="true" style="position: absolute; right: 96px; top: 96px; width: 120px; height: 120px; border-radius: 50%; background: #fafafa; display: flex; align-items: center; justify-content: center;"><div style="width: 56px; height: 56px; border-radius: 50%; background: #2f3440; position: relative;"><div style="position: absolute; right: 10px; top: 10px; width: 16px; height: 16px; border-radius: 50%; background: #fafafa;"></div></div></div>
+<p style="position: relative; margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;">Espacio de clientes</p>
+<div style="position: relative; display: flex; flex-direction: column; gap: 24px;">
+<h2 style="margin: 0; font-size: 72px; font-weight: 600; line-height: 1.05; letter-spacing: -0.045em;"><span style="display: block; font-style: italic; font-weight: 300;">Tu marca,</span>vista con <span style="background: linear-gradient(transparent 8%, #e2fa83 8%, #e2fa83 94%, transparent 94%); color: #2f3440; padding: 0 8px;">claridad</span>.</h2>
+<p style="margin: 0; max-width: 400px; font-size: 18px; font-weight: 300; line-height: 1.4; letter-spacing: -0.02em;">Consulta el avance de tu diagnóstico, los hallazgos y las decisiones de cada etapa en un solo lugar.</p>
+</div>
+<img src="/_blob/7fed6ef2297b94f3bd0c95e498eb07a8" alt="sight" style="position: relative; height: 32px; width: auto; align-self: flex-start;">
+</div>
+
+<!-- Formularios -->
+<div style="flex-grow: 1; background: #f2f1ee; display: flex; align-items: center; justify-content: center;">
+<div style="width: 440px; display: flex; flex-direction: column; gap: 24px;">
+
+<!-- Iniciar sesión -->
+<sc-if value="{{isLogin}}" hint-placeholder-val="{{ true }}">
+<form onSubmit="{{submitLogin}}" novalidate="novalidate" style="display: flex; flex-direction: column; gap: 20px;">
+<div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 8px;">
+<p style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #ff4864;">Acceso</p>
+<h1 style="margin: 0; font-size: 54px; font-weight: 800; line-height: 1.1; letter-spacing: -0.04em;">Inicia sesión</h1>
+<p style="margin: 0; font-size: 16px; font-weight: 400; line-height: 1.4; letter-spacing: -0.02em; color: oklch(0.42 0.019 262);">Entra con el correo que registraste con tu equipo de sight.</p>
+</div>
+
+<label style="display: flex; flex-direction: column; gap: 8px;">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;">Correo</span>
+<input class="field" type="email" name="correo" autocomplete="email" placeholder="tu@marca.com" value="{{email}}" onChange="{{onEmail}}" aria-invalid="{{emailInvalid}}" style="border: 1px solid {{emailBorder}};">
+<sc-if value="{{emailErr}}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size: 14px; font-weight: 500; letter-spacing: -0.01em; color: oklch(0.42 0.15 12);">{{emailErr}}</span></sc-if>
+</label>
+
+<label style="display: flex; flex-direction: column; gap: 8px;">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;">Contraseña</span>
+<span style="position: relative; display: block;">
+<input class="field" type="{{pwType}}" name="contrasena" autocomplete="current-password" placeholder="Tu contraseña" value="{{pw}}" onChange="{{onPw}}" aria-invalid="{{pwInvalid}}" style="border: 1px solid {{pwBorder}}; padding-right: 96px;">
+<button type="button" class="eye-btn" onClick="{{togglePw}}" aria-pressed="{{show}}" style="position: absolute; right: 6px; top: 6px; height: 40px; padding: 0 12px; border: 0; border-radius: 4px; background: transparent; font-size: 13px; font-weight: 600; color: #2f3440;">{{pwToggleLabel}}</button>
+</span>
+<sc-if value="{{pwErr}}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size: 14px; font-weight: 500; letter-spacing: -0.01em; color: oklch(0.42 0.15 12);">{{pwErr}}</span></sc-if>
+</label>
+
+<div style="display: flex; justify-content: space-between; align-items: center;">
+<label style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: oklch(0.42 0.019 262);"><input type="checkbox" name="recordar" checked="{{remember}}" onChange="{{toggleRemember}}" style="width: 16px; height: 16px; margin: 0; accent-color: #ff4864;">Recordarme en este equipo</label>
+<button type="button" class="linkbtn" onClick="{{goRecover}}">¿Olvidaste tu contraseña?</button>
+</div>
+
+<sc-if value="{{canEnter}}" hint-placeholder-val="{{ false }}">
+<a class="btn-pink" href="Dashboard.dc.html" style="margin-top: 8px; display: block; text-align: center; text-decoration: none; background: #ff4864; color: #ffffff; font-size: 18px; font-weight: 600; padding: 16px 32px; border-radius: 999px;">Entrar →</a>
+</sc-if>
+<sc-if value="{{cannotEnter}}" hint-placeholder-val="{{ true }}">
+<button type="submit" class="btn-pink" style="margin-top: 8px; border: 0; background: #ff4864; color: #ffffff; font-size: 18px; font-weight: 600; padding: 16px 32px; border-radius: 999px;">Entrar →</button>
+</sc-if>
+
+<p style="margin: 8px 0 0; font-size: 14px; color: oklch(0.42 0.019 262);">¿Aún no trabajas con nosotros? <a href="Main.dc.html#contacto" style="color: #2f3440; font-weight: 600;">Hablemos</a></p>
+</form>
+</sc-if>
+
+<!-- Recuperar contraseña -->
+<sc-if value="{{isRecover}}" hint-placeholder-val="{{ false }}">
+<form onSubmit="{{submitRecover}}" novalidate="novalidate" style="display: flex; flex-direction: column; gap: 20px;">
+<div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 8px;">
+<p style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #ff4864;">Acceso</p>
+<h1 style="margin: 0; font-size: 54px; font-weight: 800; line-height: 1.1; letter-spacing: -0.04em;">Recupera tu contraseña</h1>
+<p style="margin: 0; font-size: 16px; font-weight: 400; line-height: 1.4; letter-spacing: -0.02em; color: oklch(0.42 0.019 262);">Te enviamos un enlace para crear una nueva.</p>
+</div>
+<label style="display: flex; flex-direction: column; gap: 8px;">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;">Correo</span>
+<input class="field" type="email" name="correo-recuperar" autocomplete="email" placeholder="tu@marca.com" value="{{email}}" onChange="{{onEmail}}" aria-invalid="{{recInvalid}}" style="border: 1px solid {{recBorder}};">
+<sc-if value="{{recErr}}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size: 14px; font-weight: 500; letter-spacing: -0.01em; color: oklch(0.42 0.15 12);">{{recErr}}</span></sc-if>
+</label>
+<button type="submit" class="btn-ink" style="margin-top: 8px; border: 0; background: #2f3440; color: #ffffff; font-size: 18px; font-weight: 600; padding: 16px 32px; border-radius: 999px;">Enviar enlace</button>
+<button type="button" class="linkbtn" onClick="{{goLogin}}" style="align-self: flex-start;">← Volver a iniciar sesión</button>
+</form>
+</sc-if>
+
+<!-- Enlace enviado -->
+<sc-if value="{{isSent}}" hint-placeholder-val="{{ false }}">
+<div role="status" style="display: flex; flex-direction: column; gap: 20px;">
+<div style="background: #ffffff; border-top: 3px solid #ff4864; padding: 32px; display: flex; flex-direction: column; gap: 12px;">
+<p style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #ff4864;">Enlace enviado</p>
+<p style="margin: 0; font-size: 28px; font-weight: 500; line-height: 1.2;">Revisa tu correo.</p>
+<p style="margin: 0; font-size: 16px; line-height: 1.4; letter-spacing: -0.02em; color: oklch(0.42 0.019 262);">Si <strong style="font-weight: 600; color: #2f3440;">{{email}}</strong> está registrado, en unos minutos te llega el enlace para crear una nueva contraseña.</p>
+</div>
+<button type="button" class="linkbtn" onClick="{{goLogin}}" style="align-self: flex-start;">← Volver a iniciar sesión</button>
+</div>
+</sc-if>
+
+<p style="margin: 0; align-self: flex-start; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 6px 12px; border-radius: 999px; background: #e2fa83; color: #2f3440;">Prototipo · entra con cualquier correo y contraseña</p>
+
+</div>
+</div>
+</main>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { mode: 'login', email: '', pw: '', show: false, remember: true, tried: false, recTried: false };
+  }
+  renderVals() {
+    var s = this.state, self = this;
+    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.email.trim());
+    var pwOk = s.pw.length > 0;
+    var emailMsg = s.email.trim() ? 'Ese correo no parece válido. Ejemplo: tu@marca.com' : 'Escribe tu correo.';
+    var emailErr = s.tried && !emailOk ? emailMsg : '';
+    var pwErr = s.tried && !pwOk ? 'Escribe tu contraseña.' : '';
+    var recErr = s.recTried && !emailOk ? emailMsg : '';
+    var ok = '#b4b8c0', bad = 'oklch(0.42 0.15 12)';
+    return {
+      isLogin: s.mode === 'login', isRecover: s.mode === 'recover', isSent: s.mode === 'sent',
+      email: s.email, pw: s.pw, show: s.show, remember: s.remember,
+      pwType: s.show ? 'text' : 'password', pwToggleLabel: s.show ? 'Ocultar' : 'Mostrar',
+      emailErr: emailErr, pwErr: pwErr, recErr: recErr,
+      emailInvalid: emailErr ? 'true' : 'false', pwInvalid: pwErr ? 'true' : 'false', recInvalid: recErr ? 'true' : 'false',
+      emailBorder: emailErr ? bad : ok, pwBorder: pwErr ? bad : ok, recBorder: recErr ? bad : ok,
+      canEnter: emailOk && pwOk, cannotEnter: !(emailOk && pwOk),
+      onEmail: function (e) { self.setState({ email: e.target.value }); },
+      onPw: function (e) { self.setState({ pw: e.target.value }); },
+      togglePw: function () { self.setState({ show: !s.show }); },
+      toggleRemember: function () { self.setState({ remember: !s.remember }); },
+      submitLogin: function (e) { if (e && e.preventDefault) e.preventDefault(); self.setState({ tried: true }); },
+      submitRecover: function (e) {
+        if (e && e.preventDefault) e.preventDefault();
+        if (emailOk) self.setState({ mode: 'sent', recTried: false }); else self.setState({ recTried: true });
+      },
+      goRecover: function () { self.setState({ mode: 'recover', recTried: false }); },
+      goLogin: function () { self.setState({ mode: 'login', tried: false }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

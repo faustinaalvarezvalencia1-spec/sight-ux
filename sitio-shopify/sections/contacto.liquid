@@ -1,0 +1,55 @@
+<section id="contacto" class="contacto">
+  {%- capture gid -%}grainContacto{{ section.id | replace: '-', '' }}{%- endcapture -%}
+  {% render 'grain', id: gid, opacity: 0.3, blend: 'overlay' %}
+  <div class="contacto__sun" aria-hidden="true"></div>
+  <div class="wrap contacto__grid">
+    <div class="contacto__copy">
+      <p class="eyebrow eyebrow--light">{{ section.settings.eyebrow }}</p>
+      <h2 class="display contacto__title">{{ section.settings.title }}</h2>
+      {%- if settings.instagram != blank -%}
+        <span class="contacto__note">{{ section.settings.note }} <a href="https://instagram.com/{{ settings.instagram | remove: '@' }}" target="_blank" rel="noopener">{{ settings.instagram }}</a></span>
+      {%- endif -%}
+    </div>
+    <div class="contacto__side">
+      {%- if section.settings.show_form -%}
+        {%- form 'contact', id: 'ContactForm', class: 'contact-form' -%}
+          {%- if form.posted_successfully? -%}
+            <div class="contact-ok" role="status" tabindex="-1" autofocus>
+              <span class="eyebrow">Mensaje enviado</span>
+              <span class="contact-ok__text">{{ section.settings.success }}</span>
+            </div>
+          {%- else -%}
+            {%- if form.errors -%}
+              <div class="contact-error" role="alert">{{ form.errors | default_errors }}</div>
+            {%- endif -%}
+            <label class="field"><span class="field__label">Nombre</span><input type="text" name="contact[name]" autocomplete="name" required placeholder="Tu nombre" value="{{ form.name }}"></label>
+            <label class="field"><span class="field__label">Correo</span><input type="email" name="contact[email]" autocomplete="email" required placeholder="tu@marca.com" value="{{ form.email }}" spellcheck="false" autocapitalize="off"></label>
+            <label class="field"><span class="field__label">¿En qué te ayudamos?</span><textarea name="contact[body]" rows="4" placeholder="Cuéntanos qué necesita tu marca" data-contact-body>{{ form.body }}</textarea></label>
+            <button type="submit" class="btn btn--ink">Enviar mensaje</button>
+          {%- endif -%}
+        {%- endform -%}
+      {%- else -%}
+        <div class="contacto__cta">
+          <a class="btn btn--ink btn--lg" href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contacto",
+  "class": "section-contacto",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Contacto" },
+    { "type": "text", "id": "title", "label": "Título", "default": "Hablemos de lo que tu marca todavía no ve." },
+    { "type": "text", "id": "note", "label": "Texto antes del Instagram", "default": "¿Prefieres escribirnos directo?" },
+    { "type": "checkbox", "id": "show_form", "label": "Mostrar formulario", "default": true, "info": "Los mensajes llegan al correo de la tienda." },
+    { "type": "text", "id": "success", "label": "Mensaje de confirmación", "default": "Gracias. Te escribimos pronto para agendar tu diagnóstico." },
+    { "type": "text", "id": "button_label", "label": "Botón (si no hay formulario)", "default": "Agenda un diagnóstico" },
+    { "type": "text", "id": "button_link", "label": "Destino del botón", "default": "/#contacto" }
+  ],
+  "presets": [ { "name": "Contacto" } ]
+}
+{% endschema %}

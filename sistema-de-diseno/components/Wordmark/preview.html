@@ -1,0 +1,11 @@
+<!-- @dsCard group="Básicos" height=234 subtitle="Logotipo de Sight" -->
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Wordmark</title><style>html,body{margin:0;background:var(--surface-page);font-family:var(--font-sans);color:var(--text-body);letter-spacing:var(--tracking)}*{box-sizing:border-box}a{color:var(--text-accent)}#root{padding:24px}</style></head>
+<body><div id="root"></div>
+<script>
+const { Button, Tag, Badge, Divider, Wordmark, EyeMark, Marquee, Card, ColorBlock, ShapeMark, StickyNote, AuraField, SectionHeading, Callout, Quote, StatBlock, DiagnosisTrack, Highlight, PhotoFrame, BarChart, TrendLine, RingStat, NestedScale, LayerStack, SpokeDiagram, Field, Input, Select, Checkbox, Switch } = window.SightDesignSystem_3d4cc7;
+function Demo() {
+  return /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gap: 20 } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 40, alignItems: "flex-end", flexWrap: "wrap" } }, /* @__PURE__ */ React.createElement(Wordmark, { lockup: "sight lab", size: 56 }), /* @__PURE__ */ React.createElement(Wordmark, { lockup: "sight", size: 56, tone: "pink" })), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", flexWrap: "wrap" } }, [["var(--paper)", "ink"], ["var(--coconut-milk)", "ink"], ["var(--light-lime)", "ink"], ["var(--salt-air)", "ink"], ["var(--pink-paradise)", "paper"], ["var(--deep-blue-gray)", "paper"]].map(([bg, tone]) => /* @__PURE__ */ React.createElement("div", { key: bg, style: { background: bg, padding: "24px 28px", display: "grid", placeItems: "center", boxShadow: "inset 0 0 0 1px var(--border-hairline)" } }, /* @__PURE__ */ React.createElement(Wordmark, { lockup: "sight", size: 30, tone })))));
+}
+ReactDOM.createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(Demo, null));
+</script></body></html>

@@ -1,0 +1,19 @@
+<!-- @dsCard group="Marca" height=499 width=900 page subtitle="Versiones del logotipo — sight lab institucional / sight cotidiano" -->
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Versiones del logotipo</title><style>html,body{margin:0;background:var(--surface-page);font-family:var(--font-sans);color:var(--text-body);letter-spacing:var(--tracking)}a{color:var(--text-accent)}a:hover{color:var(--pink-600)}#root{padding:40px}</style></head>
+<body><div id="root"></div>
+
+<script>
+(function(){
+const { Wordmark } = window.SightDesignSystem_3d4cc7;
+const Eyebrow = ({ children }) => /* @__PURE__ */ React.createElement("div", { style: { font: "var(--type-eyebrow)", letterSpacing: "var(--tracking-caps)", textTransform: "uppercase", color: "var(--text-muted)" } }, children);
+function Col({ title, children, body }) {
+  return /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gap: 16, alignContent: "start" } }, /* @__PURE__ */ React.createElement("div", { style: { background: "var(--coconut-milk)", minHeight: 170, display: "grid", placeItems: "center", padding: 24 } }, children), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement(Eyebrow, null, title), /* @__PURE__ */ React.createElement("p", { style: { margin: "8px 0 0", font: "var(--fw-light) 17px/1.4 var(--font-sans)", letterSpacing: "var(--tracking)", maxWidth: "44ch" } }, body)));
+}
+function Demo() {
+  return /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gap: 28 } }, /* @__PURE__ */ React.createElement("h2", { style: { font: "var(--fw-extrabold) 32px/1.1 var(--font-sans)", letterSpacing: "var(--tracking)", color: "var(--text-strong)", margin: 0 } }, "Versiones del logotipo"), /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: "repeat(2,minmax(0,1fr))", gap: 40 } }, /* @__PURE__ */ React.createElement(Col, { title: "sight lab — institucional", body: "Escenarios formales y estratégicos: presentaciones iniciales, propuestas, documentos corporativos. LAB refuerza la idea de laboratorio y experimentación estratégica." }, /* @__PURE__ */ React.createElement(Wordmark, { lockup: "sight lab", size: 64 })), /* @__PURE__ */ React.createElement(Col, { title: "sight — simplificada", body: "Comunicaciones cotidianas, aplicaciones digitales y piezas gráficas. Sin LAB gana ligereza y versatilidad, y conserva el elemento distintivo del ojo." }, /* @__PURE__ */ React.createElement(Wordmark, { lockup: "sight", size: 64 }))));
+}
+ReactDOM.createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(Demo, null));
+
+})();
+</script></body></html>

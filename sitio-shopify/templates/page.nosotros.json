@@ -1,0 +1,42 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "nosotros": {
+      "type": "nosotros",
+      "blocks": {
+        "m1": { "type": "member", "settings": { "name": "Natalia", "role": "Investigación y prospectiva", "text": "Analiza usuarios, mercado y tendencias para encontrar oportunidades." } },
+        "m2": { "type": "member", "settings": { "name": "Alexandra", "role": "Estrategia y relaciones públicas", "text": "Convierte las oportunidades en soluciones para las marcas." } },
+        "m3": { "type": "member", "settings": { "name": "Faustina", "role": "Marca y comunicación estratégica", "text": "Construye la identidad, narrativa y posicionamiento de la marca." } }
+      },
+      "block_order": ["m1", "m2", "m3"],
+      "settings": {
+        "image_alt": "El equipo de sight",
+        "eyebrow": "Sobre nosotros",
+        "title": "Somos <span class=\"mk-hl mk-lime\">sight</span>",
+        "text": "<p>Nacimos en la cafetería de nuestra universidad, después de presentar un trabajo juntas. Hoy somos un equipo de seis personas que complementa estrategia, gestión, investigación, creatividad y ejecución.</p><p>Nuestro nombre nace de simplificar <em>insight</em>: quitamos el prefijo y queda <strong>sight</strong>, visión. La capacidad de identificar lo que no es evidente a simple vista.</p>",
+        "quote": "Cuando diferentes miradas se conectan, aparecen mejores posibilidades."
+      }
+    },
+    "proposito": {
+      "type": "proposito",
+      "settings": {}
+    },
+    "contacto": {
+      "type": "contacto",
+      "settings": {
+        "show_form": false,
+        "button_label": "Agenda un diagnóstico",
+        "button_link": "/#contacto"
+      }
+    }
+  },
+  "order": ["nosotros", "proposito", "contacto"]
+}

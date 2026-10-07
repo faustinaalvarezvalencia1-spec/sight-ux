@@ -1,0 +1,651 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>sight — Tu espacio</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,800;1,300&amp;display=swap">
+<style>
+body{margin:0;background:#faf7f3;font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;color:#2f3440;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+::selection{background:#e2fa83;color:#2f3440}
+a{color:#2f3440}a:hover{color:#ff4864}
+button{font-family:inherit;cursor:pointer;letter-spacing:inherit;color:inherit}
+button:focus-visible,a:focus-visible{outline:none;box-shadow:0 0 0 2px #ffffff,0 0 0 4px #ff4864}
+.nav-item{transition:background-color 120ms cubic-bezier(0.2,0,0,1)}
+.nav-item:hover{background:rgba(47,52,64,0.05) !important}
+.nav-item.is-on:hover{background:#2f3440 !important}
+.pill-btn:hover{background:#2f3440 !important;color:#fafafa !important}
+.pill-pink:hover{background:oklch(0.55 0.20 12) !important}
+.pill-lime:hover{background:#d3ef62 !important}
+.ghost:hover{background:oklch(0.94 0.045 12) !important}
+.ring:hover{filter:brightness(0.97)}
+.ext:hover{background:#2f3440 !important;color:#fafafa !important;border-color:#2f3440 !important}
+.card-hover:hover{box-shadow:0 12px 32px -16px rgba(47,52,64,0.35)}
+.legend-btn:hover{color:#2f3440 !important}
+</style>
+</helmet>
+<div style="width: 100%; min-height: 100%; background: radial-gradient(55% 70% at 0% 35%, #ffd3da 0%, rgba(255,211,218,0) 72%), radial-gradient(50% 65% at 100% 15%, #d2f5ec 0%, rgba(210,245,236,0) 72%), radial-gradient(60% 50% at 55% 100%, #fbefe2 0%, rgba(251,239,226,0) 70%), #faf7f3; color: #2f3440; letter-spacing: -0.04em; display: flex; flex-direction: column; gap: 16px;">
+
+<!-- BARRA SUPERIOR -->
+<header style="background: transparent; min-height: 72px; padding: 16px 32px 0; display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+<a href="Main.dc.html" aria-label="sight, ir al sitio" style="display: flex; align-items: center;"><img src="/_blob/d17d284feef34aa0e8749e441893f3b3" alt="sight" style="height: 32px; width: auto; display: block;"></a>
+<span aria-hidden="true" style="width: 1px; height: 28px; background: #c9ccd2;"></span>
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: oklch(0.42 0.019 262);">Espacio de clientes</span>
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 5px 12px; border-radius: 999px; background: #e2fa83;">Datos de ejemplo</span>
+<div style="margin-left: auto; display: flex; align-items: center; gap: 16px;">
+<div style="display: flex; align-items: center; gap: 10px;">
+<span aria-hidden="true" style="width: 36px; height: 36px; border-radius: 50%; background: #ade6e6; color: #721f34; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800;">L</span>
+<span style="display: flex; flex-direction: column; line-height: 1.2;"><span style="font-size: 14px; font-weight: 600;">Laura Gómez</span><span style="font-size: 12px; color: oklch(0.55 0.016 262); letter-spacing: -0.01em;">Marca Ejemplo</span></span>
+</div>
+<a class="pill-btn" href="Login.dc.html" style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; color: oklch(0.42 0.15 12); border: 1px solid oklch(0.42 0.15 12); border-radius: 999px; padding: 8px 16px;">Cerrar sesión</a>
+</div>
+</header>
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px; flex-grow: 1; align-items: flex-start; padding: 0 24px 32px;">
+
+<!-- MENÚ -->
+<nav aria-label="Secciones de tu proyecto" style="flex: 1 1 248px; max-width: 100%; background: rgba(255,255,255,0.88); border-radius: 22px; box-shadow: 0 18px 44px -32px rgba(47,52,64,0.45); padding: 24px 0; display: flex; flex-direction: column; gap: 4px;">
+<p style="margin: 0 0 8px; padding: 0 24px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: oklch(0.55 0.016 262);">Tu proyecto</p>
+<sc-for list="{{navItems}}" as="n" hint-placeholder-count="5">
+<button type="button" class="nav-item {{n.cls}}" onClick="{{n.go}}" aria-current="{{n.current}}" style="border: 0; text-align: left; padding: 12px 16px; margin: 0 10px; border-radius: 14px; display: flex; align-items: center; gap: 12px; background: {{n.bg}}; color: {{n.fg}}; font-size: 15px; font-weight: 600;">
+<span style="flex-grow: 1;">{{n.label}}</span>
+<sc-if value="{{n.hasBadge}}" hint-placeholder-val="{{ false }}"><span style="font-size: 12px; font-weight: 600; letter-spacing: 0; padding: 2px 9px; border-radius: 999px; background: #ff4864; color: #ffffff;">{{n.badge}}</span></sc-if>
+</button>
+</sc-for>
+
+<p style="margin: 24px 0 8px; padding: 0 24px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: oklch(0.55 0.016 262);">Fases</p>
+<sc-for list="{{phases}}" as="p" hint-placeholder-count="4">
+<button type="button" class="nav-item" onClick="{{p.pick}}" style="border: 0; text-align: left; padding: 10px 16px; margin: 0 10px; border-radius: 14px; display: flex; gap: 12px; align-items: flex-start; background: {{p.navBg}};">
+<span aria-hidden="true" style="width: 14px; height: 14px; margin-top: 4px; flex-shrink: 0; border-radius: 50%; background: {{p.dot}}; border: {{p.dotBorder}};"></span>
+<span style="display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 15px; font-weight: 600;">{{p.name}}</span><span style="font-size: 13px; font-weight: 400; line-height: 1.35; letter-spacing: -0.01em; color: oklch(0.42 0.019 262);">{{p.short}}</span></span>
+</button>
+</sc-for>
+</nav>
+
+<!-- CONTENIDO -->
+<div style="flex: 999 1 640px; min-width: 0; display: flex; flex-wrap: wrap; gap: 20px; align-content: flex-start;">
+
+<!-- ===================== RESUMEN ===================== -->
+<sc-if value="{{vResumen}}" hint-placeholder-val="{{ true }}">
+<div style="flex: 999 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
+
+<!-- Saludo -->
+<section style="background: rgba(255,255,255,0.88); border-radius: 22px; box-shadow: 0 18px 44px -32px rgba(47,52,64,0.45); padding: 26px 28px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap;">
+<div aria-hidden="true" style="width: 58px; height: 58px; border-radius: 50%; background: #2f3440; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><div style="width: 26px; height: 26px; border-radius: 50%; border: 5px solid #e2fa83; display: flex; align-items: center; justify-content: center;"><div style="width: 7px; height: 7px; border-radius: 50%; background: #e2fa83;"></div></div></div>
+<div>
+<h1 style="margin: 0; font-size: 30px; font-weight: 800; line-height: 1.1; letter-spacing: -0.045em;">Hola, Laura</h1>
+<p style="margin: 4px 0 0; font-size: 15px; letter-spacing: -0.02em; color: oklch(0.55 0.016 262);">Diagnóstico de marca · semana 7 de 10 · fase {{currentName}}</p>
+</div>
+<div style="margin-left: auto; display: flex; align-items: center; gap: 18px; flex-wrap: wrap;">
+<span style="display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: oklch(0.42 0.019 262);"><span style="width: 7px; height: 7px; border-radius: 50%; background: oklch(0.55 0.016 262);"></span>{{progress}}% del proyecto</span>
+<button type="button" class="pill-pink" onClick="{{goMuestras}}" style="border: 0; background: #ff4864; color: #ffffff; border-radius: 999px; padding: 10px 18px; font-size: 14px; font-weight: 600;">Adjuntar muestra</button>
+</div>
+</section>
+
+<!-- Intensidad de horas -->
+<section style="background: rgba(255,255,255,0.88); border-radius: 22px; box-shadow: 0 18px 44px -32px rgba(47,52,64,0.45); padding: 24px 28px; display: flex; flex-direction: column; gap: 16px;">
+<div style="display: flex; align-items: flex-end; gap: 16px; flex-wrap: wrap;">
+<div>
+<p style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: oklch(0.55 0.016 262);">Este mes</p>
+<h2 style="margin: 8px 0 0; font-size: 28px; font-weight: 800; line-height: 1.1; letter-spacing: -0.04em;"><span style="background: linear-gradient(transparent 40%, #ffb6c0 40%, #ffb6c0 92%, transparent 92%); padding: 0 4px;">Intensidad</span> de horas</h2>
+</div>
+<p style="margin: 0 0 2px auto; font-size: 15px; letter-spacing: -0.02em; color: oklch(0.42 0.019 262);"><strong style="font-weight: 800; font-size: 22px; color: #2f3440;">{{totalHours}} h</strong> dedicadas a tu marca</p>
+</div>
+<div onMouseLeave="{{clearHover}}" style="position: relative; height: 240px;">
+<svg viewBox="0 0 1000 240" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 240px; display: block;">
+<line x1="0" x2="1000" y1="20" y2="20" stroke="#e6e7e9" stroke-width="1" vector-effect="non-scaling-stroke"></line>
+<line x1="0" x2="1000" y1="72.5" y2="72.5" stroke="#e6e7e9" stroke-width="1" vector-effect="non-scaling-stroke"></line>
+<line x1="0" x2="1000" y1="125" y2="125" stroke="#e6e7e9" stroke-width="1" vector-effect="non-scaling-stroke"></line>
+<line x1="0" x2="1000" y1="177.5" y2="177.5" stroke="#e6e7e9" stroke-width="1" vector-effect="non-scaling-stroke"></line>
+<line x1="0" x2="1000" y1="230" y2="230" stroke="#c9ccd2" stroke-width="1" vector-effect="non-scaling-stroke"></line>
+<path d="{{lineInv}}" fill="none" stroke="#ff4864" stroke-width="3" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+<path d="{{lineEst}}" fill="none" stroke="#2f3440" stroke-width="3" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+<path d="{{lineDis}}" fill="none" stroke="#9cbf2b" stroke-width="3" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+</svg>
+<sc-if value="{{hasHover}}" hint-placeholder-val="{{ false }}">
+<div aria-hidden="true" style="position: absolute; top: 8px; bottom: 10px; left: {{hoverLeft}}; width: 0; border-left: 1px dashed #2f3440;"></div>
+</sc-if>
+<sc-for list="{{dots}}" as="d" hint-placeholder-count="12">
+<span aria-hidden="true" style="position: absolute; left: {{d.left}}; top: {{d.top}}px; width: {{d.size}}px; height: {{d.size}}px; margin: -{{d.half}}px 0 0 -{{d.half}}px; border-radius: 50%; background: {{d.fill}}; border: 3px solid {{d.color}};"></span>
+</sc-for>
+<sc-for list="{{weeks}}" as="w" hint-placeholder-count="4">
+<div onMouseEnter="{{w.enter}}" onClick="{{w.enter}}" style="position: absolute; top: 0; bottom: 0; left: {{w.left}}; width: 25%; cursor: crosshair;"></div>
+</sc-for>
+<sc-if value="{{hasHover}}" hint-placeholder-val="{{ false }}">
+<div role="status" style="position: absolute; top: -6px; left: {{hoverLeft}}; transform: translateX(-50%); background: #2f3440; color: #fafafa; padding: 8px 12px; white-space: nowrap; pointer-events: none;">
+<div style="font-size: 13px; font-weight: 800;">{{hoverWeek}}</div>
+<div style="margin-top: 4px; font-size: 12px; letter-spacing: -0.01em; color: #cffffd;">{{hoverText}}</div>
+</div>
+</sc-if>
+</div>
+<div style="display: flex; justify-content: space-around; font-size: 13px; font-weight: 500; color: oklch(0.55 0.016 262);"><span>Semana 1</span><span>Semana 2</span><span>Semana 3</span><span>Semana 4</span></div>
+<div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+<sc-for list="{{legend}}" as="g" hint-placeholder-count="3">
+<button type="button" class="legend-btn" onClick="{{g.toggle}}" aria-pressed="{{g.on}}" style="display: flex; align-items: center; gap: 8px; border: 0; background: none; padding: 0; font-size: 13px; font-weight: 500; opacity: {{g.opacity}}; color: oklch(0.42 0.019 262);"><span style="width: 12px; height: 12px; background: {{g.color}};"></span>{{g.label}} · {{g.hours}} h</button>
+</sc-for>
+<span style="margin-left: auto; font-size: 13px; color: oklch(0.55 0.016 262); letter-spacing: -0.01em;">Pasa el cursor por una semana · clic en la leyenda para aislar un frente</span>
+</div>
+</section>
+
+<!-- Muestras diagnósticas (resumen) -->
+<section style="background: rgba(255,255,255,0.88); border-radius: 22px; box-shadow: 0 18px 44px -32px rgba(47,52,64,0.45); padding: 24px 28px; display: flex; flex-direction: column; gap: 20px;">
+<div style="display: flex; align-items: flex-end; gap: 16px; flex-wrap: wrap;">
+<div>
+<p style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: oklch(0.55 0.016 262);">Lo que necesitamos de tu equipo</p>
+<h2 style="margin: 8px 0 0; font-size: 28px; font-weight: 800; line-height: 1.1; letter-spacing: -0.04em;">Muestras <span style="background: linear-gradient(transparent 40%, #ff7c6f 40%, #ff7c6f 92%, transparent 92%); padding: 0 4px;">diagnósticas</span></h2>
+</div>
+<button type="button" class="ghost" onClick="{{goMuestras}}" style="margin-left: auto; border: 0; background: transparent; border-radius: 999px; padding: 10px 16px; font-size: 14px; font-weight: 600;">Ver todas →</button>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;">
+<sc-for list="{{samplesTop}}" as="m" hint-placeholder-count="3">
+<div style="padding: 18px; border-radius: 16px; background: #faf7f3; display: flex; flex-direction: column; gap: 10px;">
+<div style="display: flex; align-items: center; gap: 10px;">
+<span aria-hidden="true" style="width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: {{m.dotBg}}; border: {{m.dotBorder}}; color: #ffffff; font-size: 16px; font-weight: 800;">{{m.mark}}</span>
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: {{m.stColor}};">{{m.status}}</span>
+</div>
+<span style="font-size: 18px; font-weight: 600; line-height: 1.25;">{{m.name}}</span>
+<span style="font-size: 14px; line-height: 1.35; letter-spacing: -0.01em; color: oklch(0.42 0.019 262);">{{m.note}}</span>
+<sc-if value="{{m.pending}}" hint-placeholder-val="{{ false }}"><button type="button" class="pill-btn" onClick="{{m.upload}}" style="align-self: flex-start; border: 1px solid #2f3440; background: transparent; border-radius: 999px; padding: 8px 16px; font-size: 13px; font-weight: 600;">Adjuntar archivo</button></sc-if>
+</div>
+</sc-for>
+</div>
+</section>
+
+<!-- Fases: arcos -->
+<section style="background: rgba(255,255,255,0.88); border-radius: 22px; box-shadow: 0 18px 44px -32px rgba(47,52,64,0.45); padding: 24px 28px; display: flex; gap: 32px; flex-wrap: wrap; align-items: flex-end;">
+<div style="flex: 0 0 auto; display: flex; flex-direction: column; gap: 16px;">
+<div>
+<p style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: oklch(0.55 0.016 262);">Método sight</p>
+<h2 style="margin: 8px 0 0; font-size: 28px; font-weight: 800; line-height: 1.1; letter-spacing: -0.04em;">De observar a accionar</h2>
+</div>
+<div style="position: relative; width: 320px; height: 320px; overflow: hidden;">
+<sc-for list="{{rings}}" as="r" hint-placeholder-count="4">
+<div class="ring" onClick="{{r.pick}}" role="button" aria-label="{{r.name}}, {{r.statusLabel}}" style="position: absolute; left: 0; bottom: 0; width: {{r.size}}px; height: {{r.size}}px; border-top-right-radius: {{r.size}}px; background: {{r.bg}}; border-top: 3px solid #ffffff; border-right: 3px solid #ffffff; outline: {{r.outline}}; outline-offset: -3px; cursor: pointer;"></div>
+</sc-for>
+<sc-for list="{{rings}}" as="r" hint-placeholder-count="4">
+<span style="position: absolute; left: {{r.labelPos}}px; bottom: {{r.labelPos}}px; transform: translate(-50%, 50%) rotate(-45deg); font-size: 14px; font-weight: {{r.weight}}; color: {{r.labelColor}}; white-space: nowrap; pointer-events: none;">{{r.name}}</span>
+</sc-for>
+</div>
+</div>
+<div style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 14px; padding-bottom: 8px;">
+<p style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #ff4864;">Fase {{sel.num}} · {{sel.statusLabel}}</p>
+<h3 style="margin: 0; font-size: 36px; font-weight: 500; line-height: 1.1; letter-spacing: -0.04em;">{{sel.name}}</h3>
+<p style="margin: 0; font-size: 14px; font-weight: 500; color: oklch(0.55 0.016 262);">{{sel.dates}}</p>
+<p style="margin: 0; font-size: 16px; line-height: 1.4; letter-spacing: -0.02em; color: oklch(0.42 0.019 262);">{{sel.long}}</p>
+<div style="display: flex; gap: 8px; flex-wrap: wrap;">
+<sc-for list="{{sel.items}}" as="it" hint-placeholder-count="3"><span style="font-size: 13px; font-weight: 500; padding: 6px 14px; border-radius: 999px; border: 1px solid #2f3440;">{{it}}</span></sc-for>
+</div>
+<div style="border-top: 1px solid #e6e7e9; padding-top: 14px; display: flex; flex-direction: column; gap: 8px;">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: oklch(0.55 0.016 262);">Entregable</span>
+<span style="font-size: 16px; font-weight: 600;">{{sel.deliverable}}</span>
+<span style="display: block; height: 6px; background: #e6e7e9;"><span style="display: block; height: 6px; width: {{sel.pct}}%; background: {{sel.bar}};"></span></span>
+<span style="font-size: 13px; color: oklch(0.55 0.016 262);">{{sel.pct}}% de la fase</span>
+</div>
+</div>
+</section>
+</div>
+
+<!-- Columna derecha -->
+<aside style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
+
+<!-- Calendario -->
+<section style="background: rgba(255,255,255,0.88); border-radius: 22px; box-shadow: 0 18px 44px -32px rgba(47,52,64,0.45); padding: 24px;">
+<div style="display: flex; align-items: center; justify-content: space-between;">
+<h2 style="margin: 0; font-size: 24px; font-weight: 800; line-height: 1.2; letter-spacing: -0.04em;"><span style="background: linear-gradient(transparent 40%, #cffffd 40%, #cffffd 92%, transparent 92%); padding: 0 4px;">Calendario</span></h2>
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; background: #f2f1ee;">Oct · Nov</span>
+</div>
+<ul style="list-style: none; margin: 16px 0 0; padding: 0;">
+<sc-for list="{{agenda}}" as="a" hint-placeholder-count="3">
+<li style="padding: 16px 0; border-top: {{a.sep}}; display: flex; flex-direction: column; gap: 10px;">
+<div style="display: grid; grid-template-columns: 96px minmax(0, 1fr) auto; gap: 12px; align-items: start;">
+<div><div style="font-size: 12px; font-weight: 600; color: oklch(0.55 0.016 262);">{{a.date}}</div><div style="margin-top: 2px; font-size: 15px; font-weight: 800;">{{a.time}}</div></div>
+<div><div style="font-size: 15px; font-weight: 600; line-height: 1.3;">{{a.title}}</div><div style="margin-top: 3px; font-size: 13px; color: oklch(0.55 0.016 262);">{{a.where}}</div></div>
+<button type="button" class="ext" onClick="{{a.toggle}}" aria-expanded="{{a.open}}" aria-label="Detalles de {{a.title}}" style="width: 32px; height: 32px; border: 1px solid #c9ccd2; background: #ffffff; border-radius: 2px; display: flex; align-items: center; justify-content: center; padding: 0;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></button>
+</div>
+<sc-if value="{{a.open}}" hint-placeholder-val="{{ false }}">
+<div style="background: #faf7f3; border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px;">
+<span style="font-size: 14px; line-height: 1.4; letter-spacing: -0.01em; color: oklch(0.42 0.019 262);">{{a.detail}}</span>
+<div style="display: flex; gap: 8px; flex-wrap: wrap;">
+<button type="button" class="pill-pink" style="border: 0; background: #ff4864; color: #ffffff; border-radius: 999px; padding: 8px 16px; font-size: 13px; font-weight: 600;">{{a.cta}}</button>
+<button type="button" class="pill-btn" style="border: 1px solid #2f3440; background: transparent; border-radius: 999px; padding: 8px 16px; font-size: 13px; font-weight: 600;">Agregar a mi calendario</button>
+</div>
+</div>
+</sc-if>
+</li>
+</sc-for>
+</ul>
+</section>
+
+<!-- ¿En qué vamos? escalera -->
+<section style="background: rgba(255,255,255,0.88); border-radius: 22px; box-shadow: 0 18px 44px -32px rgba(47,52,64,0.45); padding: 24px; display: flex; flex-direction: column; gap: 16px;">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+<h2 style="margin: 0; font-size: 24px; font-weight: 800; line-height: 1.2; letter-spacing: -0.04em;">¿En qué <span style="background: linear-gradient(transparent 40%, #ff7c6f 40%, #ff7c6f 92%, transparent 92%); padding: 0 4px;">vamos</span>?</h2>
+<button type="button" class="ghost" onClick="{{goAvance}}" style="border: 0; background: transparent; border-radius: 999px; padding: 8px 12px; font-size: 13px; font-weight: 600;">Detalle →</button>
+</div>
+<div style="position: relative; height: 230px;">
+<span style="position: absolute; left: 0; top: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: oklch(0.55 0.016 262);">Inicio · 25 ago</span>
+<sc-for list="{{stairs}}" as="s" hint-placeholder-count="4">
+<div style="position: absolute; left: {{s.left}}; top: {{s.top}}px; width: 25%; bottom: 28px; background: {{s.bg}}; border-left: 2px solid #ffffff; border-top: 3px solid {{s.edge}};">
+<span style="position: absolute; left: 8px; top: 8px; font-size: 12px; font-weight: 600; letter-spacing: -0.01em; color: {{s.fg}};">{{s.name}}</span>
+</div>
+</sc-for>
+<sc-for list="{{stairs}}" as="s" hint-placeholder-count="4">
+<sc-if value="{{s.here}}" hint-placeholder-val="{{ false }}">
+<div style="position: absolute; left: {{s.markLeft}}; top: {{s.markTop}}px; transform: translate(-50%, -100%); display: flex; flex-direction: column; align-items: center; gap: 4px;">
+<span style="font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #2f3440; color: #fafafa; padding: 3px 8px; white-space: nowrap;">Estamos aquí</span>
+<span aria-hidden="true" style="width: 26px; height: 26px; border-radius: 50%; background: #2f3440; display: flex; align-items: center; justify-content: center;"><span style="width: 11px; height: 11px; border-radius: 50%; background: #e2fa83;"></span></span>
+</div>
+</sc-if>
+</sc-for>
+<span style="position: absolute; right: 0; bottom: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;">Entrega final · 3 nov 2026</span>
+</div>
+<p style="margin: 0; font-size: 14px; line-height: 1.4; letter-spacing: -0.01em; color: oklch(0.42 0.019 262);">Vamos en la fase <strong style="font-weight: 600; color: #2f3440;">{{currentName}}</strong>: faltan 4 semanas para la entrega consolidada.</p>
+</section>
+
+<!-- Siguiente paso -->
+<section style="position: relative; overflow: hidden; background: rgba(255,255,255,0.88); border-radius: 22px; box-shadow: 0 18px 44px -32px rgba(47,52,64,0.45); padding: 24px;">
+<div aria-hidden="true" style="position: absolute; inset: -40px; filter: blur(40px); opacity: 0.75; background: radial-gradient(54% 54% at 88% 22%, #cffffd 0%, #cffffd 24%, transparent 72%), radial-gradient(50% 50% at 52% 66%, #e2fa83 0%, #e2fa83 18%, transparent 68%), radial-gradient(48% 48% at 14% 26%, #ffb6c0 0%, #ffb6c0 20%, transparent 70%), radial-gradient(56% 56% at 24% 94%, #ff7c6f 0%, transparent 72%);"></div>
+<div style="position: relative; background: rgba(255,255,255,0.9); border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px;">
+<p style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: oklch(0.55 0.016 262);">Siguiente paso</p>
+<p style="margin: 0; font-size: 17px; font-weight: 500; line-height: 1.35;">{{nextStep}}</p>
+<button type="button" class="pill-lime" onClick="{{goMuestras}}" style="align-self: flex-start; border: 0; background: #e2fa83; border-radius: 999px; padding: 10px 18px; font-size: 14px; font-weight: 600;">{{nextCta}}</button>
+</div>
+</section>
+
+<!-- Equipo -->
+<section style="background: rgba(255,255,255,0.88); border-radius: 22px; box-shadow: 0 18px 44px -32px rgba(47,52,64,0.45); padding: 24px; display: flex; flex-direction: column; gap: 14px;">
+<p style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: oklch(0.55 0.016 262);">Tu equipo sight</p>
+<sc-for list="{{team}}" as="t" hint-placeholder-count="3">
+<div style="display: flex; align-items: center; gap: 12px;">
+<span aria-hidden="true" style="width: 40px; height: 40px; border-radius: 50%; background: #ade6e6; color: #721f34; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 800; flex-shrink: 0;">{{t.initial}}</span>
+<span style="display: flex; flex-direction: column;"><span style="font-size: 15px; font-weight: 600;">{{t.name}}</span><span style="font-size: 13px; color: #ff4864; font-weight: 500;">{{t.role}}</span></span>
+</div>
+</sc-for>
+</section>
+</aside>
+</sc-if>
+
+<!-- ===================== ¿EN QUÉ VAMOS? ===================== -->
+<sc-if value="{{vAvance}}" hint-placeholder-val="{{ false }}">
+<section style="flex: 1 1 100%; background: rgba(255,255,255,0.88); border-radius: 22px; box-shadow: 0 18px 44px -32px rgba(47,52,64,0.45); padding: 40px; display: flex; flex-direction: column; gap: 32px;">
+<div style="display: flex; flex-direction: column; gap: 10px;">
+<p style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #ff4864;">¿En qué vamos?</p>
+<h1 style="margin: 0; font-size: 54px; font-weight: 800; line-height: 1.1; letter-spacing: -0.04em;">Lo que hemos investigado hasta ahora</h1>
+<p style="margin: 0; max-width: 62ch; font-size: 18px; font-weight: 300; line-height: 1.45; color: oklch(0.42 0.019 262);">Cada hallazgo queda registrado en la fase donde apareció. Se actualiza cada semana.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px;">
+<sc-for list="{{findings}}" as="f" hint-placeholder-count="4">
+<div style="border-top: 3px solid {{f.edge}}; padding-top: 16px; display: flex; flex-direction: column; gap: 12px;">
+<div style="display: flex; align-items: center; gap: 10px;"><span style="font-size: 20px; font-weight: 600;">{{f.phase}}</span><span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; background: {{f.tagBg}};">{{f.statusLabel}}</span></div>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column;">
+<sc-for list="{{f.items}}" as="x" hint-placeholder-count="2">
+<li style="display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 12px; padding: 12px 0; border-bottom: 1px solid #e6e7e9;"><span style="font-size: 13px; font-weight: 600; color: oklch(0.55 0.016 262);">{{x.date}}</span><span style="font-size: 15px; line-height: 1.4; letter-spacing: -0.02em;">{{x.text}}</span></li>
+</sc-for>
+</ul>
+</div>
+</sc-for>
+</div>
+</section>
+</sc-if>
+
+<!-- ===================== CONTEXTO INICIAL ===================== -->
+<sc-if value="{{vContexto}}" hint-placeholder-val="{{ false }}">
+<section style="flex: 1 1 100%; background: rgba(255,255,255,0.88); border-radius: 22px; box-shadow: 0 18px 44px -32px rgba(47,52,64,0.45); padding: 40px; display: flex; flex-direction: column; gap: 32px;">
+<div style="display: flex; flex-direction: column; gap: 10px;">
+<p style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #ff4864;">Contexto inicial</p>
+<h1 style="margin: 0; font-size: 54px; font-weight: 800; line-height: 1.1; letter-spacing: -0.04em;">De dónde partimos</h1>
+<p style="margin: 0; max-width: 62ch; font-size: 18px; font-weight: 300; line-height: 1.45; color: oklch(0.42 0.019 262);">Lo que nos contaron en la sesión de arranque. Si algo cambió, escríbenos y lo actualizamos.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;">
+<sc-for list="{{context}}" as="c" hint-placeholder-count="6">
+<div style="background: #fafafa; border-top: 3px solid {{c.edge}}; padding: 20px 24px; display: flex; flex-direction: column; gap: 10px;">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: oklch(0.55 0.016 262);">{{c.label}}</span>
+<span style="font-size: 18px; line-height: 1.4; letter-spacing: -0.02em;">{{c.value}}</span>
+</div>
+</sc-for>
+</div>
+</section>
+</sc-if>
+
+<!-- ===================== MUESTRAS DIAGNÓSTICAS ===================== -->
+<sc-if value="{{vMuestras}}" hint-placeholder-val="{{ false }}">
+<section style="flex: 1 1 100%; background: rgba(255,255,255,0.88); border-radius: 22px; box-shadow: 0 18px 44px -32px rgba(47,52,64,0.45); padding: 40px; display: flex; flex-direction: column; gap: 32px;">
+<div style="display: flex; align-items: flex-end; gap: 24px; flex-wrap: wrap;">
+<div style="display: flex; flex-direction: column; gap: 10px;">
+<p style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #ff4864;">Muestras diagnósticas</p>
+<h1 style="margin: 0; font-size: 54px; font-weight: 800; line-height: 1.1; letter-spacing: -0.04em;">Lo que necesitamos de tu equipo</h1>
+<p style="margin: 0; max-width: 62ch; font-size: 18px; font-weight: 300; line-height: 1.45; color: oklch(0.42 0.019 262);">Adjunta aquí la información que pedimos. Cada archivo pasa a revisión y te avisamos si falta algo.</p>
+</div>
+<div style="margin-left: auto; display: flex; gap: 24px;">
+<div><div style="font-size: 44px; font-weight: 800; line-height: 1; letter-spacing: -0.05em;">{{doneCount}}</div><div style="font-size: 13px; color: oklch(0.55 0.016 262);">entregadas</div></div>
+<div><div style="font-size: 44px; font-weight: 800; line-height: 1; letter-spacing: -0.05em; color: #ff4864;">{{pendingCount}}</div><div style="font-size: 13px; color: oklch(0.55 0.016 262);">pendientes</div></div>
+</div>
+</div>
+<ul style="margin: 0; padding: 0; list-style: none; border-top: 1px solid #2f3440;">
+<sc-for list="{{samples}}" as="m" hint-placeholder-count="5">
+<li style="display: grid; grid-template-columns: 40px minmax(0, 1fr) 160px 180px; gap: 20px; align-items: center; padding: 20px 0; border-bottom: 1px solid #e6e7e9;">
+<span aria-hidden="true" style="width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: {{m.dotBg}}; border: {{m.dotBorder}}; color: #ffffff; font-size: 16px; font-weight: 800;">{{m.mark}}</span>
+<span style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 18px; font-weight: 600;">{{m.name}}</span><span style="font-size: 14px; letter-spacing: -0.01em; color: oklch(0.42 0.019 262);">{{m.note}}</span></span>
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: {{m.stColor}};">{{m.status}}</span>
+<span style="justify-self: end;">
+<sc-if value="{{m.pending}}" hint-placeholder-val="{{ false }}"><button type="button" class="pill-btn" onClick="{{m.upload}}" style="border: 1px solid #2f3440; background: transparent; border-radius: 999px; padding: 8px 16px; font-size: 13px; font-weight: 600;">Adjuntar archivo</button></sc-if>
+<sc-if value="{{m.hasFile}}" hint-placeholder-val="{{ false }}"><span style="font-size: 13px; color: oklch(0.55 0.016 262);">{{m.file}}</span></sc-if>
+</span>
+</li>
+</sc-for>
+</ul>
+<div style="border: 2px dashed #c9ccd2; background: #fafafa; padding: 32px; display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;">
+<span style="font-size: 16px; letter-spacing: -0.02em; color: oklch(0.42 0.019 262);">¿Tienes algo más que pueda servir? Arrástralo aquí o</span>
+<button type="button" class="pill-btn" style="border: 1px solid #2f3440; background: transparent; border-radius: 999px; padding: 8px 16px; font-size: 13px; font-weight: 600;">Elegir archivo</button>
+</div>
+</section>
+</sc-if>
+
+<!-- ===================== INFOGRAFÍAS ===================== -->
+<sc-if value="{{vInfo}}" hint-placeholder-val="{{ false }}">
+<div style="flex: 1 1 100%; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
+
+<section style="background: rgba(255,255,255,0.88); border-radius: 22px; box-shadow: 0 18px 44px -32px rgba(47,52,64,0.45); padding: 28px 32px; display: flex; flex-direction: column; gap: 8px;">
+<p style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #ff4864;">Infografías</p>
+<h1 style="margin: 0; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.045em;">Evidencias del trabajo de campo</h1>
+<p style="margin: 0; max-width: 62ch; font-size: 16px; line-height: 1.45; letter-spacing: -0.02em; color: oklch(0.42 0.019 262);">Insights de entrevistas, registros y comparativos que respaldan cada decisión del diagnóstico.</p>
+</section>
+
+<!-- Fila 1: cobertura + indicadores -->
+<div style="display: flex; gap: 20px; flex-wrap: wrap; align-items: stretch;">
+<section style="flex: 1 1 260px; background: rgba(255,255,255,0.88); border-radius: 22px; box-shadow: 0 18px 44px -32px rgba(47,52,64,0.45); padding: 24px 26px; display: flex; flex-direction: column; gap: 14px;">
+<p style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: oklch(0.55 0.016 262);">Cobertura del diagnóstico</p>
+<div aria-hidden="true" style="width: 96px; height: 96px; border-radius: 50%; background: conic-gradient(#ff4864 0 {{coverage}}%, #e6e7e9 {{coverage}}% 100%); display: flex; align-items: center; justify-content: center;"><div style="width: 72px; height: 72px; border-radius: 50%; background: #ffffff; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800; letter-spacing: -0.04em;">{{coverage}}%</div></div>
+<div><div style="font-size: 17px; font-weight: 600;">Fase {{currentName}}</div><div style="margin-top: 2px; font-size: 14px; color: oklch(0.55 0.016 262);">Evidencias recogidas hasta hoy</div></div>
+<div style="display: flex; gap: 8px; flex-wrap: wrap;"><span style="font-size: 13px; font-weight: 500; padding: 5px 12px; border-radius: 999px; background: #eef9c8;">12 entrevistas</span><span style="font-size: 13px; font-weight: 500; padding: 5px 12px; border-radius: 999px; background: #eef9c8;">38 registros</span><span style="font-size: 13px; font-weight: 500; padding: 5px 12px; border-radius: 999px; background: #eef9c8;">7 marcas</span></div>
+</section>
+<sc-for list="{{kpis}}" as="k" hint-placeholder-count="2">
+<button type="button" class="card-hover" onClick="{{k.pick}}" aria-pressed="{{k.on}}" style="flex: 1 1 240px; min-height: 250px; text-align: left; border: 2px solid {{k.border}}; border-radius: 22px; padding: 24px 26px; background: {{k.bg}}; display: flex; flex-direction: column; justify-content: space-between;">
+<span style="font-size: 20px; font-weight: 600; letter-spacing: -0.03em;">{{k.title}}</span>
+<span style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 56px; font-weight: 800; line-height: 1; letter-spacing: -0.05em;">{{k.value}}%</span><span style="font-size: 14px; font-weight: 500;">{{k.note}}</span></span>
+</button>
+</sc-for>
+</div>
+
+<!-- Fila 2: evidencias navegables + áreas -->
+<div style="display: flex; gap: 20px; flex-wrap: wrap; align-items: stretch;">
+<section style="flex: 2 1 560px; min-width: 0; background: rgba(255,255,255,0.88); border-radius: 22px; box-shadow: 0 18px 44px -32px rgba(47,52,64,0.45); padding: 24px 26px; display: flex; flex-direction: column; gap: 18px;">
+<div><p style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: oklch(0.55 0.016 262);">Insights por evidencia</p><h2 style="margin: 6px 0 0; font-size: 26px; font-weight: 800; letter-spacing: -0.045em;">Elige una evidencia para ver su detalle</h2></div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 14px; height: 300px;">
+<sc-for list="{{evid}}" as="e" hint-placeholder-count="4">
+<button type="button" class="card-hover" onClick="{{e.pick}}" aria-pressed="{{e.on}}" style="grid-column: {{e.col}}; grid-row: {{e.row}}; position: relative; text-align: left; border: 2px solid {{e.border}}; border-radius: 18px; padding: 18px 20px; background: {{e.bg}}; display: flex; flex-direction: column; justify-content: space-between; min-height: 0;">
+<span style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;"><span style="font-size: 15px; font-weight: 600;">{{e.title}}</span><sc-if value="{{e.on}}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="width: 30px; height: 30px; border-radius: 50%; background: #2f3440; color: #fafafa; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span></sc-if></span>
+<span style="display: flex; flex-direction: column; gap: 2px; align-items: {{e.align}};"><span style="font-size: {{e.size}}px; font-weight: 300; line-height: 0.95; letter-spacing: -0.06em;">{{e.big}}</span><span style="font-size: 13px; font-weight: 500;">{{e.note}}</span></span>
+</button>
+</sc-for>
+</div>
+<div style="border-radius: 18px; padding: 20px 22px 16px; background: linear-gradient(160deg, #f3fbd2 0%, #f7f6e6 55%, #fbf3ea 100%); display: flex; flex-direction: column; gap: 12px;">
+<div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;"><span style="font-size: 15px; font-weight: 800; letter-spacing: -0.03em;">{{chart.title}}</span><span style="font-size: 13px; color: oklch(0.55 0.016 262);">· {{chart.sub}}</span></div>
+<div style="position: relative; height: 210px; display: flex;">
+<div aria-hidden="true" style="width: 34px; flex-shrink: 0; position: relative;"><sc-for list="{{cTicks}}" as="t" hint-placeholder-count="5"><span style="position: absolute; right: 8px; bottom: {{t.pos}}px; transform: translateY(50%); font-size: 11px; color: oklch(0.55 0.016 262);">{{t.label}}</span></sc-for></div>
+<div style="position: relative; flex-grow: 1;">
+<sc-for list="{{cTicks}}" as="t" hint-placeholder-count="5"><span aria-hidden="true" style="position: absolute; left: 0; right: 0; bottom: {{t.pos}}px; height: 1px; background: rgba(47,52,64,0.08);"></span></sc-for>
+<div style="position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: space-around;">
+<sc-for list="{{chart.bars}}" as="b" hint-placeholder-count="4">
+<div style="width: 18%; height: 100%; display: flex; flex-direction: column; justify-content: flex-end;">
+<sc-if value="{{b.out}}" hint-placeholder-val="{{ false }}"><span style="align-self: center; margin-bottom: 6px; font-size: 16px; font-weight: 500;">{{b.v}}%</span></sc-if>
+<span style="height: {{b.h}}px; border-radius: 8px 8px 0 0; background: {{b.color}}; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 8px; font-size: 34px; font-weight: 300; letter-spacing: -0.05em; line-height: 1; color: {{b.fg}};">{{b.inLabel}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+<div style="display: flex; padding-left: 34px; justify-content: space-around; font-size: 13px; font-weight: 500;"><sc-for list="{{chart.bars}}" as="b" hint-placeholder-count="4"><span style="width: 18%; text-align: center;">{{b.label}}</span></sc-for></div>
+</div>
+<div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;"><span style="flex: 1 1 300px; font-size: 14px; line-height: 1.45; letter-spacing: -0.01em; color: oklch(0.42 0.019 262);">{{chart.desc}}</span><button type="button" class="pill-btn" style="border: 1px solid #2f3440; background: transparent; border-radius: 999px; padding: 8px 16px; font-size: 13px; font-weight: 600;">Descargar infografía</button></div>
+</section>
+
+<section style="flex: 1 1 300px; min-width: 0; background: rgba(255,255,255,0.88); border-radius: 22px; box-shadow: 0 18px 44px -32px rgba(47,52,64,0.45); padding: 24px 26px; display: flex; flex-direction: column; gap: 14px;">
+<div><h2 style="margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.04em;">Áreas desarrolladas</h2><p style="margin: 4px 0 0; font-size: 14px; color: oklch(0.55 0.016 262);">Cobertura del diagnóstico por área</p></div>
+<sc-for list="{{areas}}" as="a" hint-placeholder-count="5">
+<div style="display: grid; grid-template-columns: 110px minmax(0, 1fr) 44px; gap: 12px; align-items: center;">
+<span style="font-size: 15px; color: oklch(0.42 0.019 262);">{{a.label}}</span>
+<span style="display: block; height: 14px; background: #eeeff1;"><span style="display: block; height: 14px; width: {{a.v}}%; background: {{a.color}};"></span></span>
+<span style="font-size: 15px; font-weight: 800; text-align: right;">{{a.v}}%</span>
+</div>
+</sc-for>
+<div style="margin-top: auto; border-radius: 16px; padding: 16px 18px; background: linear-gradient(150deg, #f4fbd6 0%, #fbf6ea 100%); display: flex; flex-direction: column; gap: 10px;">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: oklch(0.55 0.016 262);">Lectura del lab</span>
+<span style="font-size: 15px; line-height: 1.4; letter-spacing: -0.02em;">Canal es el área con menos evidencia: la reforzamos con el registro de campo de esta semana.</span>
+</div>
+</section>
+</div>
+
+</div>
+</sc-if>
+
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1500}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { view: 'resumen', phase: 1, hover: null, off: {}, open: 0, info: -1, ev: 0, kpi: 0,
+      uploaded: {} };
+  }
+  smooth(pts) {
+    var d = 'M ' + pts[0][0] + ' ' + pts[0][1];
+    for (var i = 0; i < pts.length - 1; i++) {
+      var x0 = pts[i][0], y0 = pts[i][1], x1 = pts[i + 1][0], y1 = pts[i + 1][1], cx = (x0 + x1) / 2;
+      d += ' C ' + cx + ' ' + y0 + ', ' + cx + ' ' + y1 + ', ' + x1 + ' ' + y1;
+    }
+    return d;
+  }
+  renderVals() {
+    var s = this.state, self = this;
+    var go = function (v) { return function () { self.setState({ view: v, info: -1 }); }; };
+
+    /* Fases del método */
+    var PH = [
+      { name: 'Observar', short: 'Entrevistas, síntoma, datos cualitativos y cuantitativos, entorno.', long: 'Escuchamos a tus clientes y a tu equipo, revisamos los datos y analizamos el entorno para nombrar el síntoma con precisión.', items: ['Entrevistas', 'Síntoma', 'Datos cuali y cuanti', 'Análisis del entorno'], deliverable: 'Diagnóstico inicial', dates: '25 ago – 14 sep', pct: 100 },
+      { name: 'Interpretar', short: 'Causa raíz, diagnóstico e ideación.', long: 'Separamos causa de consecuencia: encontramos la causa raíz y la convertimos en un diagnóstico que orienta las primeras ideas.', items: ['Causa raíz', 'Diagnóstico', 'Ideación'], deliverable: 'Mapa de causa raíz', dates: '15 sep – 9 oct', pct: 68 },
+      { name: 'Proyectar', short: 'Tratamiento e ideación.', long: 'Diseñamos el tratamiento: las rutas de decisión con criterio y visión de largo plazo.', items: ['Tratamiento', 'Ideación', 'Rutas de decisión'], deliverable: 'Ruta de tratamiento', dates: '13 oct – 23 oct', pct: 0 },
+      { name: 'Accionar', short: 'Resultado: entregable consolidado.', long: 'Consolidamos toda la información en un entregable y acompañamos la implementación hasta que el resultado se mide.', items: ['Resultado', 'Entregable consolidado', 'Medición'], deliverable: 'Entregable consolidado', dates: '26 oct – 3 nov', pct: 0 }
+    ];
+    var CUR = 1;
+    var progress = Math.round(PH.reduce(function (a, p) { return a + p.pct; }, 0) / PH.length);
+    var stat = function (i) { return i < CUR ? 'done' : (i === CUR ? 'current' : 'next'); };
+    var statusLabel = { done: 'Completada', current: 'En curso', next: 'Próxima' };
+    var phases = PH.map(function (p, i) {
+      var st = stat(i);
+      return { name: p.name, short: p.short,
+        dot: st === 'done' ? '#ff4864' : (st === 'current' ? '#e2fa83' : '#ffffff'),
+        dotBorder: st === 'next' ? '2px solid #c9ccd2' : (st === 'current' ? '2px solid #2f3440' : '0'),
+        navBg: s.view === 'resumen' && s.phase === i ? '#f4efe6' : 'transparent',
+        pick: function () { self.setState({ view: 'resumen', phase: i }); } };
+    });
+    var sizes = [320, 250, 180, 110];
+    var rings = [3, 2, 1, 0].map(function (i, k) {
+      var st = stat(i), size = sizes[k], inner = k < 3 ? sizes[k + 1] : 0;
+      var mid = (size + inner) / 2 * 0.7071;
+      return { name: PH[i].name, statusLabel: statusLabel[st], size: size,
+        bg: st === 'done' ? '#ff4864' : (st === 'current' ? '#e2fa83' : (i === 2 ? '#f4efe6' : '#f2f1ee')),
+        outline: s.phase === i ? '3px solid #2f3440' : 'none',
+        labelPos: Math.round(mid), weight: s.phase === i ? 800 : 600,
+        labelColor: st === 'done' ? '#ffffff' : '#2f3440',
+        pick: function () { self.setState({ phase: i }); } };
+    });
+    var sp = PH[s.phase], sst = stat(s.phase);
+    var sel = { num: '0' + (s.phase + 1), name: sp.name, statusLabel: statusLabel[sst].toLowerCase(), dates: sp.dates, long: sp.long,
+      items: sp.items, deliverable: sp.deliverable, pct: sp.pct, bar: sst === 'done' ? '#ff4864' : '#2f3440' };
+
+    /* Intensidad de horas */
+    var SER = [
+      { key: 'inv', label: 'Investigación', color: '#ff4864', v: [14, 22, 18, 9] },
+      { key: 'est', label: 'Estrategia', color: '#2f3440', v: [6, 10, 16, 20] },
+      { key: 'dis', label: 'Diseño', color: '#9cbf2b', v: [2, 5, 9, 15] }
+    ];
+    var MAX = 24, y = function (v) { return 20 + (1 - v / MAX) * 210; };
+    var xc = function (i) { return (i + 0.5) * 250; };
+    var visible = SER.filter(function (sr) { return !s.off[sr.key]; });
+    var lineFor = function (sr) {
+      if (s.off[sr.key]) return 'M 0 0';
+      var pts = [[0, y(sr.v[0])]].concat(sr.v.map(function (v, i) { return [xc(i), y(v)]; })).concat([[1000, y(sr.v[3])]]);
+      return self.smooth(pts);
+    };
+    var dots = [];
+    visible.forEach(function (sr) {
+      sr.v.forEach(function (v, i) {
+        var on = s.hover === i;
+        dots.push({ left: ((i + 0.5) * 25) + '%', top: Math.round(y(v)), size: on ? 16 : 10, half: on ? 8 : 5,
+          fill: on ? '#ffffff' : sr.color, color: sr.color });
+      });
+    });
+    var weekNames = ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4'];
+    var weeks = [0, 1, 2, 3].map(function (i) { return { left: (i * 25) + '%', enter: function () { self.setState({ hover: i }); } }; });
+    var totalHours = SER.reduce(function (a, sr) { return a + sr.v.reduce(function (b, v) { return b + v; }, 0); }, 0);
+    var legend = SER.map(function (sr) {
+      return { label: sr.label, color: sr.color, on: !s.off[sr.key], opacity: s.off[sr.key] ? 0.4 : 1,
+        hours: sr.v.reduce(function (b, v) { return b + v; }, 0),
+        toggle: function () { var o = Object.assign({}, s.off); o[sr.key] = !o[sr.key]; self.setState({ off: o }); } };
+    });
+    var hasHover = s.hover !== null && s.hover !== undefined;
+
+    /* Muestras diagnósticas */
+    var SM = [
+      { id: 'contactos', name: 'Contactos de clientes', note: '8 contactos para entrevistas.', base: 'done', file: 'contactos-clientes.xlsx' },
+      { id: 'ventas', name: 'Ventas de los últimos 12 meses', note: 'Por canal y por producto. Antes del jue 9 oct.', base: 'pending' },
+      { id: 'encuesta', name: 'Encuesta interna', note: 'Respuestas de tu equipo comercial.', base: 'review', file: 'encuesta-equipo.pdf' },
+      { id: 'marca', name: 'Material de marca actual', note: 'Manual, piezas y presentación comercial.', base: 'done', file: 'manual-marca.pdf' },
+      { id: 'organigrama', name: 'Organigrama', note: 'Quién decide en cada área.', base: 'pending' }
+    ];
+    var ST = {
+      done: { status: 'Entregado', mark: '✓', dotBg: '#ff4864', dotBorder: '0', stColor: '#2f3440' },
+      review: { status: 'En revisión', mark: '', dotBg: '#e2fa83', dotBorder: '2px solid #2f3440', stColor: '#2f3440' },
+      pending: { status: 'Pendiente', mark: '', dotBg: '#ffffff', dotBorder: '2px solid #c9ccd2', stColor: 'oklch(0.42 0.15 12)' }
+    };
+    var samples = SM.map(function (m, i) {
+      var st = s.uploaded[m.id] ? 'review' : m.base, look = ST[st];
+      return { name: m.name, note: m.note, status: look.status, mark: look.mark, dotBg: look.dotBg, dotBorder: look.dotBorder,
+        stColor: look.stColor, pending: st === 'pending', hasFile: st !== 'pending',
+        file: s.uploaded[m.id] ? 'archivo-adjunto.xlsx' : (m.file || ''),
+        sep: i < 2 ? '1px solid #e6e7e9' : '0',
+        upload: function () { var u = Object.assign({}, s.uploaded); u[m.id] = true; self.setState({ uploaded: u }); } };
+    });
+    var samplesTop = samples.slice(0, 3).map(function (m, i) { return Object.assign({}, m, { sep: i < 2 ? '1px solid #e6e7e9' : '0' }); });
+    var pendingCount = samples.filter(function (m) { return m.pending; }).length;
+    var doneCount = samples.filter(function (m) { return m.status === 'Entregado'; }).length;
+    var ventasPending = !s.uploaded.ventas;
+
+    /* Menú */
+    var NAV = [['resumen', 'Resumen'], ['avance', '¿En qué vamos?'], ['contexto', 'Contexto inicial'], ['muestras', 'Muestras diagnósticas'], ['info', 'Infografías']];
+    var navItems = NAV.map(function (n) {
+      var on = s.view === n[0];
+      return { label: n[1], go: go(n[0]), cls: on ? 'is-on' : '', current: on ? 'page' : 'false',
+        bg: on ? '#2f3440' : 'transparent', fg: on ? '#fafafa' : '#2f3440',
+        hasBadge: n[0] === 'muestras' && pendingCount > 0, badge: pendingCount };
+    });
+
+    /* Calendario */
+    var AG = [
+      { date: 'Mar 13 oct', time: '2:00 p. m.', title: 'Reunión de seguimiento', where: 'Remoto', detail: 'Revisamos la causa raíz y cerramos la fase Interpretar. Ten a mano las ventas de los últimos 12 meses.', cta: 'Unirme a la reunión' },
+      { date: 'Jue 22 oct', time: '4:00 p. m.', title: 'Compartir avances', where: 'Tus oficinas', detail: 'Presentamos la ruta de tratamiento a tu equipo directivo.', cta: 'Ver agenda de la sesión' },
+      { date: 'Mar 3 nov', time: '10:00 a. m.', title: 'Entrega final', where: 'sight lab', detail: 'Entrega del documento consolidado y plan de implementación.', cta: 'Ver qué incluye' }
+    ];
+    var agenda = AG.map(function (a, i) {
+      return Object.assign({}, a, { sep: i ? '1px solid #e6e7e9' : '0', open: s.open === i,
+        toggle: function () { self.setState({ open: s.open === i ? -1 : i }); } });
+    });
+
+    /* Escalera */
+    var stairs = PH.map(function (p, i) {
+      var st = stat(i), top = 26 + i * 40;
+      return { name: p.name, left: (i * 25) + '%', top: top, here: st === 'current',
+        bg: st === 'done' ? '#ff4864' : (st === 'current' ? '#e2fa83' : '#f2f1ee'),
+        edge: st === 'next' ? '#c9ccd2' : '#2f3440', fg: st === 'done' ? '#ffffff' : '#2f3440',
+        markLeft: (i * 25 + 12.5) + '%', markTop: top - 2 };
+    });
+
+    /* Vistas secundarias */
+    var findings = [
+      { phase: 'Observar', statusLabel: 'Completada', tagBg: '#ffb6c0', edge: '#ff4864', items: [
+        { date: '2 sep', text: '12 entrevistas con clientes y 4 con tu equipo comercial.' },
+        { date: '8 sep', text: 'Revisión de ventas y canales de los últimos dos años.' },
+        { date: '12 sep', text: 'Análisis del entorno: cinco competidores directos y dos sustitutos.' } ] },
+      { phase: 'Interpretar', statusLabel: 'En curso', tagBg: '#e2fa83', edge: '#2f3440', items: [
+        { date: '22 sep', text: 'Síntoma principal: la recompra cae después del segundo pedido.' },
+        { date: '30 sep', text: 'Tres hipótesis de causa raíz en validación con tu equipo.' },
+        { date: '6 oct', text: 'Primer borrador del mapa de causa raíz.' } ] }
+    ];
+    var context = [
+      { label: 'Empresa', value: 'Marca Ejemplo · bienestar y cuidado personal', edge: '#2f3440' },
+      { label: 'Trayectoria', value: '14 años en el mercado, presencia en 3 ciudades', edge: '#2f3440' },
+      { label: 'Objetivo del proyecto', value: 'Recuperar relevancia en clientes de 25 a 35 años', edge: '#ff4864' },
+      { label: 'Reto inicial', value: 'La recompra bajó y no está claro por qué', edge: '#ff4864' },
+      { label: 'Alcance', value: 'Diagnóstico de marca y ruta de tratamiento (10 semanas)', edge: '#e2fa83' },
+      { label: 'Equipo del cliente', value: 'Gerencia, mercadeo y equipo comercial', edge: '#e2fa83' }
+    ];
+    /* Infografías */
+    var EV = [
+      { title: 'Entrevistas', big: '12', note: 'personas entrevistadas', bg: 'linear-gradient(150deg, #e2fa83 0%, #eef5c4 45%, #f7efe6 100%)', col: '1', row: '1 / span 2', size: 84, align: 'flex-start',
+        chart: { title: '% de menciones por tema', sub: 'Entrevistas', desc: 'Precio y experiencia en tienda son lo que más se repite al hablar de por qué no volvieron a comprar.',
+          bars: [['Precio', 72], ['Tienda', 56], ['Empaque', 31], ['Entrega', 18]] } },
+      { title: 'Registro de campo', big: '38', note: 'fotos y notas', bg: 'linear-gradient(150deg, #edf3ee 0%, #e2f7f1 50%, #cffffd 100%)', col: '2', row: '1 / span 2', size: 68, align: 'flex-start',
+        chart: { title: '% de visitas con el hallazgo', sub: 'Registro de campo', desc: 'En la mayoría de visitas la exhibición no deja ver la línea nueva; la señalética ayuda poco.',
+          bars: [['Exhibición', 64], ['Señalética', 45], ['Inventario', 28]] } },
+      { title: 'Recorrido', big: '4', note: 'momentos críticos', bg: 'linear-gradient(150deg, #ff7c6f 0%, #ff9e94 40%, #ffe3e8 100%)', col: '3', row: '1', size: 52, align: 'flex-start',
+        chart: { title: '% de abandono por momento', sub: 'Recorrido del cliente', desc: 'La recompra es el momento con más abandono: ahí se concentra la causa raíz en validación.',
+          bars: [['Descubrir', 12], ['Comparar', 34], ['Comprar', 18], ['Recomprar', 61]] } },
+      { title: 'Benchmark', big: '7', note: 'marcas analizadas', bg: 'linear-gradient(150deg, #ffc4cd 0%, #f6dde2 55%, #cffffd 100%)', col: '3', row: '2', size: 44, align: 'flex-end',
+        chart: { title: '% de marcas que lo hacen', sub: 'Benchmark de categoría', desc: 'Casi todas las marcas de la categoría venden en digital; pocas educan sobre el producto.',
+          bars: [['Lealtad', 71], ['Digital', 86], ['Educativo', 43]] } }
+    ];
+    var evid = EV.map(function (e, i) {
+      return { title: e.title, big: e.big, note: e.note, bg: e.bg, col: e.col, row: e.row, size: e.size, align: e.align,
+        on: s.ev === i, border: s.ev === i ? '#2f3440' : 'transparent', pick: function () { self.setState({ ev: i }); } };
+    });
+    var BC = ['#ad2748', '#cdee62', '#ff7c6f', '#fde1e6'], CHH = 170;
+    var ce = EV[s.ev].chart;
+    var chart = { title: ce.title, sub: ce.sub, desc: ce.desc, bars: ce.bars.map(function (b, i) {
+      var h = Math.max(8, Math.round(b[1] / 100 * CHH));
+      return { label: b[0], v: b[1], h: h, color: BC[i % 4], fg: i === 0 ? '#ffffff' : '#2f3440', inLabel: h >= 60 ? b[1] + '%' : '', out: h < 60 };
+    }) };
+    var cTicks = [0, 25, 50, 75, 100].map(function (v) { return { label: v, pos: Math.round(v / 100 * CHH) }; });
+    var KP = [
+      { title: 'Hallazgos validados', value: 83, note: 'con tu equipo', bg: 'radial-gradient(70% 60% at 50% 100%, #ff8f9f 0%, rgba(255,143,159,0) 75%), linear-gradient(180deg, #ffffff 0%, #fff1f3 100%)' },
+      { title: 'Hipótesis en validación', value: 56, note: 'de la causa raíz', bg: 'radial-gradient(70% 60% at 60% 70%, #c9fbf6 0%, rgba(201,251,246,0) 75%), linear-gradient(180deg, #ffffff 0%, #f1fbfa 100%)' }
+    ];
+    var kpis = KP.map(function (k, i) { return Object.assign({}, k, { on: s.kpi === i, border: s.kpi === i ? '#2f3440' : 'transparent', pick: function () { self.setState({ kpi: i }); } }); });
+    var areas = [['Consumidor', 92], ['Mercado', 71], ['Comunicación', 79], ['Portafolio', 56], ['Canal', 33]].map(function (a) {
+      return { label: a[0], v: a[1], color: a[1] < 40 ? '#c9ccd2' : '#ff4864' };
+    });
+
+    return {
+      vResumen: s.view === 'resumen', vAvance: s.view === 'avance', vContexto: s.view === 'contexto',
+      vMuestras: s.view === 'muestras', vInfo: s.view === 'info',
+      navItems: navItems, phases: phases, rings: rings, sel: sel,
+      currentName: PH[CUR].name, progress: progress,
+      lineInv: lineFor(SER[0]), lineEst: lineFor(SER[1]), lineDis: lineFor(SER[2]), dots: dots, weeks: weeks, legend: legend, totalHours: totalHours,
+      hasHover: hasHover, hoverLeft: hasHover ? ((s.hover + 0.5) * 25) + '%' : '0%',
+      hoverWeek: hasHover ? weekNames[s.hover] : '',
+      hoverText: hasHover ? visible.map(function (sr) { return sr.label + ' ' + sr.v[s.hover] + ' h'; }).join(' · ') : '',
+      clearHover: function () { self.setState({ hover: null }); },
+      samples: samples, samplesTop: samplesTop, pendingCount: pendingCount, doneCount: doneCount,
+      agenda: agenda, stairs: stairs, findings: findings, context: context, evid: evid, chart: chart, cTicks: cTicks, kpis: kpis, areas: areas, coverage: 74,
+      team: [
+        { initial: 'N', name: 'Natalia', role: 'Investigación y prospectiva' },
+        { initial: 'A', name: 'Alexandra', role: 'Estrategia y relaciones públicas' },
+        { initial: 'F', name: 'Faustina', role: 'Marca y comunicación estratégica' }
+      ],
+      nextStep: ventasPending ? 'Comparte las ventas de los últimos 12 meses antes del jueves 9 de octubre.' : 'Recibimos tus ventas. Las revisamos antes de la reunión del martes.',
+      nextCta: ventasPending ? 'Adjuntar ahora' : 'Ver muestras',
+      goMuestras: go('muestras'), goAvance: go('avance')
+    };
+  }
+}
+</script>
+</body>
+</html>

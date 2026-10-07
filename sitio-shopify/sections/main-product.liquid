@@ -1,0 +1,74 @@
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+<section class="product">
+  <div class="wrap product__grid">
+    <div class="product__media" data-product-gallery>
+      {%- if product.media.size > 0 -%}
+        <div class="product__stage">
+          {%- for media in product.media -%}
+            <figure class="product__slide{% if forloop.first %} is-active{% endif %}" data-gallery-slide{% unless forloop.first %} hidden{% endunless %}>
+              {{ media.preview_image | image_url: width: 1200 | image_tag: class: 'product__img', alt: media.alt | default: product.title, loading: 'eager', sizes: '(min-width: 1080px) 560px, 100vw' }}
+            </figure>
+          {%- endfor -%}
+        </div>
+        {%- if product.media.size > 1 -%}
+          <ul class="product__thumbs" aria-label="Imágenes de {{ product.title | escape }}">
+            {%- for media in product.media -%}
+              <li>
+                <button type="button" class="product__thumb{% if forloop.first %} is-active{% endif %}" data-gallery-thumb="{{ forloop.index0 }}" aria-label="Ver imagen {{ forloop.index }} de {{ product.media.size }}"{% if forloop.first %} aria-current="true"{% endif %}>
+                  {{ media.preview_image | image_url: width: 240, height: 240 | image_tag: alt: '', loading: 'lazy' }}
+                </button>
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      {%- else -%}
+        <div class="product__img product__img--empty" aria-hidden="true">{% render 'grain', id: 'grainProduct', opacity: 0.35, blend: 'overlay' %}<span>{{ product.title }}</span></div>
+      {%- endif -%}
+    </div>
+    <div class="product__info">
+      <p class="eyebrow">{{ product.type | default: 'Reporte' }}</p>
+      <h1 class="display product__title">{{ product.title }}</h1>
+      {%- if section.settings.show_price -%}
+        <p class="product__price">{{ current_variant.price | money }}</p>
+      {%- endif -%}
+      <div class="rte product__desc">{{ product.description }}</div>
+
+      {%- if section.settings.mode == 'cart' -%}
+        {%- form 'product', product, class: 'product__form' -%}
+          {%- unless product.has_only_default_variant -%}
+            <label class="field"><span class="field__label">Opción</span>
+              <select name="id">
+                {%- for variant in product.variants -%}
+                  <option value="{{ variant.id }}"{% if variant == current_variant %} selected{% endif %}{% unless variant.available %} disabled{% endunless %}>{{ variant.title }}{% if section.settings.show_price %} · {{ variant.price | money }}{% endif %}</option>
+                {%- endfor -%}
+              </select>
+            </label>
+          {%- else -%}
+            <input type="hidden" name="id" value="{{ current_variant.id }}">
+          {%- endunless -%}
+          <button type="submit" class="btn btn--pink btn--lg"{% unless current_variant.available %} disabled{% endunless %}>{% if current_variant.available %}{{ section.settings.button_label }}{% else %}No disponible{% endif %}</button>
+        {%- endform -%}
+      {%- else -%}
+        <a class="btn btn--pink btn--lg" href="/#contacto" data-need="Me interesa: {{ product.title | escape }}">{{ section.settings.contact_label }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Producto",
+  "settings": [
+    {
+      "type": "select", "id": "mode", "label": "Acción principal", "default": "cart",
+      "options": [
+        { "value": "contact", "label": "Escribirnos (formulario de contacto)" },
+        { "value": "cart", "label": "Agregar al carrito y pagar" }
+      ]
+    },
+    { "type": "checkbox", "id": "show_price", "label": "Mostrar precio", "default": true },
+    { "type": "text", "id": "button_label", "label": "Texto del botón de compra", "default": "Comprar →" },
+    { "type": "text", "id": "contact_label", "label": "Texto del botón de contacto", "default": "Quiero saber más →" }
+  ]
+}
+{% endschema %}

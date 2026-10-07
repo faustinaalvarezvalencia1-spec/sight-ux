@@ -1,0 +1,82 @@
+<section id="inicio" class="hero" aria-roledescription="carrusel" aria-label="Presentación" data-carousel data-autoplay="{{ section.settings.autoplay }}" data-interval="{{ section.settings.interval | times: 1000 }}">
+  {%- for block in section.blocks -%}
+    {%- assign bs = block.settings -%}
+    <div class="hero-slide{% if forloop.first %} is-active{% endif %}" data-slide role="group" aria-roledescription="diapositiva" aria-label="{{ forloop.index }} de {{ section.blocks.size }}"{% unless forloop.first %} aria-hidden="true"{% endunless %} {{ block.shopify_attributes }}>
+      {%- if bs.image != blank or bs.image_asset != blank -%}
+        {%- capture img_style -%}right: {{ bs.image_offset | times: -1 | minus: 40 }}px; object-position: {{ bs.image_position | default: 'center' }};{%- endcapture -%}
+        {%- if bs.image != blank -%}
+          {{ bs.image | image_url: width: 2000 | image_tag: class: 'hero-slide__img', alt: '', loading: 'lazy', style: img_style }}
+        {%- else -%}
+          <img class="hero-slide__img" src="{{ bs.image_asset | asset_url }}" alt="" width="1000" height="800" loading="lazy" style="{{ img_style }}">
+        {%- endif -%}
+        {%- if bs.blur_right -%}<div class="hero-slide__blur" aria-hidden="true"></div>{%- endif -%}
+        <div class="hero-slide__tint hero-slide__tint--{{ bs.tint }}" aria-hidden="true"></div>
+        <div class="hero-slide__fade hero-slide__fade--{{ bs.tint }}" aria-hidden="true"></div>
+      {%- endif -%}
+      {%- capture grain_id -%}grainHero{{ forloop.index }}{%- endcapture -%}
+      {% render 'grain', id: grain_id, opacity: 0.22, blend: 'multiply' %}
+      {%- if forloop.first -%}
+        <h1 class="hero-slide__title">{{ bs.title }}</h1>
+      {%- else -%}
+        <h2 class="hero-slide__title">{{ bs.title }}</h2>
+      {%- endif -%}
+      {%- if bs.subtitle != blank -%}<p class="hero-slide__sub">{{ bs.subtitle }}</p>{%- endif -%}
+      {%- if bs.cta_label != blank -%}<a class="textlink hero-slide__cta" href="{{ bs.cta_link }}"{% unless forloop.first %} tabindex="-1"{% endunless %}>{{ bs.cta_label }} →</a>{%- endif -%}
+    </div>
+  {%- endfor -%}
+
+  {%- if section.blocks.size > 1 -%}
+    <button type="button" class="round-btn hero__arrow hero__arrow--prev" data-prev aria-label="Diapositiva anterior"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button>
+    <button type="button" class="round-btn hero__arrow hero__arrow--next" data-next aria-label="Diapositiva siguiente"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg></button>
+    <div class="hero__dots">
+      {%- for block in section.blocks -%}
+        <button type="button" class="hero__dot{% if forloop.first %} is-active{% endif %}" data-dot="{{ forloop.index0 }}" aria-label="Diapositiva {{ forloop.index }}"{% if forloop.first %} aria-current="true"{% endif %}><span></span></button>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Carrusel principal",
+  "class": "section-hero",
+  "settings": [
+    { "type": "checkbox", "id": "autoplay", "label": "Avanzar solo", "default": true },
+    { "type": "range", "id": "interval", "label": "Segundos por diapositiva", "min": 3, "max": 15, "step": 1, "unit": "s", "default": 7 }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Diapositiva",
+      "settings": [
+        {
+          "type": "html",
+          "id": "title",
+          "label": "Título",
+          "info": "Resaltados: clases mk-hl mk-lime, mk-hl mk-salt, mk-hl mk-pink (marcador) y mk-u, mk-u mk-u--pink, mk-u mk-u--salmon (subrayado). Cada renglón va en un span con clase line; el renglón en cursiva lleva line it."
+        },
+        { "type": "textarea", "id": "subtitle", "label": "Texto pequeño" },
+        { "type": "text", "id": "cta_label", "label": "Texto del enlace" },
+        { "type": "text", "id": "cta_link", "label": "Destino del enlace", "default": "/#contacto" },
+        { "type": "image_picker", "id": "image", "label": "Imagen de fondo" },
+        { "type": "text", "id": "image_asset", "label": "Imagen incluida en el tema", "info": "Se usa si no eliges imagen arriba. Ej: hero-lupa.jpg" },
+        { "type": "text", "id": "image_position", "label": "Encuadre de la imagen", "default": "center", "info": "Ej: 35% 50%" },
+        { "type": "range", "id": "image_offset", "label": "Correr imagen a la derecha", "min": 0, "max": 240, "step": 10, "unit": "px", "default": 0 },
+        {
+          "type": "select",
+          "id": "tint",
+          "label": "Degradado de color",
+          "default": "rosa",
+          "options": [
+            { "value": "rosa", "label": "Rosa arriba, lima abajo" },
+            { "value": "lima", "label": "Lima arriba, rosa abajo" },
+            { "value": "none", "label": "Sin degradado" }
+          ]
+        },
+        { "type": "checkbox", "id": "blur_right", "label": "Difuminar lado derecho", "default": false }
+      ]
+    }
+  ],
+  "presets": [ { "name": "Carrusel principal" } ]
+}
+{% endschema %}

@@ -1,0 +1,64 @@
+<section id="servicios" class="servicios" data-accordion>
+  <div class="servicios__aura" aria-hidden="true"></div>
+  <div class="wrap servicios__inner">
+    <h2 class="display servicios__title">{{ section.settings.title }}</h2>
+    <div class="servicios__list">
+      {%- for block in section.blocks -%}
+        {%- assign bs = block.settings -%}
+        {%- assign open = false -%}
+        {%- if forloop.first and section.settings.first_open -%}{%- assign open = true -%}{%- endif -%}
+        <div class="glass svc{% if open %} is-open{% endif %}" {{ block.shopify_attributes }}>
+          <button type="button" class="svc__head" aria-expanded="{{ open }}" aria-controls="svc-{{ block.id }}" data-acc-toggle>
+            <span class="svc__num">{{ forloop.index }}</span>
+            <span class="svc__name">{{ bs.title }}</span>
+            <span class="svc__sign" aria-hidden="true"></span>
+          </button>
+          <div class="svc__body" id="svc-{{ block.id }}"{% unless open %} hidden{% endunless %}>
+            <ul class="svc__items">
+              {%- for i in (1..3) -%}
+                {%- capture k_t -%}item{{ i }}_title{%- endcapture -%}
+                {%- capture k_d -%}item{{ i }}_text{%- endcapture -%}
+                {%- if bs[k_t] != blank -%}
+                  <li><span class="svc__item-title">{{ bs[k_t] }}</span><span class="svc__item-text">{{ bs[k_d] }}</span></li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+            {%- if bs.product != blank -%}
+              <a class="textlink svc__link" href="{{ bs.product.url }}">{{ bs.link_label | default: 'Ver servicio' }} →</a>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Servicios",
+  "class": "section-servicios",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Título", "default": "Nuestros servicios" },
+    { "type": "checkbox", "id": "first_open", "label": "Primer servicio abierto", "default": true }
+  ],
+  "blocks": [
+    {
+      "type": "service",
+      "name": "Servicio",
+      "limit": 6,
+      "settings": [
+        { "type": "text", "id": "title", "label": "Nombre" },
+        { "type": "text", "id": "item1_title", "label": "Punto 1 · título" },
+        { "type": "textarea", "id": "item1_text", "label": "Punto 1 · texto" },
+        { "type": "text", "id": "item2_title", "label": "Punto 2 · título" },
+        { "type": "textarea", "id": "item2_text", "label": "Punto 2 · texto" },
+        { "type": "text", "id": "item3_title", "label": "Punto 3 · título" },
+        { "type": "textarea", "id": "item3_text", "label": "Punto 3 · texto" },
+        { "type": "product", "id": "product", "label": "Producto relacionado (opcional)" },
+        { "type": "text", "id": "link_label", "label": "Texto del enlace al producto", "default": "Ver servicio" }
+      ]
+    }
+  ],
+  "presets": [ { "name": "Servicios" } ]
+}
+{% endschema %}

@@ -1,0 +1,22 @@
+{% layout none %}
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tarjeta de regalo · {{ shop.name }}</title>
+  {{ 'sight.css' | asset_url | stylesheet_tag }}
+  {{ content_for_header }}
+</head>
+<body>
+  <section class="page-simple">
+    <div class="wrap wrap--narrow">
+      <p class="eyebrow">Tarjeta de regalo</p>
+      <h1 class="display">{{ gift_card.initial_value | money }}</h1>
+      <p class="lead">Código: <strong>{{ gift_card.code | format_code }}</strong></p>
+      {%- if gift_card.expired or gift_card.enabled != true -%}<p>Esta tarjeta ya no está activa.</p>{%- endif -%}
+      <a class="btn btn--ink" href="{{ shop.url }}">Ir a {{ shop.name }}</a>
+    </div>
+  </section>
+</body>
+</html>

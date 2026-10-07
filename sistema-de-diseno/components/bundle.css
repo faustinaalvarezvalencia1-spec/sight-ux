@@ -1,0 +1,96 @@
+/* ── styles.css ── */
+@import url("tokens/fonts.css");
+@import url("tokens/colors.css");
+@import url("tokens/typography.css");
+@import url("tokens/spacing.css");
+@import url("tokens/gradients.css");
+@import url("tokens/shape.css");
+@import url("tokens/motion.css");
+
+/* ── tokens/fonts.css ── */
+@font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-weight:200;font-display:swap;src:url("../assets/fonts/PlusJakartaSans-ExtraLight.ttf") format("truetype")}
+@font-face{font-family:"Plus Jakarta Sans";font-style:italic;font-weight:200;font-display:swap;src:url("../assets/fonts/PlusJakartaSans-ExtraLightItalic.ttf") format("truetype")}
+@font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-weight:300;font-display:swap;src:url("../assets/fonts/PlusJakartaSans-Light.ttf") format("truetype")}
+@font-face{font-family:"Plus Jakarta Sans";font-style:italic;font-weight:300;font-display:swap;src:url("../assets/fonts/PlusJakartaSans-LightItalic.ttf") format("truetype")}
+@font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-weight:400;font-display:swap;src:url("../assets/fonts/PlusJakartaSans-Regular.ttf") format("truetype")}
+@font-face{font-family:"Plus Jakarta Sans";font-style:italic;font-weight:400;font-display:swap;src:url("../assets/fonts/PlusJakartaSans-Italic.ttf") format("truetype")}
+@font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-weight:500;font-display:swap;src:url("../assets/fonts/PlusJakartaSans-Medium.ttf") format("truetype")}
+@font-face{font-family:"Plus Jakarta Sans";font-style:italic;font-weight:500;font-display:swap;src:url("../assets/fonts/PlusJakartaSans-MediumItalic.ttf") format("truetype")}
+@font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-weight:600;font-display:swap;src:url("../assets/fonts/PlusJakartaSans-SemiBold.ttf") format("truetype")}
+@font-face{font-family:"Plus Jakarta Sans";font-style:italic;font-weight:600;font-display:swap;src:url("../assets/fonts/PlusJakartaSans-SemiBoldItalic.ttf") format("truetype")}
+/* 700 upright is MISSING from the supplied files (only BoldItalic was provided). Requests for 700 fall back to the nearest available weight. See readme.md > Caveats. */
+@font-face{font-family:"Plus Jakarta Sans";font-style:italic;font-weight:700;font-display:swap;src:url("../assets/fonts/PlusJakartaSans-BoldItalic.ttf") format("truetype")}
+@font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-weight:800;font-display:swap;src:url("../assets/fonts/PlusJakartaSans-ExtraBold.ttf") format("truetype")}
+@font-face{font-family:"Plus Jakarta Sans";font-style:italic;font-weight:800;font-display:swap;src:url("../assets/fonts/PlusJakartaSans-ExtraBoldItalic.ttf") format("truetype")}
+
+/* ── tokens/colors.css ── */
+/* Sight — paleta de marca. Origen: post-its y marcadores de sesión de trabajo. */
+:root{
+}
+
+/* ── tokens/typography.css ── */
+/* Escala 1.5 (quinta perfecta) desde cuerpo 24px. Tracking negativo constante: -0.04em (-40 en Figma). */
+:root{
+--font-display:var(--font-sans);
+--font-body:var(--font-sans);/* @kind font */
+
+/* Escala de marca (valores del manual, p.18) */
+--fs-display:81px;
+--fs-title:54px;
+--fs-subtitle:36px;
+--fs-body:24px;
+--fs-caption:16px;
+--fs-micro:12px;
+/* Pasos intermedios para UI densa */
+--fs-ui-lg:20px;--fs-ui:15px;--fs-ui-sm:13px;
+
+--lh-display:1.2;/* @kind font */
+--lh-title:1.1;/* @kind font */
+--lh-subtitle:1.2;/* @kind font */
+--lh-body:1.2;/* @kind font */
+--lh-ui:1.35;/* @kind font */
+--tracking-micro:-0.02em;/* @kind font */
+
+/* Roles compuestos */
+--type-display:var(--fw-semibold) var(--fs-display)/var(--lh-display) var(--font-display);
+--type-title:var(--fw-extrabold) var(--fs-title)/var(--lh-title) var(--font-display);
+--type-subtitle:var(--fw-medium) var(--fs-subtitle)/var(--lh-subtitle) var(--font-display);
+--type-body:var(--fw-light) var(--fs-body)/var(--lh-body) var(--font-body);
+--type-caption:var(--fw-regular) var(--fs-caption)/var(--lh-ui) var(--font-body);
+--type-eyebrow:var(--fw-semibold) var(--fs-micro)/1.2 var(--font-body);
+}
+:root{letter-spacing:var(--tracking)}
+::selection{background:var(--selection-bg);color:var(--selection-fg)}
+
+/* ── tokens/spacing.css ── */
+/* Retícula base 8. Los pasos grandes siguen la misma quinta que el tipo. */
+:root{
+--measure:62ch;/* @kind spacing */
+--measure-tight:42ch;
+}
+
+/* ── tokens/gradients.css ── */
+/* Sight — degradados. Sólo como FONDO y sólo a partir de colores de la paleta vibrante y
+   los neutros claros (manual p.30). Sin negro ni tinta: el degradado nunca oscurece.
+   Nunca sobre texto sin panel plano, nunca en botones, nunca sobre el logotipo. */
+:root{
+/* Auras — dos colores */
+--grad-pink-lime:radial-gradient(62% 62% at 16% 20%, var(--pink-paradise) 0%, var(--pink-paradise) 18%, transparent 72%),radial-gradient(58% 58% at 84% 28%, var(--light-lime) 0%, var(--light-lime) 20%, transparent 70%),radial-gradient(70% 70% at 62% 98%, var(--pink-200) 0%, transparent 76%);
+--grad-salmon-lime:radial-gradient(64% 64% at 20% 80%, var(--salmon) 0%, var(--salmon) 20%, transparent 74%),radial-gradient(56% 56% at 78% 22%, var(--light-lime) 0%, var(--light-lime) 22%, transparent 72%),radial-gradient(80% 80% at 52% 48%, var(--coconut-milk) 0%, transparent 78%);
+
+/* Auras — tres colores o más, para fondos con movimiento */
+--grad-prisma:radial-gradient(50% 50% at 12% 18%, var(--pink-paradise) 0%, var(--pink-paradise) 16%, transparent 68%),radial-gradient(46% 46% at 84% 14%, var(--light-lime) 0%, var(--light-lime) 18%, transparent 66%),radial-gradient(52% 52% at 76% 84%, var(--salt-air) 0%, var(--salt-air) 20%, transparent 70%),radial-gradient(48% 48% at 26% 88%, var(--salmon) 0%, var(--salmon) 16%, transparent 68%);
+--grad-amanecer:radial-gradient(56% 56% at 8% 86%, var(--salmon) 0%, var(--salmon) 20%, transparent 72%),radial-gradient(50% 50% at 46% 30%, var(--pink-paradise) 0%, var(--pink-paradise) 14%, transparent 66%),radial-gradient(54% 54% at 92% 20%, var(--light-lime) 0%, var(--light-lime) 20%, transparent 70%),radial-gradient(70% 70% at 60% 100%, var(--coconut-milk) 0%, transparent 78%);
+--grad-marea:radial-gradient(54% 54% at 88% 22%, var(--salt-air) 0%, var(--salt-air) 24%, transparent 72%),radial-gradient(50% 50% at 52% 66%, var(--light-lime) 0%, var(--light-lime) 18%, transparent 68%),radial-gradient(48% 48% at 14% 26%, var(--pink-200) 0%, var(--pink-200) 20%, transparent 70%),radial-gradient(56% 56% at 24% 94%, var(--salmon) 0%, transparent 72%);
+--grad-crema-prisma:radial-gradient(38% 42% at 4% 6%, var(--pink-100) 0%, transparent 56%),radial-gradient(36% 40% at 98% 10%, var(--lime-100) 0%, transparent 56%),radial-gradient(40% 44% at 92% 96%, var(--salt-air) 0%, transparent 58%),linear-gradient(var(--coconut-milk),var(--coconut-milk));
+}
+
+/* ── tokens/shape.css ── */
+:root{
+}
+
+/* ── tokens/motion.css ── */
+:root{/* @kind other */
+}
+:root{--ease-standard:cubic-bezier(0.2,0,0,1);--ease-exit:cubic-bezier(0.4,0,1,1);--dur-fast:120ms;--dur-base:200ms;--dur-slow:360ms;--motion-hover:background-color var(--dur-fast) var(--ease-standard),color var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard)}
+@media (prefers-reduced-motion:reduce){:root{--dur-fast:0ms;/* @kind other */--dur-base:0ms;/* @kind other */--dur-slow:0ms/* @kind other */}}

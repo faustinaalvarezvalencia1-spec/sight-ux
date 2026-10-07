@@ -1,0 +1,38 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "sight",
+    "theme_version": "1.0.0",
+    "theme_author": "sight",
+    "theme_documentation_url": "https://sightlaboratorio.myshopify.com",
+    "theme_support_url": "https://sightlaboratorio.myshopify.com"
+  },
+  {
+    "name": "Marca",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo (fondos claros)",
+        "info": "Si lo dejas vacío se usa el logo de sight incluido en el tema."
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_light",
+        "label": "Logo (fondos oscuros)"
+      },
+      {
+        "type": "text",
+        "id": "instagram",
+        "label": "Usuario de Instagram",
+        "default": "@somos.sight"
+      },
+      {
+        "type": "text",
+        "id": "footer_note",
+        "label": "Texto del pie",
+        "default": "© 2026 sight · laboratorio de diseño estratégico"
+      }
+    ]
+  }
+]

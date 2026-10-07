@@ -1,0 +1,31 @@
+<!-- @dsCard group="Components" viewport="980x960" name="Diagramas" subtitle="LayerStack y SpokeDiagram — entrada escalonada y realce en hover" -->
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<style>html,body{margin:0;background:var(--surface-page);font-family:var(--font-sans);color:var(--text-body);letter-spacing:var(--tracking)}a{color:var(--text-accent)}a:hover{color:var(--pink-600)}#root{padding:34px 40px}</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script><script src="../../_ds_bundle.js"></script></head><body><div id="root"></div>
+<script type="text/babel">const {LayerStack,SpokeDiagram}=window.SightDesignSystem_3d4cc7;
+const Head=({children})=><div style={{font:'var(--type-eyebrow)',letterSpacing:'var(--tracking-caps)',textTransform:'uppercase',color:'var(--text-muted)',marginBottom:18}}>{children}</div>;
+function Demo(){return <div style={{display:'grid',gap:40}}>
+<div>
+  <div style={{textAlign:'center',marginBottom:34}}>
+    <div style={{font:'var(--fw-medium) 20px/1.2 var(--font-sans)',letterSpacing:'0.2em',textTransform:'uppercase',color:'var(--text-strong)'}}>Plataforma de marca</div>
+    <div style={{width:34,height:1,background:'var(--ink-300)',margin:'14px auto 0'}}></div>
+  </div>
+  <LayerStack size={260} data={[
+    {label:'Esencia',note:'Diagnosticamos antes de decorar: el primer paso es el síntoma'},
+    {label:'Sistema',note:'Decisiones repetibles de marca y producto, con la causa raíz a la vista'},
+    {label:'Ejecución',note:'Lo que el equipo hace cada semana, con métrica acordada de antemano'}
+  ]}/>
+</div>
+<div style={{borderTop:'1px solid var(--border-hairline)',paddingTop:30,display:'grid',gridTemplateColumns:'auto minmax(0,1fr)',gap:44,alignItems:'center'}}>
+  <div><Head>Núcleo y frentes</Head>
+    <SpokeDiagram core="Diagnóstico" size={320} data={[
+      {label:'Foresight',value:'34%'},{label:'Producto',value:'27%'},{label:'Narrativa',value:'22%'},{label:'Datos',value:'17%'}
+    ]}/>
+  </div>
+  <p style={{margin:0,font:'var(--fw-regular) var(--fs-body)/1.55 var(--font-sans)',color:'var(--text-body)',maxWidth:'40ch'}}>Los dos diagramas entran escalonados y destacan el elemento activo en hover: el movimiento es de entrada y de foco, nunca decorativo en bucle.</p>
+</div>
+</div>;}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script></body></html>

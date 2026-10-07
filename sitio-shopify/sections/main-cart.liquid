@@ -1,0 +1,32 @@
+<section class="page-simple">
+  <div class="wrap wrap--narrow">
+    <h1 class="display">Tu carrito</h1>
+    {%- if cart.item_count > 0 -%}
+      <form action="{{ routes.cart_url }}" method="post" class="cart">
+        <ul class="cart__list">
+          {%- for item in cart.items -%}
+            <li class="cart__item">
+              <a class="cart__title" href="{{ item.url }}">{{ item.product.title }}</a>
+              {%- unless item.product.has_only_default_variant -%}<span class="caption">{{ item.variant.title }}</span>{%- endunless -%}
+              <label class="cart__qty"><span class="visually-hidden">Cantidad</span><input type="number" name="updates[]" value="{{ item.quantity }}" min="0"></label>
+              <span class="cart__price">{{ item.final_line_price | money }}</span>
+              <a class="caption" href="{{ item.url_to_remove }}">Quitar</a>
+            </li>
+          {%- endfor -%}
+        </ul>
+        <p class="cart__total">Total: <strong>{{ cart.total_price | money }}</strong></p>
+        <div class="cart__actions">
+          <button type="submit" class="btn btn--outline" name="update">Actualizar</button>
+          <button type="submit" class="btn btn--pink btn--lg" name="checkout">Pagar</button>
+        </div>
+      </form>
+    {%- else -%}
+      <p class="lead">Tu carrito está vacío.</p>
+      <a class="btn btn--ink" href="{{ routes.root_url }}#servicios">Ver servicios</a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Carrito", "settings": [] }
+{% endschema %}

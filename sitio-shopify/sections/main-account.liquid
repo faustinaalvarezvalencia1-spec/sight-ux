@@ -1,0 +1,64 @@
+{%- comment -%} Espacio del cliente (futuro Dashboard). {%- endcomment -%}
+<section class="dashboard">
+  <div class="wrap">
+    <div class="dashboard__head">
+      <div>
+        <p class="eyebrow">Tu espacio</p>
+        <h1 class="display">Hola, {{ customer.first_name | default: customer.email }}</h1>
+      </div>
+      <a class="btn btn--outline" href="{{ routes.account_logout_url }}">Cerrar sesión</a>
+    </div>
+
+    {%- if template.name == 'customers/order' -%}
+      <h2 class="h2">Pedido {{ order.name }}</h2>
+      <p class="caption">{{ order.created_at | date: '%d/%m/%Y' }} · {{ order.financial_status_label }}</p>
+      <ul class="search-results">
+        {%- for line in order.line_items -%}<li>{{ line.title }} × {{ line.quantity }} · {{ line.final_line_price | money }}</li>{%- endfor -%}
+      </ul>
+      <p class="cart__total">Total: <strong>{{ order.total_price | money }}</strong></p>
+      <a class="textlink" href="{{ routes.account_url }}">← Volver a tu espacio</a>
+    {%- elsif template.name == 'customers/addresses' -%}
+      <h2 class="h2">Tus direcciones</h2>
+      <ul class="search-results">
+        {%- for address in customer.addresses -%}<li>{{ address | format_address }}</li>{%- else -%}<li>Aún no tienes direcciones guardadas.</li>{%- endfor -%}
+      </ul>
+      <a class="textlink" href="{{ routes.account_url }}">← Volver a tu espacio</a>
+    {%- else -%}
+      <div class="dashboard__grid">
+        <div class="dash-card dash-card--gradient">
+          {% render 'grain', id: 'grainDash', opacity: 0.35, blend: 'overlay' %}
+          <span class="eyebrow eyebrow--light">Tu proyecto</span>
+          <span class="dash-card__big">{{ section.settings.status_title }}</span>
+          <span>{{ section.settings.status_text }}</span>
+        </div>
+        <div class="dash-card">
+          <span class="eyebrow">Tus servicios</span>
+          {%- if customer.orders.size > 0 -%}
+            <ul class="search-results">
+              {%- for order in customer.orders -%}
+                <li><a href="{{ order.customer_url }}">{{ order.name }}</a> · {{ order.created_at | date: '%d/%m/%Y' }} · {{ order.total_price | money }}</li>
+              {%- endfor -%}
+            </ul>
+          {%- else -%}
+            <p>Todavía no tienes servicios contratados en la tienda.</p>
+          {%- endif -%}
+        </div>
+        <div class="dash-card">
+          <span class="eyebrow">¿Necesitas algo?</span>
+          <p>Escríbenos y agendamos la siguiente sesión.</p>
+          <a class="btn btn--ink" href="/#contacto">Hablemos →</a>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Tu espacio",
+  "settings": [
+    { "type": "text", "id": "status_title", "label": "Título del estado", "default": "Diagnóstico en curso" },
+    { "type": "textarea", "id": "status_text", "label": "Texto del estado", "default": "Aquí verás el avance, los hallazgos y las decisiones de cada etapa." }
+  ]
+}
+{% endschema %}

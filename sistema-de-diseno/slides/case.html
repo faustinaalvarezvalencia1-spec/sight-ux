@@ -1,0 +1,21 @@
+<!-- @dsCard group="Slides" viewport="1280x720" name="Caso de estudio" subtitle="Cita del cliente + cifras de resultado" -->
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css">
+<style>html,body{margin:0;width:1280px;height:720px;overflow:hidden;font-family:var(--font-sans);letter-spacing:var(--tracking)}a{color:var(--pink-paradise)}a:hover{color:var(--pink-600)}.slide{width:1280px;height:720px;padding:80px;box-sizing:border-box;display:flex;flex-direction:column}</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script><script src="../_ds_bundle.js"></script></head><body><div id="root"></div>
+<script type="text/babel">const {Quote,StatBlock,Tag,Divider,Wordmark}=window.SightDesignSystem_3d4cc7;
+function Slide(){return <div className="slide" style={{background:'var(--surface-dark)',color:'var(--text-on-dark)',justifyContent:'space-between'}}>
+<div style={{display:'flex',gap:12}}><Tag tone="lime">Bienestar</Tag><Tag tone="quiet" style={{color:'var(--ink-300)',boxShadow:'inset 0 0 0 1px rgba(255,255,255,.2)'}}>14 años de mercado</Tag></div>
+<Quote color="#fff" attribution="Dirección de marca" role="Cliente" style={{maxWidth:'26ch',fontSize:54}}>
+<span style={{font:'var(--fw-light) 54px/1.15 var(--font-sans)',letterSpacing:'var(--tracking)'}}>La marca seguía vendiendo, pero ya no explicaba por qué.</span></Quote>
+<div><Divider tone="lime" style={{marginBottom:32}}/>
+<div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:32}}>
+<StatBlock value="3,4x" color="var(--light-lime)" label="Recuerdo asistido" note="Pre/post, n=420, 6 meses."/>
+<StatBlock value="+18%" color="var(--light-lime)" label="Ticket medio" note="Dos trimestres tras el relanzamiento."/>
+<StatBlock value="-31%" color="var(--light-lime)" label="Coste de adquisición" note="Mismo presupuesto de medios."/>
+</div></div>
+<Wordmark lockup="sight" size={20} color="var(--ink-300)"/>
+</div>;}
+ReactDOM.createRoot(document.getElementById('root')).render(<Slide/>);
+</script></body></html>

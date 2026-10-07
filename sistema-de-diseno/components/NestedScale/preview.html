@@ -1,0 +1,13 @@
+<!-- @dsCard group="Datos" height=671 subtitle="Magnitudes que se contienen una a otra" -->
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>NestedScale</title><style>html,body{margin:0;background:var(--surface-page);font-family:var(--font-sans);color:var(--text-body);letter-spacing:var(--tracking)}*{box-sizing:border-box}a{color:var(--text-accent)}#root{padding:24px}</style></head>
+<body><div id="root"></div>
+<script>
+const { Button, Tag, Badge, Divider, Wordmark, EyeMark, Marquee, Card, ColorBlock, ShapeMark, StickyNote, AuraField, SectionHeading, Callout, Quote, StatBlock, DiagnosisTrack, Highlight, PhotoFrame, BarChart, TrendLine, RingStat, NestedScale, LayerStack, SpokeDiagram, Field, Input, Select, Checkbox, Switch } = window.SightDesignSystem_3d4cc7;
+const Head = ({ children }) => /* @__PURE__ */ React.createElement("div", { style: { font: "var(--type-eyebrow)", letterSpacing: "var(--tracking-caps)", textTransform: "uppercase", color: "var(--text-muted)", marginBottom: 12 } }, children);
+const MARKET = [{ label: "TAM", value: 34.5, display: "$34.5K", note: "Mercado total de diagnóstico estratégico." }, { label: "SAM", value: 25.6, display: "$25.6K", note: "Segmento al que llega la oferta actual." }, { label: "SOM", value: 21.2, display: "$21.2K", note: "Alcanzable en la ventana de 12 meses." }];
+function Demo() {
+  return /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gap: 26 } }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement(Head, null, "Escala anidada — nested"), /* @__PURE__ */ React.createElement(NestedScale, { size: 340, data: MARKET })), /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: "auto minmax(0,1fr)", gap: 40, alignItems: "end" } }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement(Head, null, "Motivo de lámina — corner"), /* @__PURE__ */ React.createElement("div", { style: { position: "relative", width: 260, height: 200, overflow: "hidden", background: "var(--surface-warm)" } }, /* @__PURE__ */ React.createElement(NestedScale, { layout: "corner", corner: "br", size: 260, tone: "lime", data: MARKET, style: { position: "absolute", right: 0, bottom: 0 } }))), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement(Head, null, "En fila — row"), /* @__PURE__ */ React.createElement(NestedScale, { layout: "row", tone: "cool", size: 120, data: MARKET }))));
+}
+ReactDOM.createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(Demo, null));
+</script></body></html>

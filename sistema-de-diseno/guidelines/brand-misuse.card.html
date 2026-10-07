@@ -1,0 +1,37 @@
+<!-- @dsCard group="Brand" viewport="960x600" name="Usos incorrectos" subtitle="Las nueve prohibiciones del manual" -->
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css">
+<style>html,body{margin:0;background:var(--surface-page);font-family:var(--font-sans);color:var(--text-body);letter-spacing:var(--tracking)}a{color:var(--text-accent)}a:hover{color:var(--pink-600)}#root{padding:36px}</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script><script src="../_ds_bundle.js"></script></head><body><div id="root"></div>
+<script type="text/babel">const {Wordmark}=window.SightDesignSystem_3d4cc7;
+const S=34;
+function Tile({n,label,bg='var(--coconut-milk)',children}){return <div style={{display:'grid',gap:10}}>
+  <div style={{background:bg,height:96,display:'grid',placeItems:'center',overflow:'hidden'}}>{children}</div>
+  <div style={{display:'flex',gap:8,alignItems:'baseline'}}>
+    <span style={{font:'var(--fw-extrabold) 13px/1 var(--font-sans)',color:'var(--pink-paradise)',minWidth:14}}>{n}</span>
+    <span style={{font:'var(--fw-regular) 14px/1.35 var(--font-sans)',letterSpacing:'var(--tracking)'}}>{label}</span>
+  </div>
+</div>;}
+function Demo(){return <div style={{display:'grid',gap:24}}>
+<div style={{display:'grid',gridTemplateColumns:'minmax(0,1fr) auto',gap:32,alignItems:'end'}}>
+  <div>
+    <div style={{font:'var(--type-eyebrow)',letterSpacing:'var(--tracking-caps)',textTransform:'uppercase',color:'var(--text-muted)'}}>Usos incorrectos</div>
+    <h2 style={{font:'var(--fw-extrabold) 30px/1.1 var(--font-sans)',letterSpacing:'var(--tracking)',color:'var(--text-strong)',margin:'8px 0 0'}}>Qué no hacer con el logotipo</h2>
+  </div>
+  <p style={{margin:0,font:'var(--fw-light) 15px/1.4 var(--font-sans)',color:'var(--text-muted)',maxWidth:'40ch'}}>Cualquier modificación que cambie el significado de la marca confunde al lector y reduce su impacto.</p>
+</div>
+<div style={{display:'grid',gridTemplateColumns:'repeat(3,minmax(0,1fr))',gap:'24px 28px'}}>
+  <Tile n="1" label="Aplicar cualquier tipo de sombra."><div style={{filter:'drop-shadow(6px 8px 4px rgba(47,52,64,.5))'}}><Wordmark size={S}/></div></Tile>
+  <Tile n="2" label="Distorsionar vertical u horizontalmente."><div style={{transform:'scaleX(1.55)'}}><Wordmark size={S}/></div></Tile>
+  <Tile n="3" label="Contornear el logotipo."><div style={{position:'relative'}}><div style={{position:'absolute',inset:0,display:'grid',placeItems:'center',transform:'scale(1.08)'}}><Wordmark size={S} tone="pink"/></div><Wordmark size={S} tone="paper"/></div></Tile>
+  <Tile n="4" label="Girar el logotipo."><div style={{transform:'rotate(-14deg)'}}><Wordmark size={S}/></div></Tile>
+  <Tile n="5" label="Cambiar a colores que no pertenecen a la marca."><Wordmark size={S} color="#2f6bff"/></Tile>
+  <Tile n="6" label="Usar el logotipo sin su símbolo."><span style={{font:'var(--fw-extrabold) 40px/1 var(--font-sans)',letterSpacing:'var(--tracking-tight)',color:'var(--deep-blue-gray)'}}>sight</span></Tile>
+  <Tile n="7" label="Aplicar la marca sobre fondos de bajo contraste." bg="var(--salmon)"><Wordmark size={S} tone="pink"/></Tile>
+  <Tile n="8" label="Cambiar la composición original del lockup."><div style={{display:'grid',justifyItems:'center',gap:2}}><span style={{font:'var(--fw-medium) 12px/1 var(--font-sans)',letterSpacing:'0.3em',color:'var(--deep-blue-gray)'}}>LAB</span><Wordmark size={S}/></div></Tile>
+  <Tile n="9" label="Usar el logotipo en baja resolución."><div style={{filter:'blur(1.6px) contrast(1.4)'}}><Wordmark size={S}/></div></Tile>
+</div>
+</div>;}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script></body></html>

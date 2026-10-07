@@ -1,0 +1,302 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "blocks": {
+        "slide-1": {
+          "type": "slide",
+          "settings": {
+            "title": "<span class=\"line it\">Convertimos <span class=\"mk-u\">incertidumbre</span></span><span class=\"line\">en <span class=\"mk-hl mk-salt\">decisiones</span> de diseño</span><span class=\"line\">que <span class=\"mk-u mk-u--pink\">impulsan</span> el <span class=\"mk-hl mk-lime\">crecimiento</span>.</span>",
+            "subtitle": "Laboratorio de diseño estratégico para marcas que quieren crecer, adaptarse y seguir vigentes.",
+            "cta_label": "Hablemos",
+            "cta_link": "#contacto",
+            "tint": "none"
+          }
+        },
+        "slide-2": {
+          "type": "slide",
+          "settings": {
+            "title": "<span class=\"line it\">Marcas <span class=\"mk-hl mk-lime\">longevas</span>,</span><span class=\"line\"><span class=\"mk-u mk-u--salmon\">relevantes</span></span><span class=\"line\">y <span class=\"mk-hl mk-pink\">adaptables</span>.</span>",
+            "subtitle": "Traducimos la complejidad de los negocios en decisiones claras, medibles y accionables.",
+            "cta_label": "Ver proyectos",
+            "cta_link": "/pages/laboratorio",
+            "image_asset": "hero-lupa.jpg",
+            "image_position": "35% 50%",
+            "image_offset": 160,
+            "tint": "rosa",
+            "blur_right": false
+          }
+        },
+        "slide-3": {
+          "type": "slide",
+          "settings": {
+            "title": "<span class=\"line it\">Ordenamos las <span class=\"mk-u mk-u--pink\">ideas</span></span><span class=\"line\">hasta encontrar</span><span class=\"line\">la <span class=\"mk-hl mk-lime\">dirección</span>.</span>",
+            "subtitle": "Trabajamos junto a tu equipo: escuchamos, conectamos hallazgos y priorizamos lo que de verdad mueve a tu marca.",
+            "cta_label": "¿En qué te ayudamos?",
+            "cta_link": "#ayudame",
+            "image_asset": "hero-taller.jpg",
+            "image_position": "70% 50%",
+            "image_offset": 0,
+            "tint": "lima",
+            "blur_right": true
+          }
+        }
+      },
+      "block_order": [
+        "slide-1",
+        "slide-2",
+        "slide-3"
+      ],
+      "settings": {
+        "autoplay": true,
+        "interval": 7
+      }
+    },
+    "marquee": {
+      "type": "marquee",
+      "settings": {
+        "words": "Dirección, Adaptabilidad, Certidumbre, Expansión, Anticipación",
+        "label": "Nuestros valores"
+      }
+    },
+    "ayudame": {
+      "type": "ayudame",
+      "blocks": {
+        "p1": {
+          "type": "postit",
+          "settings": {
+            "text": "Entender a mi consumidor.",
+            "color": "lima",
+            "x": 0,
+            "y": 14,
+            "rotation": -6
+          }
+        },
+        "p2": {
+          "type": "postit",
+          "settings": {
+            "text": "Encontrar mi mercado.",
+            "color": "rosa",
+            "x": 200,
+            "y": 0,
+            "rotation": 4
+          }
+        },
+        "p3": {
+          "type": "postit",
+          "settings": {
+            "text": "Sostener<br>el precio.",
+            "color": "salt",
+            "x": 400,
+            "y": 22,
+            "rotation": -3
+          }
+        },
+        "p4": {
+          "type": "postit",
+          "settings": {
+            "text": "Ordenar mi portafolio.",
+            "color": "salmon",
+            "x": 600,
+            "y": 4,
+            "rotation": 7
+          }
+        },
+        "p5": {
+          "type": "postit",
+          "settings": {
+            "text": "Anticipar el próximo ciclo.",
+            "color": "lima",
+            "x": 680,
+            "y": 192,
+            "rotation": -5
+          }
+        },
+        "p6": {
+          "type": "postit",
+          "settings": {
+            "text": "Recuperar vigencia.",
+            "color": "salt",
+            "x": 40,
+            "y": 182,
+            "rotation": 5
+          }
+        },
+        "p7": {
+          "type": "postit",
+          "settings": {
+            "text": "Explicar la marca en tienda.",
+            "color": "salmon",
+            "x": 260,
+            "y": 198,
+            "rotation": -4
+          }
+        },
+        "p8": {
+          "type": "postit",
+          "settings": {
+            "text": "Dirigir mejor al equipo.",
+            "color": "rosa",
+            "x": 460,
+            "y": 186,
+            "rotation": 6
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5",
+        "p6",
+        "p7",
+        "p8"
+      ],
+      "settings": {
+        "eyebrow": "Nos conectamos con tu necesidad real",
+        "title": "Ayúdame a:",
+        "prefix": "Ayúdame a:"
+      }
+    },
+    "servicios": {
+      "type": "servicios",
+      "blocks": {
+        "s1": {
+          "type": "service",
+          "settings": {
+            "title": "Ver lo que aún no es evidente",
+            "item1_title": "Diseño de futuros",
+            "item1_text": "Escenarios a largo plazo para que la marca lidere el ciclo en lugar de reaccionar a él.",
+            "item2_title": "Cambios de comportamiento",
+            "item2_text": "Detectamos el giro del usuario antes de que se vuelva masivo y lo volvemos brújula comercial.",
+            "item3_title": "Análisis de tendencias",
+            "item3_text": "Traducimos corrientes culturales y de consumo en oportunidades accionables por sector.",
+            "link_label": "Ver servicio"
+          }
+        },
+        "s2": {
+          "type": "service",
+          "settings": {
+            "title": "Crecer con dirección",
+            "item1_title": "Oportunidades de mercado",
+            "item1_text": "Dimensionamos el potencial real del negocio y hacia dónde se puede expandir con seguridad.",
+            "item2_title": "Canales de crecimiento",
+            "item2_text": "Trazamos la ruta donde el cliente ideal realmente interactúa, compra y vuelve.",
+            "item3_title": "Diseño de portafolio",
+            "item3_text": "Estructuramos la oferta para que sea coherente, rentable y fácil de explicar.",
+            "link_label": "Ver servicio"
+          }
+        },
+        "s3": {
+          "type": "service",
+          "settings": {
+            "title": "Experiencias que conectan",
+            "item1_title": "Experiencia de usuario",
+            "item1_text": "Mapeamos el recorrido para quitar fricción y que cada punto de contacto respire la marca.",
+            "item2_title": "Estrategia de producto digital",
+            "item2_text": "Plataformas y ecosistemas que responden a la dinámica del negocio, no a la moda técnica.",
+            "link_label": "Ver servicio"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "settings": {
+        "title": "Nuestros servicios",
+        "first_open": true
+      }
+    },
+    "para-quien": {
+      "type": "para-quien",
+      "settings": {
+        "eyebrow": "Para quién es sight",
+        "title": "¿Es sight para tu <span class=\"mk-hl mk-lime\">marca</span>?",
+        "checks": "Tu marca está lista para crecer y quieres expandirla con dirección.\nQuieres anticiparte a la crisis con decisiones basadas en evidencia, no en intuición.\nNo temes al cambio y estás dispuesto a transformar tu marca.\nQuieres que tu marca siga vigente y adaptable a largo plazo.",
+        "feelings_label": "Lo que buscamos que sientas al trabajar con nosotros",
+        "feelings": "Tranquilidad, Claridad, Confianza, Seguridad"
+      }
+    },
+    "proceso": {
+      "type": "proceso",
+      "blocks": {
+        "st1": {
+          "type": "step",
+          "settings": {
+            "word": "Observar",
+            "text": "Miramos el detalle y escuchamos lo que dicen —y lo que no— los datos."
+          }
+        },
+        "st2": {
+          "type": "step",
+          "settings": {
+            "word": "Interpretar",
+            "text": "Encontramos la verdad detrás del dato: la causa raíz."
+          }
+        },
+        "st3": {
+          "type": "step",
+          "settings": {
+            "word": "Proyectar",
+            "text": "Diseñamos rutas con criterio y visión de largo plazo."
+          }
+        },
+        "st4": {
+          "type": "step",
+          "settings": {
+            "word": "Accionar",
+            "text": "Acompañamos la implementación hasta que el resultado se mide."
+          }
+        }
+      },
+      "block_order": [
+        "st1",
+        "st2",
+        "st3",
+        "st4"
+      ],
+      "settings": {
+        "eyebrow": "Nuestro proceso · Un camino sin atajos"
+      }
+    },
+    "contacto": {
+      "type": "contacto",
+      "settings": {
+        "eyebrow": "Contacto",
+        "title": "Hablemos de lo que tu marca todavía no ve.",
+        "note": "¿Prefieres escribirnos directo?",
+        "show_form": true,
+        "success": "Gracias. Te escribimos pronto para agendar tu diagnóstico."
+      }
+    },
+    "tienda": {
+      "type": "tienda",
+      "settings": {
+        "limit": 3,
+        "collection": "reportes-e-infoproductos"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "marquee",
+    "ayudame",
+    "servicios",
+    "para-quien",
+    "proceso",
+    "tienda",
+    "contacto"
+  ]
+}

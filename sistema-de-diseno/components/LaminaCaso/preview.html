@@ -1,0 +1,15 @@
+<!-- @dsCard group="Láminas" height=724 width=1280 page subtitle="Caso de estudio — Cita del cliente + cifras de resultado" -->
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Caso de estudio</title><style>html,body{margin:0;width:1280px;height:720px;overflow:hidden;font-family:var(--font-sans);letter-spacing:var(--tracking)}a{color:var(--pink-paradise)}a:hover{color:var(--pink-600)}.slide{width:1280px;height:720px;padding:80px;box-sizing:border-box;display:flex;flex-direction:column}</style></head>
+<body><div id="root"></div>
+
+<script>
+(function(){
+const { Quote, StatBlock, Tag, Divider, Wordmark } = window.SightDesignSystem_3d4cc7;
+function Slide() {
+  return /* @__PURE__ */ React.createElement("div", { className: "slide", style: { background: "var(--surface-dark)", color: "var(--text-on-dark)", justifyContent: "space-between" } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 12 } }, /* @__PURE__ */ React.createElement(Tag, { tone: "lime" }, "Bienestar"), /* @__PURE__ */ React.createElement(Tag, { tone: "quiet", style: { color: "var(--ink-300)", boxShadow: "inset 0 0 0 1px rgba(255,255,255,.2)" } }, "14 años de mercado")), /* @__PURE__ */ React.createElement(Quote, { color: "#fff", attribution: "Dirección de marca", role: "Cliente", style: { maxWidth: "26ch", fontSize: 54 } }, /* @__PURE__ */ React.createElement("span", { style: { font: "var(--fw-light) 54px/1.15 var(--font-sans)", letterSpacing: "var(--tracking)" } }, "La marca seguía vendiendo, pero ya no explicaba por qué.")), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement(Divider, { tone: "lime", style: { marginBottom: 32 } }), /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 32 } }, /* @__PURE__ */ React.createElement(StatBlock, { value: "3,4x", color: "var(--light-lime)", label: "Recuerdo asistido", note: "Pre/post, n=420, 6 meses." }), /* @__PURE__ */ React.createElement(StatBlock, { value: "+18%", color: "var(--light-lime)", label: "Ticket medio", note: "Dos trimestres tras el relanzamiento." }), /* @__PURE__ */ React.createElement(StatBlock, { value: "-31%", color: "var(--light-lime)", label: "Coste de adquisición", note: "Mismo presupuesto de medios." }))), /* @__PURE__ */ React.createElement(Wordmark, { lockup: "sight", size: 20, color: "var(--ink-300)" }));
+}
+ReactDOM.createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(Slide, null));
+
+})();
+</script></body></html>

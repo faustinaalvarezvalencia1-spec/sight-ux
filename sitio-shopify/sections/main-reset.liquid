@@ -1,0 +1,22 @@
+<section class="page-simple">
+  <div class="wrap wrap--narrow">
+    {%- if template.name == 'customers/activate_account' -%}
+      {%- assign form_type = 'activate_customer_password' -%}
+      {%- assign heading = 'Activa tu cuenta' -%}
+    {%- else -%}
+      {%- assign form_type = 'reset_customer_password' -%}
+      {%- assign heading = 'Crea una nueva contraseña' -%}
+    {%- endif -%}
+    {%- form form_type, class: 'login__form' -%}
+      <div class="login__head"><p class="eyebrow">Acceso</p><h1 class="h2">{{ heading }}</h1></div>
+      {%- if form.errors -%}<div class="contact-error" role="alert">{{ form.errors | default_errors }}</div>{%- endif -%}
+      <label class="field"><span class="field__label">Contraseña</span><input type="password" name="customer[password]" autocomplete="new-password" required></label>
+      <label class="field"><span class="field__label">Confirmar contraseña</span><input type="password" name="customer[password_confirmation]" autocomplete="new-password" required></label>
+      <button type="submit" class="btn btn--pink btn--lg">Guardar →</button>
+    {%- endform -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Contraseña", "settings": [] }
+{% endschema %}

@@ -1,0 +1,33 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "laboratorio": {
+      "type": "laboratorio",
+      "blocks": {
+        "c1": { "type": "case", "settings": { "name": "BUKZ" } },
+        "c2": { "type": "case", "settings": { "name": "TX4" } },
+        "c3": { "type": "case", "settings": { "name": "El Perpetuo Socorro" } },
+        "c4": { "type": "case", "settings": { "name": "WeedGreen" } }
+      },
+      "block_order": ["c1", "c2", "c3", "c4"],
+      "settings": {}
+    },
+    "contacto": {
+      "type": "contacto",
+      "settings": {
+        "show_form": false,
+        "button_label": "Agenda un diagnóstico",
+        "button_link": "/#contacto"
+      }
+    }
+  },
+  "order": ["laboratorio", "contacto"]
+}

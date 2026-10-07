@@ -1,0 +1,59 @@
+<!-- @dsCard group="Brand" viewport="960x560" name="Lenguaje de formas" subtitle="Cuartos de círculo, post-its, resaltado, tira corrida" -->
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css">
+<style>html,body{margin:0;background:var(--surface-page);font-family:var(--font-sans);color:var(--text-body);letter-spacing:var(--tracking)}a{color:var(--text-accent)}a:hover{color:var(--pink-600)}#root{padding:36px}</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script><script src="../_ds_bundle.js"></script></head><body><div id="root"></div>
+<script type="text/babel">const {ShapeMark,StickyNote,Highlight,EyeMark,Marquee,Wordmark}=window.SightDesignSystem_3d4cc7;
+const Note=({children})=><p style={{margin:0,font:'var(--fw-regular) 14px/1.4 var(--font-sans)',color:'var(--text-muted)',maxWidth:'40ch'}}>{children}</p>;
+const Head=({children})=><div style={{font:'var(--type-eyebrow)',letterSpacing:'var(--tracking-caps)',textTransform:'uppercase',color:'var(--text-muted)'}}>{children}</div>;
+function Demo(){return <div style={{display:'grid',gap:28}}>
+<div>
+  <Head>Lenguaje de formas</Head>
+  <h2 style={{font:'var(--fw-extrabold) 30px/1.1 var(--font-sans)',letterSpacing:'var(--tracking)',color:'var(--text-strong)',margin:'8px 0 0'}}>Cuatro recursos, y sólo estos cuatro</h2>
+</div>
+<div style={{display:'grid',gridTemplateColumns:'repeat(2,minmax(0,1fr))',gap:32}}>
+
+  <div style={{display:'grid',gap:12}}>
+    <div style={{position:'relative',height:170,background:'var(--coconut-milk)',overflow:'hidden'}}>
+      <div style={{position:'absolute',top:0,right:0}}><ShapeMark shape="quarter-bl" tone="lime" size={110}/></div>
+      <div style={{position:'absolute',bottom:0,left:0}}><ShapeMark shape="quarter-tr" tone="pink" size={70}/></div>
+      <div style={{position:'absolute',inset:'auto auto 20px 96px'}}><Wordmark lockup="sight lab" size={30}/></div>
+    </div>
+    <Head>Formas planas sangradas</Head>
+    <Note>Cuarto de círculo, medio círculo o círculo, siempre a color plano y cortados por el borde de la pieza. Una o dos por vista. El resto del sistema sigue siendo de esquina recta.</Note>
+  </div>
+
+  <div style={{display:'grid',gap:12}}>
+    <div style={{height:170,background:'var(--salt-air)',display:'flex',alignItems:'center',justifyContent:'center',gap:18,overflow:'hidden'}}>
+      <StickyNote tone="pink" size={110} rotate={-5} style={{fontSize:13}}>Las buenas ideas empiezan aquí</StickyNote>
+      <StickyNote tone="lime" size={110} rotate={4} style={{fontSize:13}}>Síntoma → causa raíz</StickyNote>
+    </div>
+    <Head>Post-its</Head>
+    <Note>El objeto del que nace la paleta. Único elemento que se permite girar y llevar sombra: es papel pegado, no un contenedor de interfaz.</Note>
+  </div>
+
+  <div style={{display:'grid',gap:12}}>
+    <div style={{height:170,background:'var(--paper)',boxShadow:'inset 0 0 0 1px var(--border-hairline)',display:'grid',placeItems:'center',padding:24}}>
+      <p style={{margin:0,font:'var(--fw-extrabold) 26px/1.15 var(--font-sans)',letterSpacing:'var(--tracking)',color:'var(--text-strong)',maxWidth:'22ch'}}>Convertimos incertidumbre en decisiones de diseño que impulsan el <Highlight>crecimiento</Highlight>.</p>
+    </div>
+    <Head>Resaltado de marcador</Head>
+    <Note>Una palabra por titular, la que carga el argumento. Nunca sobre texto de cuerpo.</Note>
+  </div>
+
+  <div style={{display:'grid',gap:12}}>
+    <div style={{height:170,background:'var(--coconut-milk)',display:'grid',alignContent:'center',gap:20,overflow:'hidden'}}>
+      <Marquee items={['estrategia','diseño','crecimiento']} speed={26}/>
+      <div style={{display:'flex',gap:14,justifyContent:'center',alignItems:'center'}}>
+        <EyeMark size={26}/><EyeMark size={26} tone="pink"/>
+        <ShapeMark shape="circle" tone="lime" size={54}><EyeMark size={18}/></ShapeMark>
+      </div>
+    </div>
+    <Head>Tira corrida y sello del ojo</Head>
+    <Note>La tira lime separa secciones, a sangre y una sola por vista. El ojo suelto firma esquinas, post-its y círculos: no sustituye al logotipo.</Note>
+  </div>
+
+</div>
+</div>;}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script></body></html>

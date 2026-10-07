@@ -1,0 +1,19 @@
+{%- comment -%}
+  Logo de sight. Uso: {% render 'logo', light: true, height: 32 %}
+{%- endcomment -%}
+{%- liquid
+  assign h = height | default: 40
+  if light
+    assign custom = settings.logo_light
+    assign fallback = 'logo-sight-blanco.svg'
+  else
+    assign custom = settings.logo
+    assign fallback = 'logo-sight.svg'
+  endif
+  assign logo_style = 'height: ' | append: h | append: 'px; width: auto; display: block;'
+-%}
+{%- if custom != blank -%}
+  {{ custom | image_url: height: 160 | image_tag: alt: shop.name, height: h, style: logo_style }}
+{%- else -%}
+  <img src="{{ fallback | asset_url }}" alt="{{ shop.name }}" width="{{ h | times: 1000 | divided_by: 536 }}" height="{{ h }}" style="height: {{ h }}px; width: auto; display: block;">
+{%- endif -%}

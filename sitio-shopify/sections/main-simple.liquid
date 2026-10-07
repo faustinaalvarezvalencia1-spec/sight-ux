@@ -1,0 +1,53 @@
+{%- comment -%} Sección genérica para 404, búsqueda, listas y blog. {%- endcomment -%}
+<section class="page-simple">
+  <div class="wrap wrap--narrow">
+    {%- case template.name -%}
+      {%- when '404' -%}
+        <p class="eyebrow">Error 404</p>
+        <h1 class="display">No encontramos esta página.</h1>
+        <p class="lead">Puede que el enlace haya cambiado. Vuelve al inicio o escríbenos.</p>
+        <a class="btn btn--ink" href="{{ routes.root_url }}">Ir al inicio</a>
+
+      {%- when 'search' -%}
+        <h1 class="display">Buscar</h1>
+        <form action="{{ routes.search_url }}" method="get" role="search" class="search-form">
+          <label class="field"><span class="field__label">¿Qué buscas?</span><input type="search" name="q" value="{{ search.terms | escape }}"></label>
+          <button type="submit" class="btn btn--ink">Buscar</button>
+        </form>
+        {%- if search.performed -%}
+          <ul class="search-results">
+            {%- for item in search.results -%}
+              <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+            {%- else -%}
+              <li>No hay resultados para “{{ search.terms | escape }}”.</li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+      {%- when 'list-collections' -%}
+        <h1 class="display">Colecciones</h1>
+        <ul class="search-results">
+          {%- for c in collections -%}<li><a href="{{ c.url }}">{{ c.title }}</a></li>{%- endfor -%}
+        </ul>
+
+      {%- when 'blog' -%}
+        <h1 class="display">{{ blog.title }}</h1>
+        {%- paginate blog.articles by 10 -%}
+          <ul class="search-results">
+            {%- for article in blog.articles -%}
+              <li><a href="{{ article.url }}">{{ article.title }}</a> <span class="caption">{{ article.published_at | date: '%d/%m/%Y' }}</span></li>
+            {%- endfor -%}
+          </ul>
+        {%- endpaginate -%}
+
+      {%- when 'article' -%}
+        <p class="eyebrow">{{ article.published_at | date: '%d/%m/%Y' }}</p>
+        <h1 class="display">{{ article.title }}</h1>
+        <div class="rte">{{ article.content }}</div>
+    {%- endcase -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Contenido", "settings": [] }
+{% endschema %}

@@ -1,0 +1,53 @@
+<section id="ayudame" class="ayudame" data-postits>
+  <svg class="visually-hidden" aria-hidden="true" focusable="false"><filter id="markerInk" x="-5%" y="-10%" width="110%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3" result="noise"></feTurbulence><feDisplacementMap in="SourceGraphic" in2="noise" scale="1.8" xChannelSelector="R" yChannelSelector="G" result="rough"></feDisplacementMap><feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="1" seed="8" result="grain"></feTurbulence><feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -1.3 0 0 0 1.35" result="grainAlpha"></feColorMatrix><feComposite in="rough" in2="grainAlpha" operator="in"></feComposite></filter></svg>
+  <div class="ayudame__head">
+    <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+    <h2 class="display">{{ section.settings.title }}</h2>
+  </div>
+  <button type="button" class="btn btn--ghost ayudame__replay" data-replay><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"></path><path d="M19 12l-7 7-7-7"></path></svg>Soltar de nuevo</button>
+  <div class="postit-board">
+    {%- for block in section.blocks -%}
+      {%- assign bs = block.settings -%}
+      {%- assign plain = bs.text | replace: '<br>', ' ' | strip_html | strip -%}
+      <a class="postit" href="#contacto" data-need="{{ section.settings.prefix | escape }} {{ plain | escape }}" aria-label="{{ section.settings.prefix | escape }} {{ plain | escape }} Escríbenos" style="--x: {{ bs.x }}px; --y: {{ bs.y }}px; --r: {{ bs.rotation }}deg; --d: {{ forloop.index0 | times: 140 }}ms;" {{ block.shopify_attributes }}>
+        <img class="postit__img" src="{{ 'postit-' | append: bs.color | append: '.png' | asset_url }}" alt="" width="240" height="232" loading="lazy">
+        <span class="postit__text">{{ bs.text }}</span>
+      </a>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ayúdame a (post-its)",
+  "class": "section-ayudame",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Nos conectamos con tu necesidad real" },
+    { "type": "text", "id": "title", "label": "Título", "default": "Ayúdame a:" },
+    { "type": "text", "id": "prefix", "label": "Texto que se escribe en el formulario", "default": "Ayúdame a:" }
+  ],
+  "blocks": [
+    {
+      "type": "postit",
+      "name": "Post-it",
+      "limit": 12,
+      "settings": [
+        { "type": "text", "id": "text", "label": "Texto", "info": "Para partirlo en dos renglones escribe la etiqueta HTML de salto de línea (br) donde va el corte." },
+        {
+          "type": "select", "id": "color", "label": "Color", "default": "lima",
+          "options": [
+            { "value": "lima", "label": "Lima" },
+            { "value": "rosa", "label": "Rosa claro" },
+            { "value": "salt", "label": "Salt (azul claro)" },
+            { "value": "salmon", "label": "Salmón" }
+          ]
+        },
+        { "type": "range", "id": "x", "label": "Posición horizontal", "min": 0, "max": 700, "step": 10, "unit": "px", "default": 0 },
+        { "type": "range", "id": "y", "label": "Posición vertical", "min": 0, "max": 200, "step": 2, "unit": "px", "default": 0 },
+        { "type": "range", "id": "rotation", "label": "Inclinación", "min": -10, "max": 10, "step": 1, "unit": "°", "default": 0 }
+      ]
+    }
+  ],
+  "presets": [ { "name": "Ayúdame a (post-its)" } ]
+}
+{% endschema %}

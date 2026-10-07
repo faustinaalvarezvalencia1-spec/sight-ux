@@ -1,0 +1,39 @@
+<!-- @dsCard group="Sitio web" viewport="1280x900" name="Sitio sight.lab" subtitle="Inicio, Sobre nosotros, Proyectos y contacto en sobrecapa" -->
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>sight lab</title><link rel="stylesheet" href="../../styles.css">
+<style>html,body{margin:0;background:var(--surface-page);font-family:var(--font-sans);color:var(--text-body);letter-spacing:var(--tracking);-webkit-font-smoothing:antialiased}*{box-sizing:border-box}a{color:var(--text-accent)}a:hover{color:var(--pink-600)}</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script></head>
+<body><div id="root"></div>
+<script type="text/babel" src="Chrome.jsx"></script>
+<script type="text/babel" src="Home.jsx"></script>
+<script type="text/babel" src="About.jsx"></script>
+<script type="text/babel" src="Work.jsx"></script>
+<script type="text/babel" src="ContactModal.jsx"></script>
+<script type="text/babel" data-presets="env,react">
+/* Una sola página con tres vistas y el contacto en sobrecapa. El cambio de vista funde
+   la saliente y sube la entrante; el scroll vuelve arriba al terminar el fundido. */
+function App(){
+  const [page,setPage]=React.useState('home');
+  const [shown,setShown]=React.useState('home');
+  const [on,setOn]=React.useState(true);
+  const [modal,setModal]=React.useState(null);
+  const go=k=>{
+    if(k===page)return;
+    setOn(false);setPage(k);
+    setTimeout(()=>{setShown(k);window.scrollTo(0,0);setOn(true);},260);
+  };
+  const openContact=subject=>setModal({subject:typeof subject==='string'?subject:''});
+  return <>
+    <Nav page={page} go={go} onContact={()=>openContact()}/>
+    <main style={{opacity:on?1:0,transform:on?'none':'translateY(16px)',
+      transition:'opacity 300ms ease, transform 300ms cubic-bezier(.2,.8,.2,1)'}}>
+      {shown==='about'?<About/>:shown==='work'?<Work onContact={openContact}/>:<Home go={go} onContact={openContact}/>}
+    </main>
+    <Footer onContact={()=>openContact()}/>
+    <ContactModal open={!!modal} subject={modal?modal.subject:''} onClose={()=>setModal(null)}/>
+  </>;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script></body></html>

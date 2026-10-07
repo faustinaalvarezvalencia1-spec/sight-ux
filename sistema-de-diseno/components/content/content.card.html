@@ -1,0 +1,17 @@
+<!-- @dsCard group="Components" viewport="700x420" name="Content" subtitle="SectionHeading, Callout, Quote, StatBlock, DiagnosisTrack" -->
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<style>html,body{margin:0;background:var(--surface-page);font-family:var(--font-sans);color:var(--text-body);letter-spacing:var(--tracking)}a{color:var(--text-accent)}a:hover{color:var(--pink-600)}#root{padding:24px;}</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script><script src="../../_ds_bundle.js"></script></head><body><div id="root"></div>
+<script type="text/babel">const {SectionHeading,Callout,Quote,StatBlock,DiagnosisTrack}=window.SightDesignSystem_3d4cc7;
+function Demo(){return <div style={{display:'grid',gap:24}}>
+<SectionHeading level="subtitle" eyebrow="Metodología">Diagnosticamos antes de decorar</SectionHeading>
+<DiagnosisTrack steps={[{title:'Síntoma',body:'Caída de conversión en tienda propia.'},{title:'Causa raíz',body:'La promesa no coincide con la experiencia.'},{title:'Tratamiento',body:'Rearticulación de propuesta y sistema.'},{title:'Resultado',body:'Ticket medio +18% en dos trimestres.'}]}/>
+<Callout tone="lime" label="sight lab:">versión institucional y más completa de la marca. Se utiliza en escenarios formales y estratégicos.</Callout>
+<div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:32,alignItems:'start'}}>
+<Quote attribution="Dirección de marca" role="Cliente, sector bienestar" style={{fontSize:24}}>La marca seguía vendiendo, pero ya no explicaba por qué.</Quote>
+<StatBlock value="3,4x" label="Recuerdo de marca asistido" note="Medición pre/post, n=420, 6 meses."/>
+</div></div>;}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script></body></html>

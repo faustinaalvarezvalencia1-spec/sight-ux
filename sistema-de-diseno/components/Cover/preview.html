@@ -1,0 +1,52 @@
+<!-- @dsCard height=288 -->
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Sight — Design System</title>
+<style>
+  html, body { margin:0; height:100%; }
+  body { background:var(--surface-page); color:var(--text-strong); font-family:var(--font-sans); overflow:hidden; }
+  .cover { position:relative; width:960px; height:288px; }
+  svg { position:absolute; left:0; top:0; display:block; }
+  .pink { fill:var(--pink-paradise); }
+  .lime { fill:var(--light-lime); }
+  .ink { fill:var(--deep-blue-gray); }
+  .salt { fill:var(--salt-air); }
+  .salmon { fill:var(--salmon); }
+  .ground { fill:var(--surface-page); }
+  .text { position:absolute; left:40px; bottom:32px; max-width:880px; }
+  .name { margin:0; font-weight:var(--fw-semibold); font-size:64px; line-height:.95; letter-spacing:var(--tracking-tight); color:var(--text-strong); white-space:nowrap; }
+  .tag { margin:12px 0 0; font-weight:var(--fw-light); font-size:14px; line-height:1.4; letter-spacing:var(--tracking); color:var(--text-muted); }
+</style>
+</head>
+<body>
+<div class="cover">
+<svg width="960" height="120" viewBox="0 0 960 120" aria-hidden="true">
+  <!--
+    blocks: pink-paradise 336×120, light-lime 240×120, deep-blue-gray 192×120, salt-air 96×120, salmon 96×120 — flush, square corners (radius-none)
+    arrangement: top band of unequal flush slabs bleeding off the top, left and right edges, like a row of post-its laid edge to edge
+    pattern: literal motif — the brand's own shape language (README: "formas planas sangradas — círculo, medio círculo, cuarto de círculo, cortadas por el borde"), so quarter- and half-circles cut by the slab edges
+    scales: slab widths are multiples of space-9 (96) and space-7 (48); curve radii space-9 (96), space-8 (64), space-7 (48)
+  -->
+  <rect class="pink" x="0" y="0" width="336" height="120"/>
+  <rect class="lime" x="336" y="0" width="240" height="120"/>
+  <rect class="ink" x="576" y="0" width="192" height="120"/>
+  <rect class="salt" x="768" y="0" width="96" height="120"/>
+  <rect class="salmon" x="864" y="0" width="96" height="120"/>
+  <!-- quarter circle, lime, cut into the pink slab's bottom-right corner (r = space-9) -->
+  <path class="lime" d="M336 120 L336 24 A96 96 0 0 0 240 120 Z"/>
+  <!-- half circle, pink, hanging from the top edge of the lime slab (r = space-8) -->
+  <path class="pink" d="M392 0 A64 64 0 0 0 520 0 Z"/>
+  <!-- quarter circle, lime, rising from the ink slab's bottom-left (r = space-9) -->
+  <path class="lime" d="M576 120 L576 24 A96 96 0 0 1 672 120 Z"/>
+  <!-- half circle, salmon, cut by the boundary between salt and salmon (r = space-7) -->
+  <path class="salmon" d="M864 12 A48 48 0 0 0 864 108 Z"/>
+</svg>
+<div class="text">
+  <h1 class="name">Sight — Design System</h1>
+  <p class="tag">Convertimos incertidumbre en decisiones de diseño que impulsan el crecimiento.</p>
+</div>
+</div>
+</body>
+</html>

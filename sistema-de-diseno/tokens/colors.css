@@ -1,0 +1,68 @@
+/* Sight — paleta de marca. Origen: post-its y marcadores de sesión de trabajo. */
+:root{
+/* Base — vibrantes */
+--pink-paradise:#ff4864;/* PANTONE 17-1755 TCX */
+--salmon:#ff7c6f;/* PANTONE 7416 C */
+--light-lime:#e2fa83;/* PANTONE 373 C */
+/* Base — neutros */
+--deep-blue-gray:#2f3440;/* PANTONE 432 C */
+--salt-air:#cffffd;/* PANTONE 12-5207 TCX */
+--coconut-milk:#f4efe6;/* PANTONE 11-0608 TCX */
+--paper:#fafafa;
+--white:#ffffff;
+
+/* Escalas derivadas (oklch, mismo hue que la base) */
+--pink-100:oklch(0.94 0.045 12);
+--pink-200:oklch(0.86 0.10 12);
+--pink-600:oklch(0.55 0.20 12);
+--pink-800:oklch(0.42 0.15 12);
+--lime-100:oklch(0.97 0.05 118);
+--lime-300:oklch(0.94 0.11 118);
+--lime-600:oklch(0.78 0.16 118);
+--ink-700:oklch(0.42 0.019 262);
+--ink-500:oklch(0.55 0.016 262);
+--ink-300:oklch(0.72 0.012 262);
+--ink-100:oklch(0.90 0.006 262);
+--ink-050:oklch(0.955 0.004 262);
+
+/* Semánticos — texto */
+--text-strong:var(--deep-blue-gray);
+--text-body:var(--ink-700);
+--text-muted:var(--ink-500);
+--text-accent:var(--pink-paradise);
+--text-on-dark:var(--coconut-milk);
+--text-on-accent:#ffffff;
+--text-on-lime:var(--deep-blue-gray);
+
+/* Semánticos — superficie */
+--surface-page:var(--paper);
+--surface-card:var(--white);
+--surface-sunken:var(--ink-050);
+--surface-warm:var(--coconut-milk);
+--surface-cool:var(--salt-air);
+--surface-dark:var(--deep-blue-gray);
+--surface-accent:var(--pink-paradise);
+--surface-accent-soft:var(--pink-100);
+--surface-highlight:var(--light-lime);
+
+/* Semánticos — línea */
+--border-hairline:var(--ink-100);
+--border-strong:var(--deep-blue-gray);
+--border-accent:var(--pink-paradise);
+--rule-marker:var(--pink-paradise);
+
+/* Semánticos — estado (deriva de la paleta, sin colores nuevos) */
+--state-positive:var(--lime-600);
+--state-attention:var(--salmon);
+--state-critical:var(--pink-paradise);
+--state-neutral:var(--ink-300);
+
+/* Duotono de imagen — tratamiento obligatorio de toda fotografía real */
+--duotone-light:#ade6e6;
+--duotone-shadow:#721f34;
+
+/* Interacción */
+--focus-ring:var(--pink-paradise);
+--selection-bg:var(--light-lime);
+--selection-fg:var(--deep-blue-gray);
+}

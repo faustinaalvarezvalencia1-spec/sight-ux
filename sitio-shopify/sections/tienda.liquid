@@ -1,0 +1,43 @@
+{%- liquid
+  assign col = section.settings.collection
+  if col == blank
+    assign col = collections['all']
+  endif
+-%}
+<section id="tienda" class="tienda">
+  <div class="wrap">
+    <div class="tienda__head">
+      <div class="section-head">
+        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+        <h2 class="display">{{ section.settings.title }}</h2>
+      </div>
+      <div class="tienda__side">
+        {%- if section.settings.text != blank -%}<p class="lead">{{ section.settings.text }}</p>{%- endif -%}
+        <a class="textlink tienda__all" href="{{ col.url | default: routes.all_products_collection_url }}">{{ section.settings.link_label }} →</a>
+      </div>
+    </div>
+    <ul class="product-grid">
+      {%- for product in col.products limit: section.settings.limit -%}
+        <li>{% render 'product-card', product: product %}</li>
+      {%- else -%}
+        <li class="empty">Pronto publicaremos nuestros reportes.</li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Tienda",
+  "class": "section-tienda",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Tienda" },
+    { "type": "text", "id": "title", "label": "Título", "default": "Reportes para ver antes" },
+    { "type": "textarea", "id": "text", "label": "Texto", "default": "Tendencias, señales y herramientas del laboratorio, listas para descargar y usar con tu equipo." },
+    { "type": "collection", "id": "collection", "label": "Colección" },
+    { "type": "range", "id": "limit", "label": "Productos a mostrar", "min": 2, "max": 12, "step": 1, "default": 3 },
+    { "type": "text", "id": "link_label", "label": "Texto del enlace", "default": "Ver toda la tienda" }
+  ],
+  "presets": [ { "name": "Tienda" } ]
+}
+{% endschema %}

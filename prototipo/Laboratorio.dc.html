@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>sight — Laboratorio</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;800&amp;display=swap">
+<style>
+body{margin:0;background:#fafafa;font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;color:#2f3440;-webkit-font-smoothing:antialiased}
+::selection{background:#e2fa83;color:#2f3440}
+a{color:#2f3440}a:hover{color:#ff4864}
+button{font-family:inherit;cursor:pointer;letter-spacing:inherit}
+button:focus-visible,a:focus-visible{outline:none;box-shadow:0 0 0 2px #fafafa,0 0 0 4px #ff4864}
+.navlink{text-decoration:none;font-size:12px;font-weight:500;line-height:1.35;letter-spacing:0.06em;text-transform:uppercase;color:oklch(0.42 0.15 12)}
+.textlink:hover{color:#ff4864 !important}
+.btn-pink:hover{background:oklch(0.55 0.20 12) !important;color:#ffffff !important}
+.btn-ink:hover{background:oklch(0.42 0.019 262) !important;color:#ffffff !important}
+.btn-outline:hover{background:#2f3440 !important;color:#fafafa !important}
+.btn-outline:hover svg{stroke:#fafafa}
+.btn-ghost:hover{background:oklch(0.94 0.045 12) !important}
+.btn-pink:active,.btn-ink:active,.btn-outline:active,.btn-ghost:active{transform:translateY(1px)}
+.svc-head:hover{background:oklch(0.955 0.004 262) !important}
+.tab:hover{color:#ffffff}
+.marquee-track{animation:marquee 32s linear infinite}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.postit{transform:rotate(var(--r));animation:drop 900ms cubic-bezier(0.2,0,0,1) both}
+@keyframes drop{0%{transform:translateY(-760px) rotate(0deg);opacity:0}25%{opacity:1}100%{transform:translateY(0) rotate(var(--r));opacity:1}}
+.postit:hover{box-shadow:0 24px 64px -24px rgba(47,52,64,0.40) !important}
+.sat:hover circle{fill:#e2fa83}
+.layer:hover polygon{fill-opacity:1}
+.bar:hover .bar-fill{filter:brightness(0.94)}
+@media (prefers-reduced-motion: reduce){.marquee-track,.postit{animation:none !important}}
+</style>
+</helmet>
+<div style="width: 1440px; height: 1808px; overflow: hidden; background: #fafafa; color: #2f3440; letter-spacing: -0.04em; position: relative;">
+
+<!-- NAV -->
+<header style="height: 88px; box-sizing: border-box; padding: 0 120px; display: flex; align-items: center; justify-content: space-between; background: #f2f1ee; position: relative; z-index: 2;">
+<a href="Main.dc.html" aria-label="sight, inicio" style="display: flex; align-items: center;"><img src="/_blob/d17d284feef34aa0e8749e441893f3b3" alt="sight" style="height: 40px; width: auto; display: block;"></a>
+<nav aria-label="Principal" style="display: flex; align-items: center; gap: 32px;">
+<a class="navlink" href="Main.dc.html">Inicio</a>
+<a class="navlink" href="Nosotros.dc.html">Sobre nosotros</a>
+<a class="navlink" href="Main.dc.html">Servicios</a>
+<a class="navlink" href="#laboratorio" aria-current="page" style="color: #ff4864;">Laboratorio</a>
+<a class="btn-outline login-link" href="Login.dc.html" style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; color: oklch(0.42 0.15 12); border: 1px solid oklch(0.42 0.15 12); border-radius: 999px; padding: 8px 16px;">Iniciar sesión</a>
+<a class="textlink" href="#contacto" style="font-size: 13px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none; color: oklch(0.42 0.15 12);">Hablemos →</a>
+</nav>
+</header>
+
+<!-- SIGHT LAB -->
+<section id="laboratorio" style="height: 1160px; box-sizing: border-box; padding: 96px 120px 0; background: #2f3440; color: #f4efe6; display: flex; flex-direction: column;">
+<div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 48px; margin-bottom: 48px;">
+<div style="display: flex; flex-direction: column; gap: 12px;">
+<p style="margin: 0; font-size: 12px; font-weight: 600; line-height: 1.2; letter-spacing: 0.06em; text-transform: uppercase; color: #e2fa83;">Laboratorio</p>
+<h2 style="margin: 0; font-size: 81px; font-weight: 600; line-height: 1.2; letter-spacing: -0.05em; color: #f4efe6;">sight lab</h2>
+</div>
+<p style="margin: 0; max-width: 380px; font-size: 16px; font-weight: 400; line-height: 1.35; color: #f4efe6;">Cada caso, contado igual: síntoma, causa raíz, tratamiento y resultado. Abre una carpeta.</p>
+</div>
+<div role="tablist" aria-label="Proyectos" style="display: flex; align-items: flex-end; gap: 4px; height: 56px;">
+<button type="button" role="tab" class="tab" aria-selected="{{lab0on}}" onClick="{{lab0}}" style="height: 56px; width: 240px; border: 0; background: {{lab0bg}}; color: {{lab0fg}}; font-size: 20px; font-weight: 600; clip-path: polygon(0 100%, 8% 0, 92% 0, 100% 100%);">BUKZ</button>
+<button type="button" role="tab" class="tab" aria-selected="{{lab1on}}" onClick="{{lab1}}" style="height: 56px; width: 240px; border: 0; background: {{lab1bg}}; color: {{lab1fg}}; font-size: 20px; font-weight: 600; clip-path: polygon(0 100%, 8% 0, 92% 0, 100% 100%);">TX4</button>
+<button type="button" role="tab" class="tab" aria-selected="{{lab2on}}" onClick="{{lab2}}" style="height: 56px; width: 240px; border: 0; background: {{lab2bg}}; color: {{lab2fg}}; font-size: 20px; font-weight: 600; clip-path: polygon(0 100%, 8% 0, 92% 0, 100% 100%);">El Perpetuo Socorro</button>
+<button type="button" role="tab" class="tab" aria-selected="{{lab3on}}" onClick="{{lab3}}" style="height: 56px; width: 240px; border: 0; background: {{lab3bg}}; color: {{lab3fg}}; font-size: 20px; font-weight: 600; clip-path: polygon(0 100%, 8% 0, 92% 0, 100% 100%);">WeedGreen</button>
+</div>
+<div role="tabpanel" style="height: 740px; box-sizing: border-box; padding: 48px; background: #f4efe6; color: #2f3440; display: flex; flex-direction: column; gap: 40px;">
+<div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 48px;">
+<div style="display: flex; flex-direction: column; gap: 12px;">
+<p style="margin: 0; font-size: 12px; font-weight: 600; line-height: 1.2; letter-spacing: 0.06em; text-transform: uppercase; color: #ff4864;">Caso · [Sector del cliente]</p>
+<h3 style="margin: 0; font-size: 54px; font-weight: 800; line-height: 1.1; letter-spacing: -0.04em;">{{labName}}</h3>
+</div>
+<a class="btn-ink" href="#laboratorio" style="text-decoration: none; background: #2f3440; color: #ffffff; font-size: 15px; font-weight: 600; line-height: 1.35; padding: 14px 28px; border-radius: 999px;">Ver caso completo</a>
+</div>
+<ol aria-label="Diagnóstico del caso" style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px;">
+<li style="display: flex; flex-direction: column; gap: 12px;"><div style="display: flex; align-items: center; gap: 12px;"><span style="width: 16px; height: 16px; border-radius: 50%; background: #ff4864; flex-shrink: 0;"></span><span style="flex-grow: 1; height: 1px; background: #2f3440;"></span></div><span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #ff4864;">01</span><span style="font-size: 24px; font-weight: 500; line-height: 1.2;">Síntoma</span><span style="font-size: 16px; font-weight: 400; line-height: 1.35; color: oklch(0.42 0.019 262);">[Lo que el cliente notaba]</span></li>
+<li style="display: flex; flex-direction: column; gap: 12px;"><div style="display: flex; align-items: center; gap: 12px;"><span style="width: 16px; height: 16px; border-radius: 50%; background: #ff4864; flex-shrink: 0;"></span><span style="flex-grow: 1; height: 1px; background: #2f3440;"></span></div><span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #ff4864;">02</span><span style="font-size: 24px; font-weight: 500; line-height: 1.2;">Causa raíz</span><span style="font-size: 16px; font-weight: 400; line-height: 1.35; color: oklch(0.42 0.019 262);">[Lo que encontramos al diagnosticar]</span></li>
+<li style="display: flex; flex-direction: column; gap: 12px;"><div style="display: flex; align-items: center; gap: 12px;"><span style="width: 16px; height: 16px; border-radius: 50%; background: #ff4864; flex-shrink: 0;"></span><span style="flex-grow: 1; height: 1px; background: #2f3440;"></span></div><span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #ff4864;">03</span><span style="font-size: 24px; font-weight: 500; line-height: 1.2;">Tratamiento</span><span style="font-size: 16px; font-weight: 400; line-height: 1.35; color: oklch(0.42 0.019 262);">[Las decisiones de diseño que tomamos]</span></li>
+<li style="display: flex; flex-direction: column; gap: 12px;"><div style="display: flex; align-items: center; gap: 12px;"><span style="width: 16px; height: 16px; border-radius: 50%; background: #e2fa83; border: 1px solid #2f3440; box-sizing: border-box; flex-shrink: 0;"></span></div><span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #ff4864;">04</span><span style="font-size: 24px; font-weight: 500; line-height: 1.2;">Resultado</span><span style="font-size: 16px; font-weight: 400; line-height: 1.35; color: oklch(0.42 0.019 262);">[El cambio medible]</span></li>
+</ol>
+<div style="flex-grow: 1; display: flex; gap: 48px; min-height: 0;">
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 8px;">
+<div style="flex-grow: 1; background: #ade6e6; color: #721f34; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;">
+<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#721f34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18"></rect><circle cx="9" cy="9" r="2"></circle><path d="M21 15l-5-5L5 21"></path></svg>
+<p style="margin: 0; font-size: 20px; font-weight: 500;">Portafolio {{labName}} · {{imgNum}} / 3</p>
+<p style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;">[ imagen del proyecto ]</p>
+</div>
+<div style="display: flex; justify-content: center; gap: 4px;">
+<button type="button" onClick="{{img0}}" aria-label="Imagen 1" style="width: 44px; height: 32px; border: 0; background: transparent; display: flex; align-items: center; justify-content: center; padding: 0;"><span style="display: block; width: 12px; height: 12px; border-radius: 999px; border: 1px solid #2f3440; box-sizing: border-box; background: {{i0bg}};"></span></button>
+<button type="button" onClick="{{img1}}" aria-label="Imagen 2" style="width: 44px; height: 32px; border: 0; background: transparent; display: flex; align-items: center; justify-content: center; padding: 0;"><span style="display: block; width: 12px; height: 12px; border-radius: 999px; border: 1px solid #2f3440; box-sizing: border-box; background: {{i1bg}};"></span></button>
+<button type="button" onClick="{{img2}}" aria-label="Imagen 3" style="width: 44px; height: 32px; border: 0; background: transparent; display: flex; align-items: center; justify-content: center; padding: 0;"><span style="display: block; width: 12px; height: 12px; border-radius: 999px; border: 1px solid #2f3440; box-sizing: border-box; background: {{i2bg}};"></span></button>
+</div>
+</div>
+<div style="width: 400px; flex-shrink: 0; background: #ffffff; padding: 24px 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px;">
+<div style="display: flex; flex-direction: column; gap: 6px;">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #ff4864;">Resultado medido</span>
+<span style="font-size: 54px; font-weight: 800; line-height: 1.1; letter-spacing: -0.04em;">[+00%]</span>
+<span style="font-size: 16px; font-weight: 500; line-height: 1.35;">[Indicador principal del caso]</span>
+<span style="font-size: 13px; font-weight: 400; line-height: 1.35; color: oklch(0.55 0.016 262);">[Método, muestra y periodo de la medición]</span>
+</div>
+<div role="img" aria-label="Gráfica ilustrativa: antes, mes 3 y mes 6" style="display: flex; align-items: flex-end; gap: 24px; height: 128px; border-bottom: 1px solid #2f3440;">
+<div class="bar" style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px;"><span style="font-size: 13px; font-weight: 600;">[00]</span><span class="bar-fill" style="display: block; width: 100%; height: 36px; background: oklch(0.72 0.012 262);"></span></div>
+<div class="bar" style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px;"><span style="font-size: 13px; font-weight: 600;">[00]</span><span class="bar-fill" style="display: block; width: 100%; height: 64px; background: #ff4864;"></span></div>
+<div class="bar" style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px;"><span style="font-size: 13px; font-weight: 600;">[00]</span><span class="bar-fill" style="display: block; width: 100%; height: 96px; background: #e2fa83;"></span></div>
+</div>
+<div style="display: flex; gap: 24px; margin-top: -12px;"><span style="flex: 1; text-align: center; font-size: 13px; color: oklch(0.42 0.019 262);">Antes</span><span style="flex: 1; text-align: center; font-size: 13px; color: oklch(0.42 0.019 262);">Mes 3</span><span style="flex: 1; text-align: center; font-size: 13px; color: oklch(0.42 0.019 262);">Mes 6</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" style="height: 560px; box-sizing: border-box; padding: 96px 120px 48px; background: #ff4864; color: #ffffff; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;">
+<svg aria-hidden="true" width="1440" height="100%" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.3; mix-blend-mode: overlay;"><filter id="grainContactoL"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"></feTurbulence><feColorMatrix type="saturate" values="0"></feColorMatrix></filter><rect width="100%" height="100%" filter="url(#grainContactoL)"></rect></svg>
+<div aria-hidden="true" style="position: absolute; right: -220px; top: -220px; width: 440px; height: 440px; border-radius: 50%; background: #e2fa83;"></div>
+<div style="position: relative; display: flex; align-items: flex-end; justify-content: space-between; gap: 80px;">
+<div style="display: flex; flex-direction: column; gap: 24px;">
+<p style="margin: 0; font-size: 12px; font-weight: 600; line-height: 1.2; letter-spacing: 0.06em; text-transform: uppercase;">Contacto</p>
+<h2 style="margin: 0; max-width: 780px; font-size: 81px; font-weight: 600; line-height: 1.2; letter-spacing: -0.05em; color: #ffffff;">Hablemos de lo que tu marca todavía no ve.</h2>
+</div>
+<div style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start; flex-shrink: 0;">
+<a class="btn-ink" href="#contacto" style="text-decoration: none; background: #2f3440; color: #ffffff; font-size: 20px; font-weight: 600; padding: 16px 32px; border-radius: 999px;">Agenda un diagnóstico</a>
+<span style="font-size: 16px; font-weight: 400; line-height: 1.35;">@somos.sight</span>
+</div>
+</div>
+<div style="position: relative; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #ffffff; padding-top: 24px;">
+<img src="/_blob/7fed6ef2297b94f3bd0c95e498eb07a8" alt="sight" style="height: 32px; width: auto; display: block;">
+<div style="display: flex; gap: 32px;">
+<a class="navlink" href="Main.dc.html" style="color: #ffffff;">Inicio</a>
+<a class="navlink" href="Nosotros.dc.html" style="color: #ffffff;">Sobre nosotros</a>
+<a class="navlink" href="Main.dc.html" style="color: #ffffff;">Servicios</a>
+<a class="navlink" href="#laboratorio" style="color: #ffffff;">Laboratorio</a>
+</div>
+<span style="font-size: 13px; font-weight: 400;">© 2026 sight · laboratorio de diseño estratégico</span>
+</div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1808}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { lab: 0, img: 0 }; }
+  renderVals() {
+    var s = this.state, self = this;
+    var labs = ['BUKZ', 'TX4', 'El Perpetuo Socorro', 'WeedGreen'];
+    var pickLab = function (i) { return function () { self.setState({ lab: i, img: 0 }); }; };
+    var pickImg = function (i) { return function () { self.setState({ img: i }); }; };
+    var tabBg = function (i) { return s.lab === i ? '#f4efe6' : 'oklch(0.42 0.019 262)'; };
+    var tabFg = function (i) { return s.lab === i ? '#2f3440' : '#f4efe6'; };
+    return {
+      lab0: pickLab(0), lab1: pickLab(1), lab2: pickLab(2), lab3: pickLab(3),
+      lab0on: s.lab === 0, lab1on: s.lab === 1, lab2on: s.lab === 2, lab3on: s.lab === 3,
+      lab0bg: tabBg(0), lab1bg: tabBg(1), lab2bg: tabBg(2), lab3bg: tabBg(3),
+      lab0fg: tabFg(0), lab1fg: tabFg(1), lab2fg: tabFg(2), lab3fg: tabFg(3),
+      labName: labs[s.lab],
+      img0: pickImg(0), img1: pickImg(1), img2: pickImg(2),
+      imgNum: s.img + 1,
+      i0bg: s.img === 0 ? '#2f3440' : 'transparent', i1bg: s.img === 1 ? '#2f3440' : 'transparent', i2bg: s.img === 2 ? '#2f3440' : 'transparent'
+    };
+  }
+}
+</script>
+</body>
+</html>

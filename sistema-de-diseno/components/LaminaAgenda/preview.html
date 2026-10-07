@@ -1,0 +1,16 @@
+<!-- @dsCard group="Láminas" height=724 width=1280 page subtitle="Índice — Lista numerada con regla de acento" -->
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Índice</title><style>html,body{margin:0;width:1280px;height:720px;overflow:hidden;font-family:var(--font-sans);letter-spacing:var(--tracking)}a{color:var(--pink-paradise)}a:hover{color:var(--pink-600)}.slide{width:1280px;height:720px;padding:80px;box-sizing:border-box;display:flex;flex-direction:column}</style></head>
+<body><div id="root"></div>
+
+<script>
+(function(){
+const { Divider, Wordmark } = window.SightDesignSystem_3d4cc7;
+const items = ["Punto de partida", "Diagnóstico", "Causa raíz", "Tratamiento propuesto", "Medición y siguientes pasos"];
+function Slide() {
+  return /* @__PURE__ */ React.createElement("div", { className: "slide", style: { background: "var(--paper)", color: "var(--text-strong)", justifyContent: "space-between" } }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { style: { font: "var(--fw-semibold) 12px/1 var(--font-sans)", letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--pink-paradise)", marginBottom: 16 } }, "Contenido"), /* @__PURE__ */ React.createElement("h2", { style: { margin: "0 0 40px", font: "var(--fw-extrabold) 54px/1.1 var(--font-sans)", letterSpacing: "var(--tracking)" } }, "Qué vamos a revisar"), /* @__PURE__ */ React.createElement(Divider, { tone: "accent" }), /* @__PURE__ */ React.createElement("ol", { style: { listStyle: "none", margin: 0, padding: 0 } }, items.map((t, i) => /* @__PURE__ */ React.createElement("li", { key: t, style: { display: "flex", gap: 28, alignItems: "baseline", padding: "22px 0", borderBottom: "1px solid var(--border-hairline)" } }, /* @__PURE__ */ React.createElement("span", { style: { font: "var(--fw-semibold) 16px/1 var(--font-sans)", color: "var(--pink-paradise)", width: 32 } }, "0", i + 1), /* @__PURE__ */ React.createElement("span", { style: { font: "var(--fw-light) 36px/1.15 var(--font-sans)", letterSpacing: "var(--tracking)" } }, t))))), /* @__PURE__ */ React.createElement(Wordmark, { lockup: "sight", size: 20, color: "var(--text-muted)" }));
+}
+ReactDOM.createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(Slide, null));
+
+})();
+</script></body></html>

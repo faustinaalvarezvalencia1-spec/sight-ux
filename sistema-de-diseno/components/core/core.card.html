@@ -1,0 +1,19 @@
+<!-- @dsCard group="Components" viewport="760x400" name="Core" subtitle="Button, Tag, Badge, Divider, Wordmark, EyeMark, Marquee" -->
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<style>html,body{margin:0;background:var(--surface-page);font-family:var(--font-sans);color:var(--text-body);letter-spacing:var(--tracking)}a{color:var(--text-accent)}a:hover{color:var(--pink-600)}#root{padding:24px;}</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script><script src="../../_ds_bundle.js"></script></head><body><div id="root"></div>
+<script type="text/babel">const {Button,Tag,Badge,Divider,Wordmark,EyeMark,Marquee}=window.SightDesignSystem_3d4cc7;
+const Row=({children})=><div style={{display:'flex',gap:12,alignItems:'center',flexWrap:'wrap'}}>{children}</div>;
+function Demo(){return <div style={{display:'grid',gap:20}}>
+<Row><Button variant="primary">Agendar diagnóstico</Button><Button variant="secondary">Ver método</Button><Button variant="lime">Descargar caso</Button><Button variant="outline">Contacto</Button><Button variant="ghost">Saber más</Button><Button variant="primary" disabled>Enviado</Button></Row>
+<Row><Button size="sm">sm</Button><Button size="md">md</Button><Button size="lg">lg</Button></Row>
+<Row><Tag tone="lime">Diagnóstico</Tag><Tag tone="pink">Moda</Tag><Tag tone="salmon">Bienestar</Tag><Tag tone="cool">Retail</Tag><Tag tone="dark">Longevidad</Tag><Tag tone="quiet">Interno</Tag></Row>
+<Row><Badge state="positive">Vigente</Badge><Badge state="attention">En observación</Badge><Badge state="critical">Riesgo</Badge><Badge state="neutral">Sin dato</Badge></Row>
+<Divider tone="accent"/>
+<Row><Wordmark lockup="sight lab" size={40}/><Wordmark lockup="sight" size={40} tone="pink"/><EyeMark size={30}/><EyeMark size={30} tone="pink"/></Row>
+<Marquee items={['estrategia','diseño','crecimiento']} speed={26}/>
+</div>;}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script></body></html>

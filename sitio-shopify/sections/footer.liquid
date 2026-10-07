@@ -1,0 +1,36 @@
+{%- assign menu = linklists[section.settings.menu] -%}
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <a href="{{ routes.root_url }}" aria-label="{{ shop.name }}, inicio">{% render 'logo', light: true, height: 32 %}</a>
+    <nav aria-label="Pie de página">
+      <ul class="site-footer__links">
+        {%- if menu.links.size > 0 -%}
+          {%- for link in menu.links -%}
+            <li><a class="navlink" href="{{ link.url }}">{{ link.title }}</a></li>
+          {%- endfor -%}
+        {%- else -%}
+          <li><a class="navlink" href="{{ routes.root_url }}">Inicio</a></li>
+          <li><a class="navlink" href="/pages/nosotros">Sobre nosotros</a></li>
+          <li><a class="navlink" href="{{ routes.root_url }}#servicios">Servicios</a></li>
+          <li><a class="navlink" href="/pages/laboratorio">Laboratorio</a></li>
+          <li><a class="navlink" href="{{ routes.all_products_collection_url }}">Tienda</a></li>
+        {%- endif -%}
+      </ul>
+    </nav>
+    <span class="site-footer__note">{{ settings.footer_note }}</span>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Pie de página",
+  "class": "section-footer",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menú del pie"
+    }
+  ]
+}
+{% endschema %}

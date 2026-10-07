@@ -1,0 +1,11 @@
+<!-- @dsCard group="Datos" height=464 subtitle="Jerarquías que se sostienen una sobre otra, en isometría" -->
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>LayerStack</title><style>html,body{margin:0;background:var(--surface-page);font-family:var(--font-sans);color:var(--text-body);letter-spacing:var(--tracking)}*{box-sizing:border-box}a{color:var(--text-accent)}#root{padding:24px}</style></head>
+<body><div id="root"></div>
+<script>
+const { Button, Tag, Badge, Divider, Wordmark, EyeMark, Marquee, Card, ColorBlock, ShapeMark, StickyNote, AuraField, SectionHeading, Callout, Quote, StatBlock, DiagnosisTrack, Highlight, PhotoFrame, BarChart, TrendLine, RingStat, NestedScale, LayerStack, SpokeDiagram, Field, Input, Select, Checkbox, Switch } = window.SightDesignSystem_3d4cc7;
+function Demo() {
+  return /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { style: { textAlign: "center", marginBottom: 30 } }, /* @__PURE__ */ React.createElement("div", { style: { font: "var(--fw-medium) 20px/1.2 var(--font-sans)", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--text-strong)" } }, "Plataforma de marca"), /* @__PURE__ */ React.createElement("div", { style: { width: 34, height: 1, background: "var(--ink-300)", margin: "14px auto 0" } })), /* @__PURE__ */ React.createElement(LayerStack, { size: 260, data: [{ label: "Esencia", note: "Diagnosticamos antes de decorar: el primer paso es el síntoma" }, { label: "Sistema", note: "Decisiones repetibles de marca y producto, con la causa raíz a la vista" }, { label: "Ejecución", note: "Lo que el equipo hace cada semana, con métrica acordada de antemano" }] }));
+}
+ReactDOM.createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(Demo, null));
+</script></body></html>

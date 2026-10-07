@@ -1,0 +1,288 @@
+/* Sight Design System — generated from tokens.json */
+:root, [data-theme="default"] {
+  --pink-paradise: #ff4864; /* Acento principal (PANTONE 17-1755 TCX). CTA, regla de sección, foco, antetítulos. */
+  --salmon: #ff7c6f; /* Acento secundario (PANTONE 7416 C). Estado de atención y segundo color de gráficas. */
+  --light-lime: #e2fa83; /* Resalte (PANTONE 373 C). Marcador de palabra clave, tira corrida, selección. Texto encima en deep-blue-gray. */
+  --deep-blue-gray: #2f3440; /* Tinta y oscuro (PANTONE 432 C). Titulares y superficie oscura. */
+  --salt-air: #cffffd; /* Neutro frío (PANTONE 12-5207 TCX). Superficie fría y auras. */
+  --coconut-milk: #f4efe6; /* Neutro cálido (PANTONE 11-0608 TCX). Papel de piezas impresas; texto sobre oscuro. */
+  --paper: #fafafa; /* Papel por defecto en producto. */
+  --white: #ffffff; /* Superficie de tarjeta. */
+  --pink-100: oklch(0.94 0.045 12); /* Escala derivada de Pink paradise. Fondo de ghost en hover y superficie de acento suave. */
+  --pink-200: oklch(0.86 0.10 12); /* Escala derivada de Pink paradise. Auras y degradados. */
+  --pink-600: oklch(0.55 0.20 12); /* Escala derivada de Pink paradise. Hover de enlaces y rellenos rosas. */
+  --pink-800: oklch(0.42 0.15 12); /* Escala derivada de Pink paradise. Paso más oscuro. */
+  --lime-100: oklch(0.97 0.05 118); /* Escala derivada de Light lime. Velos y degradados crema. */
+  --lime-300: oklch(0.94 0.11 118); /* Escala derivada de Light lime. Fichas y degradados. */
+  --lime-600: oklch(0.78 0.16 118); /* Escala derivada de Light lime. Estado positivo. */
+  --ink-700: oklch(0.42 0.019 262); /* Escala de tinta. Texto de cuerpo. */
+  --ink-500: oklch(0.55 0.016 262); /* Escala de tinta. Texto secundario. */
+  --ink-300: oklch(0.72 0.012 262); /* Escala de tinta. Estado neutro, líneas guía. */
+  --ink-100: oklch(0.90 0.006 262); /* Escala de tinta. Hairline de filas. */
+  --ink-050: oklch(0.955 0.004 262); /* Escala de tinta. Superficie hundida. */
+  --text-strong: var(--deep-blue-gray); /* Titulares sobre papel y superficies claras. */
+  --text-body: var(--ink-700); /* Texto de cuerpo sobre papel. */
+  --text-muted: var(--ink-500); /* Texto secundario, notas y pies. */
+  --text-accent: var(--pink-paradise); /* Antetítulos, enlaces y atribuciones. */
+  --text-on-dark: var(--coconut-milk); /* Texto sobre surface-dark. */
+  --text-on-accent: #ffffff; /* Texto sobre surface-accent (Pink paradise). */
+  --text-on-lime: var(--deep-blue-gray); /* Texto sobre surface-highlight (Light lime). */
+  --surface-page: var(--paper); /* Fondo de página. */
+  --surface-card: var(--white); /* Fondo de tarjeta. */
+  --surface-sunken: var(--ink-050); /* Fondo hundido: paneles, callout relleno. */
+  --surface-warm: var(--coconut-milk); /* Superficie cálida (Coconut Milk). */
+  --surface-cool: var(--salt-air); /* Superficie fría (Salt Air). */
+  --surface-dark: var(--deep-blue-gray); /* Superficie oscura (Deep Blue-Gray). */
+  --surface-accent: var(--pink-paradise); /* Superficie de acento (Pink paradise). */
+  --surface-accent-soft: var(--pink-100); /* Superficie de acento suave; hover de ghost. */
+  --surface-highlight: var(--light-lime); /* Superficie de resalte (Light lime). */
+  --border-hairline: var(--ink-100); /* Línea fina entre filas. */
+  --border-strong: var(--deep-blue-gray); /* Borde de botón outline. */
+  --border-accent: var(--pink-paradise); /* Borde de acento. */
+  --rule-marker: var(--pink-paradise); /* Regla de 3px que abre y cierra secciones. */
+  --state-positive: var(--lime-600); /* Estado positivo; deriva de la paleta, sin verdes nuevos. */
+  --state-attention: var(--salmon); /* Estado de atención. */
+  --state-critical: var(--pink-paradise); /* Estado crítico. */
+  --state-neutral: var(--ink-300); /* Estado neutro o sin dato. */
+  --duotone-light: #ade6e6; /* Luz del duotono obligatorio de toda fotografía real. */
+  --duotone-shadow: #721f34; /* Sombra del duotono obligatorio de toda fotografía real. */
+  --focus-ring: var(--pink-paradise); /* Anillo de foco de 2px, separado 2px del control. Nunca se suprime. */
+  --selection-bg: var(--light-lime); /* Fondo de selección de texto. */
+  --selection-fg: var(--deep-blue-gray); /* Texto seleccionado. */
+  --shadow-none: none; /* Reposo: sin sombra. */
+  --shadow-card: 0 1px 2px rgba(47,52,64,0.06); /* Tarjeta en reposo, casi imperceptible. */
+  --shadow-raised: 0 6px 24px -12px rgba(47,52,64,0.28); /* Hover de tarjeta navegable y post-its. */
+  --shadow-overlay: 0 24px 64px -24px rgba(47,52,64,0.40); /* Capas flotantes. Prohibida cualquier sombra sobre el logotipo. */
+}
+:root {
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 144px;
+  --gutter: 24px;
+  --pad-card: 32px;
+  --pad-card-sm: 24px;
+  --pad-section: 96px;
+  --page-max: 1200px;
+  --slide-w: 1280px;
+  --slide-h: 720px;
+  --slide-pad: 80px;
+  --grad-blur: 40px;
+  --border-thin: 1px;
+  --border-thick: 2px;
+  --border-rule: 3px;
+  --radius-none: 0; /* Tarjetas, bloques e imágenes: la marca es de esquina recta. */
+  --radius-sm: 2px; /* Casillas. */
+  --radius-md: 4px; /* Campos de formulario. */
+  --radius-pill: 999px; /* Botones y etiquetas. */
+  --fw-extralight: 200;
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-extrabold: 800;
+  --lh-prose: 1.45;
+  --tracking: -0.04em;
+  --tracking-tight: -0.05em;
+  --tracking-caps: 0.06em;
+  --grad-cool-pink: radial-gradient(62% 62% at 82% 24%, #cffffd 0%, #cffffd 22%, transparent 74%),radial-gradient(64% 64% at 18% 76%, #ff4864 0%, #ff4864 18%, transparent 74%);
+  --grad-espectro: conic-gradient(from 210deg at 50% 50%, #ff4864 0deg, #ff7c6f 78deg, #e2fa83 156deg, #cffffd 232deg, oklch(0.86 0.10 12) 310deg, #ff4864 360deg);
+  --grad-crema-cool: radial-gradient(42% 52% at 100% 0%, oklch(0.94 0.045 12) 0%, transparent 58%),radial-gradient(46% 46% at 0% 100%, #cffffd 0%, transparent 62%),linear-gradient(#f4efe6,#f4efe6);
+  --grad-crema-pink: radial-gradient(48% 48% at 6% 4%, oklch(0.94 0.045 12) 0%, transparent 56%),radial-gradient(40% 44% at 96% 92%, oklch(0.86 0.10 12) 0%, transparent 58%),linear-gradient(#f4efe6,#f4efe6);
+  --grad-crema-lime: radial-gradient(46% 50% at 98% 8%, oklch(0.97 0.05 118) 0%, transparent 58%),radial-gradient(44% 44% at 2% 96%, oklch(0.94 0.11 118) 0%, transparent 60%),linear-gradient(#f4efe6,#f4efe6);
+  --grad-tile-warm: linear-gradient(140deg, #cffffd 0%, oklch(0.94 0.045 12) 42%, #ff7c6f 100%);
+  --grad-tile-cool: linear-gradient(140deg, #e2fa83 0%, #cffffd 52%, oklch(0.86 0.10 12) 100%);
+  --grad-tile-lime: linear-gradient(140deg, #f4efe6 0%, oklch(0.94 0.11 118) 48%, #e2fa83 100%);
+  --grad-bloom-pink: radial-gradient(62% 62% at 50% 100%, #ff4864 0%, oklch(0.86 0.10 12) 50%, transparent 84%);
+  --grad-bloom-lime: radial-gradient(62% 62% at 50% 0%, #e2fa83 0%, oklch(0.94 0.11 118) 50%, transparent 84%);
+  --grad-bloom-cool: radial-gradient(62% 62% at 50% 50%, #cffffd 0%, #cffffd 26%, transparent 80%);
+  --grad-veil-cool: linear-gradient(180deg, #cffffd 0%, #fafafa 100%);
+  --grad-veil-warm: linear-gradient(180deg, #f4efe6 0%, #fafafa 100%);
+  --grad-veil-lime: linear-gradient(180deg, oklch(0.97 0.05 118) 0%, #fafafa 100%);
+  --ring-focus: 0 0 0 2px #fafafa,0 0 0 4px #ff4864;
+  --motion-hover: background-color 120ms cubic-bezier(0.2,0,0,1),color 120ms cubic-bezier(0.2,0,0,1),border-color 120ms cubic-bezier(0.2,0,0,1);
+  --measure: 62ch; /* Medida máxima de texto corrido. Nunca justificado. */
+  --measure-tight: 42ch; /* Medida corta: citas y bajadas. */
+  --ease-standard: cubic-bezier(0.2,0,0,1); /* Curva única de entrada y cambio de estado. */
+  --ease-exit: cubic-bezier(0.4,0,1,1); /* Salidas. */
+  --dur-fast: 120ms; /* Hover y cambios de color. 0ms con prefers-reduced-motion. */
+  --dur-base: 200ms; /* Transiciones de componente. 0ms con prefers-reduced-motion. */
+  --dur-slow: 360ms; /* Entradas de bloque. 0ms con prefers-reduced-motion. */
+  --font-sans: "Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-type-display: 600 81px/1.2 "Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-type-title: 800 54px/1.1 "Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-type-subtitle: 500 36px/1.2 "Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-type-body: 300 24px/1.2 "Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-type-caption: 400 16px/1.35 "Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-type-eyebrow: 600 12px/1.2 "Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --text-fs-display: 400 81px/1.2 var(--font-sans);
+  --text-fs-title: 400 54px/1.1 var(--font-sans);
+  --text-fs-subtitle: 400 36px/1.2 var(--font-sans);
+  --text-fs-body: 400 24px/1.2 var(--font-sans);
+  --text-fs-caption: 400 16px/1.4 var(--font-sans);
+  --text-fs-micro: 400 12px/1.4 var(--font-sans);
+  --text-fs-ui-lg: 400 20px/1.4 var(--font-sans);
+  --text-fs-ui: 400 15px/1.35 var(--font-sans);
+  --text-fs-ui-sm: 400 13px/1.4 var(--font-sans);
+}
+.fs-display {
+  font-family: var(--font-sans);
+  font-size: 81px;
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.fs-title {
+  font-family: var(--font-sans);
+  font-size: 54px;
+  line-height: 1.1;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.fs-subtitle {
+  font-family: var(--font-sans);
+  font-size: 36px;
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.fs-body {
+  font-family: var(--font-sans);
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.fs-caption {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.fs-micro {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+.fs-ui-lg {
+  font-family: var(--font-sans);
+  font-size: 20px;
+  line-height: 1.4;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.fs-ui {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.35;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.fs-ui-sm {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("assets/fonts/PlusJakartaSans-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("assets/fonts/PlusJakartaSans-ExtraLightItalic.ttf") format("truetype");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("assets/fonts/PlusJakartaSans-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("assets/fonts/PlusJakartaSans-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("assets/fonts/PlusJakartaSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("assets/fonts/PlusJakartaSans-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("assets/fonts/PlusJakartaSans-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("assets/fonts/PlusJakartaSans-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("assets/fonts/PlusJakartaSans-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("assets/fonts/PlusJakartaSans-SemiBoldItalic.ttf") format("truetype");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("assets/fonts/PlusJakartaSans-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("assets/fonts/PlusJakartaSans-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("assets/fonts/PlusJakartaSans-ExtraBoldItalic.ttf") format("truetype");
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
