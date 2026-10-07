@@ -497,10 +497,10 @@ function vistaResumen() {
   return `<div class="ec-col">
 <section class="ec-card ec-saludo">
 <div class="ec-ojo" aria-hidden="true"><span></span></div>
-<div><h1>Hola${primerNombre ? `, ${esc(primerNombre)}` : ''}</h1><p>${esSight ? `${esc(p.empresas?.nombre)} · ` : ''}${esc(p.nombre)} · semana ${p.semana_actual ?? '—'} de ${p.total_semanas ?? '—'}${actual.nombre ? ` · fase ${esc(actual.nombre)}` : ''}</p></div>
+<div><h1>Hola${primerNombre ? `, ${esc(primerNombre)}` : ''}</h1><p>${esSight ? `${esc(p.empresas?.nombre)} · ` : ''}${esc(p.nombre)}${p.semana_actual ? ` · semana ${p.semana_actual}${p.total_semanas ? ` de ${p.total_semanas}` : ''}` : ''}${actual.nombre ? ` · fase ${esc(actual.nombre)}` : ''}</p></div>
 <div class="ec-saludo__der"><span class="ec-progreso">${progreso}% del proyecto</span><button type="button" class="ec-pill ec-pill--pink" data-act="vista" data-v="muestras">Adjuntar muestra</button></div>
 </section>
-${tarjetaHoras()}
+${d.horas.length ? tarjetaHoras() : ''}
 <section class="ec-card" style="display:flex;flex-direction:column;gap:20px">
 <div class="ec-cab"><div><p class="ec-eyebrow">Lo que necesitamos de tu equipo</p><h2 class="ec-h2">Muestras <span class="ec-mk ec-mk--salmon">diagnósticas</span></h2></div><button type="button" class="ec-ghost" data-act="vista" data-v="muestras">Ver todas →</button></div>
 ${top.length ? `<div class="ec-mu-grid">${top.map(tarjetaMuestra).join('')}</div>` : '<p class="ec-vacio">No hay muestras pedidas por ahora.</p>'}
@@ -582,6 +582,7 @@ ${extras.length ? `<div style="display:flex;flex-direction:column;gap:10px"><p c
 function vistaInfo() {
   const d = S.d, p = d.proyecto;
   const actual = d.fases[indiceActual(d.fases)] || { nombre: '' };
+  const hayCobertura = p.cobertura !== null && p.cobertura !== undefined;
   const cobertura = Math.max(0, Math.min(100, p.cobertura || 0));
   const KBG = [
     'radial-gradient(70% 60% at 50% 100%, #ff8f9f 0%, rgba(255,143,159,0) 75%), linear-gradient(180deg, #ffffff 0%, #fff1f3 100%)',
@@ -615,15 +616,15 @@ function vistaInfo() {
       return `<div class="ec-barras__col">${dentro ? '' : `<small>${v}%</small>`}<span style="height:${h}px;background:${BC[i % 4]};color:${i % 4 === 0 ? '#ffffff' : '#2f3440'}">${dentro ? `${v}%` : ''}</span></div>`;
     }).join('');
     const ticks = [0, 25, 50, 75, 100];
-    grafica = `<div class="ec-barras-box">
+    grafica = !barras.length ? '' : `<div class="ec-barras-box">
 <div><b>${esc(g.titulo || sel.titulo)}</b>${g.subtitulo ? `<small>· ${esc(g.subtitulo)}</small>` : ''}</div>
 ${barras.length ? `<div class="ec-barras">
 <div class="ec-barras__y" aria-hidden="true">${ticks.map((v) => `<span style="bottom:${Math.round(v / 100 * CHH)}px">${v}</span>`).join('')}</div>
 <div class="ec-barras__area">${ticks.map((v) => `<span class="ec-barras__linea" aria-hidden="true" style="bottom:${Math.round(v / 100 * CHH)}px"></span>`).join('')}<div class="ec-barras__cols">${cols}</div></div>
 </div>
 <div class="ec-barras__x">${barras.map((b) => `<span>${esc(b.etiqueta)}</span>`).join('')}</div>` : ''}
-</div>
-<div class="ec-lectura"><p>${esc(g.lectura || sel.descripcion || '')}</p>${sel.archivo_path
+</div>`;
+    grafica += `<div class="ec-lectura"><p>${barras.length ? '' : `<strong style="color:#2f3440;font-weight:600">${esc(sel.titulo)}.</strong> `}${esc(g.lectura || sel.descripcion || '')}</p>${sel.archivo_path
     ? `<button type="button" class="ec-pill" data-act="abrir" data-b="infografias" data-path="${esc(sel.archivo_path)}" data-n="${esc(`${slug(sel.titulo)}.pdf`)}">Descargar infografía</button>`
     : '<button type="button" class="ec-pill" disabled>Infografía en preparación</button>'}</div>`;
   }
@@ -636,8 +637,8 @@ ${barras.length ? `<div class="ec-barras">
 </section>
 <div class="ec-info-fila">
 <section class="ec-card ec-cobertura">
-<p class="ec-eyebrow">Cobertura del diagnóstico</p>
-<div class="ec-anillo" aria-hidden="true" style="background:conic-gradient(#ff4864 0 ${cobertura}%, #e6e7e9 ${cobertura}% 100%)"><span>${cobertura}%</span></div>
+<p class="ec-eyebrow">${hayCobertura ? 'Cobertura del diagnóstico' : 'Evidencias'}</p>
+${hayCobertura ? `<div class="ec-anillo" aria-hidden="true" style="background:conic-gradient(#ff4864 0 ${cobertura}%, #e6e7e9 ${cobertura}% 100%)"><span>${cobertura}%</span></div>` : ''}
 <div><b>${actual.nombre ? `Fase ${esc(actual.nombre)}` : 'Diagnóstico'}</b><small>Evidencias recogidas hasta hoy</small></div>
 ${d.infos.length ? `<div class="ec-chips">${d.infos.slice(0, 3).map((i) => `<span>${esc(i.cifra)} ${esc(i.nota)}</span>`).join('')}</div>` : ''}
 </section>
