@@ -1,12 +1,7 @@
 {%- liquid
   assign menu = linklists[section.settings.menu]
-  if customer
-    assign account_label = 'Mi espacio'
-    assign account_url = routes.account_url
-  else
-    assign account_label = 'Iniciar sesión'
-    assign account_url = routes.account_login_url
-  endif
+  assign account_label = 'Iniciar sesión'
+  assign account_url = '/pages/espacio-clientes'
 -%}
 <header class="site-header">
   <div class="site-header__inner">
@@ -26,9 +21,7 @@
           <li><a class="navlink{% if template.name == 'collection' or template.name == 'product' %} is-current{% endif %}" href="{{ routes.all_products_collection_url }}">Tienda</a></li>
         {%- endif -%}
       </ul>
-      {%- if shop.customer_accounts_enabled -%}
-        <a class="btn btn--outline btn--sm{% if template.name == 'customers/login' %} is-current{% endif %}" href="{{ account_url }}">{{ account_label }}</a>
-      {%- endif -%}
+      <a class="btn btn--outline btn--sm" href="{{ account_url }}">{{ account_label }}</a>
       <a class="textlink site-nav__cta" href="{{ section.settings.cta_link | default: '/#contacto' }}">{{ section.settings.cta_label }} →</a>
     </nav>
 
@@ -47,7 +40,7 @@
             <li><a href="/pages/laboratorio">Laboratorio</a></li>
             <li><a href="{{ routes.all_products_collection_url }}">Tienda</a></li>
           {%- endif -%}
-          {%- if shop.customer_accounts_enabled -%}<li><a href="{{ account_url }}">{{ account_label }}</a></li>{%- endif -%}
+          <li><a href="{{ account_url }}">{{ account_label }}</a></li>
           <li><a href="{{ section.settings.cta_link | default: '/#contacto' }}">{{ section.settings.cta_label }} →</a></li>
         </ul>
       </div>

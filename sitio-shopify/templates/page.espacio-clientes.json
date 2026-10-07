@@ -1,0 +1,13 @@
+{
+  "layout": "espacio",
+  "sections": {
+    "main": {
+      "type": "espacio-clientes",
+      "settings": {
+        "supabase_url": "https://smjvupfzmitvfystskmq.supabase.co",
+        "supabase_key": "sb_publishable_xyRcNvcvsH29oH5zLWrw6Q_FHZWqlVv"
+      }
+    }
+  },
+  "order": ["main"]
+}

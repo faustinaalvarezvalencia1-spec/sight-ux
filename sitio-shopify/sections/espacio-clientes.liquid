@@ -1,0 +1,45 @@
+{{ 'espacio-clientes.css' | asset_url | stylesheet_tag }}
+
+<div
+  id="espacio-clientes"
+  class="ec"
+  data-url="{{ section.settings.supabase_url | escape }}"
+  data-key="{{ section.settings.supabase_key | escape }}"
+  data-logo="{{ 'logo-sight.svg' | asset_url }}"
+  data-logo-claro="{{ 'logo-sight-blanco.svg' | asset_url }}"
+  data-sitio="{{ routes.root_url }}"
+  data-contacto="{{ routes.root_url }}#contacto"
+>
+  <div class="ec-cargando" role="status">
+    <img src="{{ 'logo-sight.svg' | asset_url }}" alt="sight" width="120" height="40">
+    <span>Cargando tu espacio…</span>
+  </div>
+  <noscript><p class="ec-cargando">Activa JavaScript para entrar a tu espacio de clientes.</p></noscript>
+</div>
+
+<script type="module" src="{{ 'espacio-clientes.js' | asset_url }}"></script>
+
+{% schema %}
+{
+  "name": "Espacio de clientes",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Inicio de sesión y dashboard de clientes. Los datos viven en Supabase."
+    },
+    {
+      "type": "text",
+      "id": "supabase_url",
+      "label": "URL del proyecto de Supabase",
+      "default": "https://smjvupfzmitvfystskmq.supabase.co"
+    },
+    {
+      "type": "text",
+      "id": "supabase_key",
+      "label": "Clave publicable de Supabase",
+      "info": "Solo la clave publicable (sb_publishable_…). Nunca la clave secreta.",
+      "default": "sb_publishable_xyRcNvcvsH29oH5zLWrw6Q_FHZWqlVv"
+    }
+  ]
+}
+{% endschema %}

@@ -10,6 +10,7 @@ Todo lo que define la experiencia del sitio de **sight**, laboratorio de diseño
 | [`prototipo/`](prototipo) | Prototipo navegable del lienzo de diseño: Inicio, Sobre nosotros, Laboratorio, Iniciar sesión y Dashboard (`*.dc.html`). |
 | [`sistema-de-diseno/`](sistema-de-diseno) | Sistema de diseño de sight: tokens, componentes, guías de marca, kits de interfaz, láminas, logotipos y tipografía. |
 | [`imagenes-productos/`](imagenes-productos) | 48 imágenes de los infoproductos (8 por producto) y el generador que las crea. |
+| [`supabase/`](supabase) | Base de datos del espacio de clientes: tablas, seguridad por filas y archivos (migraciones SQL). |
 
 ---
 
@@ -30,7 +31,7 @@ sight
 ├── Laboratorio: casos en carpetas (síntoma → causa raíz → tratamiento → resultado)
 ├── Tienda: colección "Reportes e infoproductos" y fichas de producto con galería
 └── Espacio de clientes
-    ├── Iniciar sesión (correo + contraseña, recuperar contraseña)
+    ├── Iniciar sesión (correo + contraseña, recuperar contraseña, crear contraseña al aceptar la invitación)
     └── Dashboard
         ├── Resumen: intensidad de horas, muestras diagnósticas, avance por fase
         ├── ¿En qué vamos? (escalera hasta la entrega y hallazgos por fase)
@@ -93,6 +94,32 @@ Casi todo el contenido (textos, post-its, servicios, pasos, casos, imágenes) se
 
 Los archivos `prototipo/*.dc.html` son las pantallas del lienzo de diseño de Claude. Las imágenes aparecen como `/_blob/<id>`; cada `<id>` corresponde al archivo con ese nombre en `prototipo/assets/`. Se ven e interactúan dentro del lienzo (modo Play); fuera de él son la referencia de estructura, textos y estados.
 
+### Espacio de clientes (Supabase)
+
+El inicio de sesión y el dashboard viven en `/pages/espacio-clientes` (plantilla `page.espacio-clientes`, sección `espacio-clientes`, layout `espacio`). Los datos de cada cliente están en Supabase (proyecto `smjvupfzmitvfystskmq`); el tema solo usa la clave publicable.
+
+| Tabla | Qué alimenta en el dashboard |
+| --- | --- |
+| `empresas` | Contexto inicial (sector, trayectoria, objetivo, reto, alcance, equipo) |
+| `accesos` | Correos autorizados: al crear la cuenta se asignan empresa y rol (`cliente` o `sight`) |
+| `perfiles` | Nombre y rol de cada usuario (se crea solo al registrar la cuenta) |
+| `proyectos` | Semana actual, fechas, cobertura y siguiente paso |
+| `fases` | Observar → Interpretar → Proyectar → Accionar: avance, estado, entregable |
+| `horas` | Intensidad de horas por semana y frente |
+| `muestras` | Lo que el cliente debe adjuntar; al subir un archivo pasa a *En revisión* |
+| `hallazgos` | ¿En qué vamos? por fase |
+| `reuniones` | Calendario (con enlace y descarga .ics) |
+| `infografias`, `indicadores`, `areas` | Vista de Infografías |
+| `miembros_sight`, `proyecto_miembros` | Tu equipo sight |
+
+Archivos: buckets privados `muestras` e `infografias`, con ruta `{proyecto_id}/…`. Cada cliente solo ve y sube archivos de su proyecto; el equipo sight ve todo.
+
+**Dar acceso a un cliente nuevo**
+
+1. Crea la empresa, el proyecto y sus fases en el editor de tablas de Supabase.
+2. Agrega su correo en `accesos` con la `empresa_id` y el rol `cliente`.
+3. En *Authentication → Users → Invite user*, invítalo con ese correo. Recibe un enlace, crea su contraseña y entra a su dashboard.
+
 ### Imágenes de productos
 
 ```bash
@@ -109,6 +136,6 @@ Usa Google Chrome en modo headless; los textos de cada producto están al inicio
 
 - Los datos del dashboard (cliente, horas, hallazgos, fechas) y los productos de la tienda son **de ejemplo**.
 - Los casos del Laboratorio tienen marcadores (`[Sector del cliente]`, `[+00%]`) pendientes de datos reales.
-- El inicio de sesión y el dashboard del prototipo aún no están conectados a la tienda.
+- El inicio de sesión y el dashboard están conectados a Supabase y publicados en `/pages/espacio-clientes`. El proyecto cargado (Marca Ejemplo) es de ejemplo.
 
 © 2026 sight · laboratorio de diseño estratégico. Todos los derechos reservados sobre la marca, los textos y las imágenes.
