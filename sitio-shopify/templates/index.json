@@ -275,10 +275,10 @@
       "type": "contacto",
       "settings": {
         "eyebrow": "Contacto",
-        "title": "Hablemos de lo que tu marca todavía no ve.",
+        "title": "Hablemos",
         "note": "¿Prefieres escribirnos directo?",
         "show_form": true,
-        "success": "Gracias. Te escribimos pronto para agendar tu diagnóstico."
+        "email": "hola.sightcrea@gmail.com"
       }
     },
     "tienda": {

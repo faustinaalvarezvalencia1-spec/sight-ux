@@ -1,4 +1,4 @@
-<section id="contacto" class="contacto">
+<section id="contacto" class="contacto{% if section.settings.show_form %} contacto--carta{% endif %}">
   {%- capture gid -%}grainContacto{{ section.id | replace: '-', '' }}{%- endcapture -%}
   {% render 'grain', id: gid, opacity: 0.3, blend: 'overlay' %}
   <div class="contacto__sun" aria-hidden="true"></div>
@@ -12,22 +12,84 @@
     </div>
     <div class="contacto__side">
       {%- if section.settings.show_form -%}
-        {%- form 'contact', id: 'ContactForm', class: 'contact-form' -%}
-          {%- if form.posted_successfully? -%}
-            <div class="contact-ok" role="status" tabindex="-1" autofocus>
-              <span class="eyebrow">Mensaje enviado</span>
-              <span class="contact-ok__text">{{ section.settings.success }}</span>
+        {%- assign correo_sight = section.settings.email | default: shop.email -%}
+        <div class="carta" data-carta data-endpoint="{{ section.settings.endpoint | escape }}" data-correo="{{ correo_sight | escape }}">
+          <form class="carta__form" novalidate aria-label="Escríbenos una carta">
+            <p class="carta__saludo">Hola SIGHT,</p>
+
+            <p class="carta__frase">
+              me llamo
+              <span class="blank" data-value="Laura"><label class="visually-hidden" for="carta-nombre">Tu nombre (obligatorio)</label><input id="carta-nombre" name="nombre" type="text" placeholder="Laura" autocomplete="given-name" required maxlength="120" aria-describedby="carta-e-quien"></span>
+              y soy
+              <span class="blank" data-value="directora de marca"><label class="visually-hidden" for="carta-cargo">Tu cargo (opcional)</label><input id="carta-cargo" name="cargo" type="text" placeholder="directora de marca" autocomplete="organization-title" maxlength="120"></span>
+              de
+              <span class="blank-fin"><span class="blank" data-value="nombre de tu marca"><label class="visually-hidden" for="carta-marca">Tu marca (obligatorio)</label><input id="carta-marca" name="marca" type="text" placeholder="nombre de tu marca" autocomplete="organization" required maxlength="160" aria-describedby="carta-e-quien"></span>.</span>
+            </p>
+            <p class="carta__error" id="carta-e-quien" aria-live="polite"></p>
+
+            <p class="carta__frase">
+              Pueden conocernos en
+              <span class="blank" data-value="@tumarca"><label class="visually-hidden" for="carta-instagram">Instagram de tu marca (este o la web)</label><input id="carta-instagram" name="instagram" type="text" placeholder="@tumarca" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="80" aria-describedby="carta-e-red"></span>
+              y en
+              <span class="blank-fin"><span class="blank" data-value="tumarca.com"><label class="visually-hidden" for="carta-web">Página web de tu marca (esta o el Instagram)</label><input id="carta-web" name="web" type="url" inputmode="url" placeholder="tumarca.com" autocomplete="url" autocapitalize="off" spellcheck="false" maxlength="300" aria-describedby="carta-e-red"></span>.</span>
+            </p>
+            <p class="carta__error" id="carta-e-red" aria-live="polite"></p>
+
+            <p class="carta__frase">
+              Les escribo porque quiero
+              <span class="blank-fin"><span class="blank blank--select is-empty" data-value="elige una opción"><label class="visually-hidden" for="carta-interes">Qué quieres (opcional)</label><select id="carta-interes" name="interes">
+                <option value="">elige una opción</option>
+                <option>entender hacia dónde van mi sector y mis clientes</option>
+                <option>encontrar nuevas oportunidades para crecer</option>
+                <option>mejorar la experiencia de mis clientes</option>
+                <option>conversar, aún no lo tengo claro</option>
+              </select></span>.</span>
+            </p>
+
+            <p class="carta__frase">
+              En este momento, lo que más me tiene pensando es
+              <span class="blank-fin"><span class="blank blank--area" data-value="mis clientes compran una vez y no vuelven"><label class="visually-hidden" for="carta-reto">Lo que más te tiene pensando (opcional)</label><textarea id="carta-reto" name="reto" rows="1" placeholder="mis clientes compran una vez y no vuelven" maxlength="4000" data-contact-body></textarea></span>.</span>
+            </p>
+
+            <p class="carta__frase">
+              Me gustaría que me contacten por
+              <span class="blank blank--select" data-value="WhatsApp"><label class="visually-hidden" for="carta-canal">Por dónde te contactamos (obligatorio)</label><select id="carta-canal" name="canal" required aria-describedby="carta-e-canal">
+                <option selected>WhatsApp</option>
+                <option>correo</option>
+                <option>llamada</option>
+              </select></span>
+              al
+              <span class="blank-fin"><span class="blank" data-value="300 123 4567"><label class="visually-hidden" for="carta-contacto" data-contacto-label>Tu celular (obligatorio)</label><input id="carta-contacto" name="contacto" type="tel" inputmode="tel" placeholder="300 123 4567" autocomplete="tel-national" required maxlength="200" aria-describedby="carta-e-canal"></span>.</span>
+            </p>
+            <p class="carta__error" id="carta-e-canal" aria-live="polite"></p>
+
+            <p class="carta__despedida">¡Hablamos pronto!</p>
+
+            <div class="carta__trampa" aria-hidden="true">
+              <label for="carta-empresa-web">No llenes este campo</label>
+              <input id="carta-empresa-web" name="empresa_web" type="text" tabindex="-1" autocomplete="off">
             </div>
-          {%- else -%}
-            {%- if form.errors -%}
-              <div class="contact-error" role="alert">{{ form.errors | default_errors }}</div>
-            {%- endif -%}
-            <label class="field"><span class="field__label">Nombre</span><input type="text" name="contact[name]" autocomplete="name" required placeholder="Tu nombre" value="{{ form.name }}"></label>
-            <label class="field"><span class="field__label">Correo</span><input type="email" name="contact[email]" autocomplete="email" required placeholder="tu@marca.com" value="{{ form.email }}" spellcheck="false" autocapitalize="off"></label>
-            <label class="field"><span class="field__label">¿En qué te ayudamos?</span><textarea name="contact[body]" rows="4" placeholder="Cuéntanos qué necesita tu marca" data-contact-body>{{ form.body }}</textarea></label>
-            <button type="submit" class="btn btn--ink">Enviar mensaje</button>
-          {%- endif -%}
-        {%- endform -%}
+
+            <div class="carta__datos">
+              <input id="carta-datos" name="acepta_datos" type="checkbox" required aria-describedby="carta-e-datos">
+              <label for="carta-datos">Acepto el <a href="{{ section.settings.privacy_link | default: '/policies/privacy-policy' }}" target="_blank" rel="noopener">tratamiento de mis datos personales</a>.</label>
+            </div>
+            <p class="carta__error" id="carta-e-datos" aria-live="polite"></p>
+
+            <div class="carta__acciones">
+              <button type="submit" class="btn btn--pink btn--lg carta__enviar" aria-disabled="true">Enviar mi mensaje</button>
+              <p class="carta__fallo" role="alert" hidden>Algo salió mal. Escríbenos directo a <a href="mailto:{{ correo_sight }}">{{ correo_sight }}</a></p>
+            </div>
+          </form>
+
+          <div class="carta__gracias" tabindex="-1" hidden>
+            <p class="eyebrow">Mensaje enviado</p>
+            <p class="carta__gracias-texto" data-gracias></p>
+          </div>
+
+          <noscript><p class="carta__frase">Para enviarnos tu mensaje activa JavaScript, o escríbenos a <a href="mailto:{{ correo_sight }}">{{ correo_sight }}</a>.</p></noscript>
+        </div>
+        <script src="{{ 'carta-contacto.js' | asset_url }}" defer></script>
       {%- else -%}
         <div class="contacto__cta">
           <a class="btn btn--ink btn--lg" href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>
@@ -45,9 +107,11 @@
     { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Contacto" },
     { "type": "text", "id": "title", "label": "Título", "default": "Hablemos de lo que tu marca todavía no ve." },
     { "type": "text", "id": "note", "label": "Texto antes del Instagram", "default": "¿Prefieres escribirnos directo?" },
-    { "type": "checkbox", "id": "show_form", "label": "Mostrar formulario", "default": true, "info": "Los mensajes llegan al correo de la tienda." },
-    { "type": "text", "id": "success", "label": "Mensaje de confirmación", "default": "Gracias. Te escribimos pronto para agendar tu diagnóstico." },
-    { "type": "text", "id": "button_label", "label": "Botón (si no hay formulario)", "default": "Agenda un diagnóstico" },
+    { "type": "checkbox", "id": "show_form", "label": "Mostrar la carta de contacto", "default": true },
+    { "type": "text", "id": "email", "label": "Correo de SIGHT", "info": "Se muestra si el envío falla. Si lo dejas vacío se usa el correo de la tienda." },
+    { "type": "text", "id": "privacy_link", "label": "Enlace a la política de datos", "default": "/policies/privacy-policy" },
+    { "type": "text", "id": "endpoint", "label": "Dirección de envío (Supabase)", "default": "https://smjvupfzmitvfystskmq.supabase.co/functions/v1/contacto", "info": "Función que guarda el mensaje y envía los correos. No la cambies si no sabes qué es." },
+    { "type": "text", "id": "button_label", "label": "Botón (si no hay carta)", "default": "Agenda un diagnóstico" },
     { "type": "text", "id": "button_link", "label": "Destino del botón", "default": "/#contacto" }
   ],
   "presets": [ { "name": "Contacto" } ]

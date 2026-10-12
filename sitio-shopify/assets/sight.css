@@ -493,3 +493,89 @@ section[id] { scroll-margin-top: 0; }
   .product__media { position: static; }
   .cart__item { grid-template-columns: 1fr auto; }
 }
+
+/* Carta de contacto: los campos van dentro del texto */
+/* Fondo claro con difuminado (token --grad-crema-pink del sistema de diseño) y aura lima desenfocada */
+.contacto--carta { background: radial-gradient(48% 48% at 6% 4%, oklch(0.94 0.045 12) 0%, transparent 56%), radial-gradient(40% 44% at 96% 92%, oklch(0.86 0.10 12) 0%, transparent 58%), linear-gradient(var(--coconut), var(--coconut)); color: var(--ink); }
+.contacto--carta .contacto__sun { background: var(--lime); opacity: .55; filter: blur(80px); }
+.contacto--carta .eyebrow--light { color: var(--pink); }
+.contacto--carta .contacto__title { color: var(--ink); }
+.contacto--carta .contacto__note, .contacto--carta .contacto__note a { color: var(--ink-700); }
+.contacto--carta .contacto__note a:hover { color: var(--pink); }
+.contacto--carta .carta { border: 1px solid var(--ink-100); }
+.contacto--carta { padding: 72px 0 56px; }
+.contacto--carta .contacto__grid { flex-direction: column; align-items: center; gap: 28px; }
+.contacto--carta .contacto__copy { gap: 12px; }
+.contacto--carta .contacto__copy { align-items: center; text-align: center; }
+.contacto--carta .contacto__side { width: 100%; max-width: 720px; margin: 0 auto; }
+.carta { --carta-error: #b3002d; position: relative; background: var(--paper); color: var(--ink); border-radius: 4px; padding: clamp(24px, 3vw, 40px); }
+.carta__form { font-size: clamp(16px, 1.3vw, 19px); font-weight: 400; line-height: 1.55; letter-spacing: -0.02em; transition: opacity .3s ease, transform .3s ease; }
+.carta__form.is-saliendo { opacity: 0; transform: translateY(-8px); }
+.carta__form p { margin: 0; }
+.carta__saludo { font-weight: 600; margin-bottom: .3em !important; }
+.carta__frase + .carta__frase, .carta__error + .carta__frase { margin-top: .25em !important; }
+.carta__despedida { margin-top: .6em !important; font-weight: 600; }
+.carta__error { font-size: 14px; line-height: 1.35; letter-spacing: -0.01em; color: var(--carta-error); font-weight: 500; }
+.carta__error:not(:empty) { margin-top: 6px !important; }
+
+/* Espacio en blanco subrayado: crece con lo que se escribe (el ::after mide el texto) */
+.blank { display: inline-grid; vertical-align: bottom; max-width: 100%; min-height: 36px; margin: 0 2px; }
+.blank::after, .blank > input, .blank > select, .blank > textarea { grid-area: 1 / 1; font: inherit; line-height: 1.4; letter-spacing: inherit; padding: 3px 2px 2px; min-width: 2.5em; }
+.blank::after { content: attr(data-value) "\00a0"; font-weight: 600; visibility: hidden; white-space: pre; overflow: hidden; }
+.blank > input, .blank > select, .blank > textarea { width: 0; min-width: 100%; margin: 0; min-height: 36px; border: 0; border-bottom: 2px solid var(--ink); border-radius: 0; background: transparent; color: var(--pink-800); font-weight: 600; outline: none; -webkit-appearance: none; appearance: none; transition: border-color .15s ease, background-color .15s ease; }
+.blank > input::placeholder, .blank > textarea::placeholder { color: var(--ink-300); font-weight: 400; opacity: 1; }
+.blank > input:hover, .blank > select:hover, .blank > textarea:hover { background: var(--pink-50); }
+.blank > input:focus-visible, .blank > select:focus-visible, .blank > textarea:focus-visible { border-bottom-color: var(--pink); background: var(--pink-50); box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--pink); }
+.blank.is-error > input, .blank.is-error > select, .blank.is-error > textarea { border-bottom-color: var(--carta-error); border-bottom-style: dashed; }
+/* Texto largo: hace saltos de línea dentro de la carta */
+.blank--area { display: inline-grid; }
+.blank--area::after { white-space: pre-wrap; overflow-wrap: anywhere; }
+.blank--area > textarea { resize: none; overflow: hidden; overflow-wrap: anywhere; }
+/* Desplegable como palabra subrayada con flecha pequeña.
+   El texto visible es el ::after (puede ocupar varias líneas); el select nativo queda encima, transparente. */
+.blank--select { position: relative; }
+.blank--select::after { visibility: visible; white-space: normal; overflow: visible; padding-right: 1.1em; min-height: 36px; border-bottom: 2px solid var(--ink); color: var(--pink-800); background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%232f3440' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 2px center / .5em auto; transition: border-color .15s ease, background-color .15s ease; content: attr(data-value); }
+.blank--select.is-empty::after { color: var(--ink-300); font-weight: 400; }
+.blank--select > select { opacity: 0; cursor: pointer; height: 100%; border: 0; }
+.blank--select > select option { color: var(--ink); font-weight: 400; }
+.blank--select:hover::after { background-color: var(--pink-50); }
+.blank--select:focus-within::after { border-bottom-color: var(--pink); background-color: var(--pink-50); box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--pink); }
+.blank--select > select:focus-visible { box-shadow: none; }
+.blank-fin { white-space: nowrap; }
+.blank-fin > .blank { white-space: normal; max-width: calc(100% - .4em); }
+
+/* Autorización de datos */
+.carta__datos { display: flex; align-items: flex-start; gap: 12px; margin-top: 1em; font-size: 14px; line-height: 1.4; letter-spacing: -0.01em; }
+.carta__datos input { flex-shrink: 0; width: 24px; height: 24px; margin: 0; accent-color: var(--pink); cursor: pointer; }
+.carta__datos label { padding-top: 1px; cursor: pointer; }
+.carta__datos { position: relative; min-height: 36px; }
+.carta__datos.is-error input { outline: 2px dashed var(--carta-error); outline-offset: 2px; }
+.carta__datos a { color: var(--pink-800); }
+
+.carta__acciones { margin-top: 16px; display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+.carta__enviar { min-height: 48px; padding: 12px 28px; font-size: 18px; }
+.carta__enviar[aria-disabled="true"] { opacity: .45; cursor: not-allowed; }
+.carta__enviar[aria-disabled="true"]:hover { background: var(--pink); }
+.carta__fallo { margin: 0; font-size: 16px; line-height: 1.4; letter-spacing: -0.01em; color: var(--carta-error); font-weight: 500; }
+.carta__fallo a { color: var(--carta-error); }
+
+/* Campo trampa para robots */
+.carta__trampa { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* Confirmación */
+.carta__gracias { display: flex; flex-direction: column; gap: 16px; opacity: 0; transform: translateY(12px); transition: opacity .45s ease, transform .45s ease; }
+.carta__gracias.is-visible { opacity: 1; transform: none; }
+.carta__gracias:focus { outline: none; }
+.carta__gracias-texto { margin: 0; font-size: clamp(22px, 2vw, 30px); font-weight: 600; line-height: 1.3; letter-spacing: -0.04em; }
+@media (prefers-reduced-motion: reduce) {
+  .carta__form, .carta__gracias { transition: none; }
+}
+
+@media (max-width: 760px) {
+  .carta { padding: 28px 20px 32px; }
+  .contacto--carta { padding: 56px 0 48px; }
+  .carta__form { line-height: 1.55; }
+  .carta__frase + .carta__frase, .carta__error + .carta__frase { margin-top: .6em !important; }
+  .blank, .blank > input, .blank > select, .blank > textarea, .blank--select::after, .carta__datos { min-height: 44px; }
+  .carta__enviar { width: 100%; }
+}

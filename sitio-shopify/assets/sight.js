@@ -60,6 +60,15 @@
   function fillContact(text) {
     var body = document.querySelector('[data-contact-body]');
     if (!body || !text) return false;
+    /* En la carta, la necesidad completa la frase "lo que más me tiene pensando es …" */
+    if (body.closest('[data-carta]')) {
+      var ayuda = /^Ayúdame a:\s*/i.test(text);
+      text = text.replace(/^Ayúdame a:\s*/i, '').replace(/^Me interesa:\s*/i, 'el ').replace(/\.\s*$/, '');
+      text = (ayuda ? 'cómo ' : '') + text.charAt(0).toLowerCase() + text.slice(1);
+      body.value = text;
+      body.dispatchEvent(new Event('input', { bubbles: true }));
+      return true;
+    }
     body.value = text + ' ';
     return true;
   }
